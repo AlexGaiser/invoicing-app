@@ -16,14 +16,11 @@ class App extends Component {
 
   componentDidMount =  async ()=>{
     console.log('running')
-    
-    const response = await Axios.get('http://localhost:9000/')
+    const response = await Axios.get('/main')
     console.log(response)
     this.setState({
       root:response.data.message
     })
-  
-    
   }
   
   

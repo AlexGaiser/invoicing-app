@@ -1,5 +1,6 @@
 {
   "name": "freelancing-app",
+  "proxy": "http://localhost:9000",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
