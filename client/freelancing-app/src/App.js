@@ -1,12 +1,35 @@
 import React, { Component } from 'react';
+import Stopwatch from './Main/Stopwatch'
+
+import Axios from 'axios'
+
+
+
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(){
+    super()
+    this.state = {
+      root: 'pending'
+    }
+  }
+
+  componentDidMount =  async ()=>{
+    console.log('running')
+    const response = await Axios.get('/main')
+    console.log(response)
+    this.setState({
+      root:response.data.message
+    })
+  }
+  
   render() {
     return (
       <div className="App">
         <header className="App-header">
+          <Stopwatch/>
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
@@ -17,7 +40,7 @@ class App extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+           {this.state.root}
           </a>
         </header>
       </div>
