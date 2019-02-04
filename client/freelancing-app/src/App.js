@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Stopwatch from './Main/Stopwatch'
 import InvoiceForm from './Main/InvoiceForm'
 import Moment from 'moment'
+import MainInvoice from './userpg/MainInvoice'
+import ListContainer from './userpg/ListContainer'
 
 import Axios from 'axios'
 import logo from './logo.svg';
@@ -133,6 +135,8 @@ class App extends Component {
            {this.state.root}
           </a>
         </header>
+        <React.Fragment><ListContainer /></React.Fragment>
+        <React.Fragment><MainInvoice /></React.Fragment>
       </div>
     );
   }
