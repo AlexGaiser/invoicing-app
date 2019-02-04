@@ -28,6 +28,9 @@ class App extends Component {
     }
   }
   
+  stopWatch=(stopwatch)=>{
+
+  }
 
 
   setTime = ()=> {
@@ -93,23 +96,30 @@ class App extends Component {
   }
 
   sendData = (event)=>{
-    event.preventDefault()
+    // event.preventDefault()
     const formData = {
       // timeElapsed:
       service: this.state.form1,
       rate: this.state.form2,
       // comment:
     }
-
+    
     alert(`${formData.service} - ${formData.rate}` )
     }
 
+  liftState = (state)=>{
+    console.log(state);  
+    return state
+  }
+
+  
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <div>
           <Stopwatch
+            liftState={this.liftState}
             time={this.state.time}
             elapsedTime={this.state.elapsedTime}
             // seconds={this.state.seconds}
@@ -123,6 +133,7 @@ class App extends Component {
           <h1>Title</h1>
           <div>
           <InvoiceForm
+            liftState={this.liftState}
             form1={this.state.form1}
             form2={this.state.form2}
             handleChange={this.handleChange}
@@ -147,7 +158,9 @@ class App extends Component {
              />
         </header>
         <React.Fragment><ListContainer /></React.Fragment>
-        <React.Fragment><MainInvoice /></React.Fragment>
+        <React.Fragment>
+          <MainInvoice />
+        </React.Fragment>
       </div>
     );
   }
