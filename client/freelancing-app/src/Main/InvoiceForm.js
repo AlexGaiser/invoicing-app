@@ -5,7 +5,13 @@ class InvoiceForm extends Component {
         super(props);
         this.state = {total: 0.00 }
     }
-    
+    calculateTotal = ()=>{
+        this.setState({
+            // total:this.props.
+        })
+    }
+
+
     render() { 
         return ( 
             <React.Fragment>
