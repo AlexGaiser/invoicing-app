@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "install-modules": "npm install nodemon sequelize pg express body-parser axios concurrently",
-    "dev": "concurrently --kill-others-on-fail \" npm run server \"  \" npm start \" "
+    "dev": "concurrently --kill-others-on-fail \" npm run server \"  \" npm start \" ",
+    "db:reset": "node ./scripts/resetDb"
+
   },
   "repository": {
     "type": "git",
