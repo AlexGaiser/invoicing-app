@@ -12,15 +12,41 @@ class App extends Component {
     this.state = {
       time:'00:00',
       root: 'pending',
-      button1:''
+      button1:'', 
+      timerSet: false
     }
   }
   setTime = ()=> {
     const time = new Date()
-    this.setState({time:time.toLocaleTimeString()})
+    this.setState({
+      time:time.toLocaleTimeString(),
+      seconds:time.getTime()
+    })
+  }
+
+  setTimeStart = ()=>{
+    console.log(this.state.seconds);
+    this.setState({
+       timeStart:this.state.seconds,
+       timerSet: true
+      })
   }
   
-  
+  stopTime = ()=>{
+    this.setState({
+      finalTime:this.state.timeStart,
+      timeStart:0,
+      timerSet:false
+    })
+  }
+  resetTime = ()=>{
+    this.setState({
+      finalTime:0,
+      timeStart:0,
+      timerSet:false
+    })
+  }
+
   componentDidMount =  async ()=>{
     console.log('running')
     const response = await Axios.get('/main')
@@ -60,7 +86,12 @@ class App extends Component {
           <div>
           <Stopwatch
             time={this.state.time}
+            seconds={this.state.seconds}
             click={this.handleClick}
+            timeStart={this.state.timeStart}
+            timerSet={this.state.timerSet}
+            setTimeStart={this.setTimeStart}
+            stopTime={this.stopTime}
           />
           </div>
           <h1>Title</h1>
