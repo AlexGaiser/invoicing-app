@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import Stopwatch from './Main/Stopwatch'
 import InvoiceForm from './Main/InvoiceForm'
 import RateForm from './Main/RateForm'
-
 import { Button } from 'reactstrap';
+import Moment from 'moment'
+import MainInvoice from './userpg/MainInvoice'
+import ListContainer from './userpg/ListContainer'
+
 
 import Axios from 'axios'
 import logo from './logo.svg';
@@ -15,31 +18,43 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
+      isLoaded:false,
       time:'00:00',
       root: 'pending',
       button1:'',
+      invoices: 'pending',
+      button1:'', 
       timerSet: false
     }
   }
+  
+
+
   setTime = ()=> {
-    const time = new Date()
+    const elapsedTime = Moment.duration((Moment().diff(this.state.timeStart)))
+    // console.log('running time set: ');
     this.setState({
-      time:time.toLocaleTimeString(),
-      seconds:time.getTime()
+      time: Moment(),
+      elapsedTime: elapsedTime
     })
+    // console.log(this.state.time)
   }
 
   setTimeStart = ()=>{
-    console.log(this.state.seconds);
+    const timeStart  = Moment()
+    // let elapsedTime = Moment.duration(Moment().diff(startTime))
+    // elapsedTime.asSeconds()
+    // console.log(elapsedTime);
+    // console.log(elapsedTime.asSeconds());
     this.setState({
-       timeStart:this.state.seconds,
-       timerSet: true
-      })
+       timeStart: timeStart,
+       timerSet:true
+    })
   }
 
   stopTime = ()=>{
     this.setState({
-      finalTime:this.state.timeStart,
+      finalTime:this.state.timerSet,
       timeStart:0,
       timerSet:false
     })
@@ -56,8 +71,14 @@ class App extends Component {
     console.log('running')
     const response = await Axios.get('/main')
     setInterval(this.setTime, 500)
+    const invoices = await Axios.get('/records')
+    console.log(invoices);
+    setInterval(this.setTime, 1000)    
+
     this.setState({
-      root:response.data.message
+      root:response.data.message,
+      invoices: invoices.data.records[0].title, 
+      isLoaded:true
     })
   }
 
@@ -79,10 +100,9 @@ class App extends Component {
       rate: this.state.form2,
       // comment:
     }
-    alert()
+
+    alert(`${formData.service} - ${formData.rate}` )
     }
-
-
 
   render() {
     return (
@@ -91,7 +111,8 @@ class App extends Component {
           <div>
           <Stopwatch
             time={this.state.time}
-            seconds={this.state.seconds}
+            elapsedTime={this.state.elapsedTime}
+            // seconds={this.state.seconds}
             click={this.handleClick}
             timeStart={this.state.timeStart}
             timerSet={this.state.timerSet}
@@ -118,12 +139,15 @@ class App extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
+            {this.state.isLoaded && this.state.invoices}<br/>
            {this.state.root}
           </a>
           <RateForm
             className="RateForm"
              />
         </header>
+        <React.Fragment><ListContainer /></React.Fragment>
+        <React.Fragment><MainInvoice /></React.Fragment>
       </div>
     );
   }

@@ -4,10 +4,12 @@ const app = express()
 const logger = require('morgan')
 const bodyParser = require('body-parser');
 
+
+const { Invoice, User, Client } = require('./models')
+
 app.use(bodyParser.json())
 app.use(logger('dev'))
 
-// const { Record } = require('./models')
 
 // establishing port that server will run on
 const PORT = process.env.PORT || 9000
@@ -15,8 +17,8 @@ const PORT = process.env.PORT || 9000
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}!`))
 
 
-// setting rout for root directory
-app.get('/main', (req, res)=>{
+// setting route for root directory
+app.get('/main', async (req, res)=>{
     try{
         res.json({
             "message":"this is the root directory"
@@ -28,18 +30,18 @@ app.get('/main', (req, res)=>{
 })
 
 // setting routes for records directory
-app.get('/records', (req,res)=>{
+app.get('/records', async (req,res)=>{
+    const records = await Invoice.findAll({})
+    console.log(records)
     try{
-    res.json({
-        "message":"this is where records of the users sessions go"
-    })
+    res.json({records})
     }
     catch(e){
         res.json({"message":e.message})
     }
 })
 
-app.post('/records', (req,res)=>{
+app.post('/records', async (req,res)=>{
     try{
        res.json({
         
@@ -50,7 +52,7 @@ app.post('/records', (req,res)=>{
     }
 })
 
-app.put('/records', (req,res)=>{
+app.put('/records', async (req,res)=>{
     try{
         res.send({"message":"record updated"})
     }
@@ -60,7 +62,7 @@ app.put('/records', (req,res)=>{
 })
 
 // setting routes for users
-app.get('/users', (req,res)=>{
+app.get('/users', async (req,res)=>{
     try{
     res.json({"message":"this is where information for all users will be displayed."})
     }
@@ -69,7 +71,7 @@ app.get('/users', (req,res)=>{
     }
 })
 
-app.get('/users/:id',(req,res)=>{
+app.get('/users/:id', async (req,res)=>{
     try{
         const message = `this is the display page for user ${req.params.id}`
         res.json({"message":message})

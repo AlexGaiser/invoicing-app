@@ -5,7 +5,13 @@ class InvoiceForm extends Component {
         super(props);
         this.state = {total: 0.00 }
     }
-    
+    calculateTotal = ()=>{
+        this.setState({
+            // total:this.props.
+        })
+    }
+
+
     render() { 
         return ( 
             <React.Fragment>
@@ -14,6 +20,7 @@ class InvoiceForm extends Component {
                 <form onSubmit={this.props.sendData}>
                     <input name='form1' type="text" placeholder="enter job" onChange={this.props.handleChange}/>
                     <input name='form2' type="text" placeholder="enter rate" onChange={this.props.handleChange}/>
+                    
                     <h1>{`$${this.state.total}`}</h1>                    
                     <button>Submit</button>
                 </form>
