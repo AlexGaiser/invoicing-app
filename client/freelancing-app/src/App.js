@@ -74,11 +74,10 @@ class App extends Component {
       rate: this.state.form2,
       // comment: 
     }
-    alert()
+
+    alert(`${formData.service} - ${formData.rate}` )
     }
    
-
-
   render() {
     return (
       <div className="App">

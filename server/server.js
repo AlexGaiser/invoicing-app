@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 9000
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}!`))
 
 
-// setting rout for root directory
+// setting route for root directory
 app.get('/main', (req, res)=>{
     try{
         res.json({
