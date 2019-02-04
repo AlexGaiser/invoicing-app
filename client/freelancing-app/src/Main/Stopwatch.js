@@ -14,8 +14,6 @@ class Stopwatch extends Component {
     startTime = ()=>{
         
         if(this.state.newTimer){
-            console.log('new timer');
-            
             const startTime = new Date().getTime()
             this.setState({startTime:startTime})     
             const start = setInterval(this.displayTimer,500)
@@ -23,22 +21,19 @@ class Stopwatch extends Component {
                 interval:start,
                 newTimer:false
             })
-
         }
         else{
-            console.log('not new timer');
             const start = setInterval(this.displayTimer,500)
             this.setState({interval:start})
         }
-           
     }
 
 
     stopTimer = ()=>{
-        console.log('interval cleared')
         clearInterval(this.state.interval)
 
     }
+
     resetTimer  =()=>{
         this.setState({
             newTimer:true,
@@ -56,17 +51,20 @@ class Stopwatch extends Component {
         const minutes = Math.floor((timerValue % (1000 * 60 * 60)) / (1000 * 60))
         const seconds = Math.floor((timerValue % (1000 * 60)) / 1000)
         this.setState({
+            timerValue:{
+                totalTime: timerValue,
+                hours:hours,
+                minutes:minutes,
+                seconds:seconds    
+            },
             displayTime: `${hours}:${minutes}:${seconds}`
         })
+        this.props.liftState(this.state.timerValue)
     }
-    renderTime = (time)=>{
-    }
-
+   
 
     
     render() {
-        console.log(this.props.timeStart)
-        console.log(this.props.elapsedTime)
 
         return (
             <div>
