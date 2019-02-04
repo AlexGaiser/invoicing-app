@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import Stopwatch from './Main/Stopwatch'
 import InvoiceForm from './Main/InvoiceForm'
+import RateForm from './Main/RateForm'
+
+import { Button } from 'reactstrap';
 
 import Axios from 'axios'
 import logo from './logo.svg';
 import './App.css';
+
+
 
 class App extends Component {
   constructor(){
@@ -12,7 +17,7 @@ class App extends Component {
     this.state = {
       time:'00:00',
       root: 'pending',
-      button1:'', 
+      button1:'',
       timerSet: false
     }
   }
@@ -31,7 +36,7 @@ class App extends Component {
        timerSet: true
       })
   }
-  
+
   stopTime = ()=>{
     this.setState({
       finalTime:this.state.timeStart,
@@ -50,12 +55,12 @@ class App extends Component {
   componentDidMount =  async ()=>{
     console.log('running')
     const response = await Axios.get('/main')
-    setInterval(this.setTime, 500)    
+    setInterval(this.setTime, 500)
     this.setState({
       root:response.data.message
     })
   }
-  
+
   handleChange = (event)=>{
     const {name, value} = event.target
     this.setState({[name]: value})
@@ -72,11 +77,11 @@ class App extends Component {
       // timeElapsed:
       service: this.state.form1,
       rate: this.state.form2,
-      // comment: 
+      // comment:
     }
     alert()
     }
-   
+
 
 
   render() {
@@ -115,6 +120,9 @@ class App extends Component {
           >
            {this.state.root}
           </a>
+          <RateForm
+            className="RateForm"
+             />
         </header>
       </div>
     );
