@@ -10,8 +10,10 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
+      isLoaded:false,
       time:'00:00',
       root: 'pending',
+      invoices: 'pending',
       button1:'', 
       timerSet: false
     }
@@ -50,9 +52,13 @@ class App extends Component {
   componentDidMount =  async ()=>{
     console.log('running')
     const response = await Axios.get('/main')
-    setInterval(this.setTime, 500)    
+    const invoices = await Axios.get('/records')
+    console.log(invoices);
+    setInterval(this.setTime, 100)    
     this.setState({
-      root:response.data.message
+      root:response.data.message,
+      invoices: invoices.data.records[0].title, 
+      isLoaded:true
     })
   }
   
@@ -74,11 +80,10 @@ class App extends Component {
       rate: this.state.form2,
       // comment: 
     }
-    alert()
+
+    alert(`${formData.service} - ${formData.rate}` )
     }
    
-
-
   render() {
     return (
       <div className="App">
@@ -113,6 +118,7 @@ class App extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
+            {this.state.isLoaded && this.state.invoices}<br/>
            {this.state.root}
           </a>
         </header>
