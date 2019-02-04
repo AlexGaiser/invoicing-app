@@ -1,7 +1,6 @@
 import React from "react"
 import Axios from 'axios'
 import ListItem from './ListItem'
-import './App.css';
 
 
 
