@@ -28,6 +28,9 @@ class App extends Component {
     }
   }
   
+  stopWatch=(stopwatch)=>{
+
+  }
 
 
   setTime = ()=> {
@@ -147,7 +150,9 @@ class App extends Component {
              />
         </header>
         <React.Fragment><ListContainer /></React.Fragment>
-        <React.Fragment><MainInvoice /></React.Fragment>
+        <React.Fragment>
+          <MainInvoice />
+        </React.Fragment>
       </div>
     );
   }
