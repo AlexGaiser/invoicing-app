@@ -4,10 +4,17 @@ import Axios from 'axios'
 class MainInvoice extends React.Component{
     constructor(){
         super()
+        this.state={
+            information:[]
+        }
     }
+    
+    componentDidMount= async () => {
+        const response = await Axios.get('/records')
 
-    componentDidMount(){
-
+        this.setState({
+            information: response.data
+        })
     }
 
     render(){
@@ -15,7 +22,7 @@ class MainInvoice extends React.Component{
             <div className="invoice-container">
                 <div>
                     <h1 className="invoice-title">Google Logo Redesign</h1>
-                    <h3 className="invoice-number">{invoice.invoice_Number}</h3>
+                    <h3 className="invoice-number">{this.state.information}</h3>
                 </div>
             </div>
         )
