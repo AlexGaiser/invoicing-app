@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import Stopwatch from './Main/Stopwatch'
 import InvoiceForm from './Main/InvoiceForm'
+import RateForm from './Main/RateForm'
+import { Button } from 'reactstrap';
 import Moment from 'moment'
 import MainInvoice from './userpg/MainInvoice'
 import ListContainer from './userpg/ListContainer'
 
+
 import Axios from 'axios'
 import logo from './logo.svg';
 import './App.css';
+
+
 
 class App extends Component {
   constructor(){
@@ -16,6 +21,7 @@ class App extends Component {
       isLoaded:false,
       time:'00:00',
       root: 'pending',
+      button1:'',
       invoices: 'pending',
       button1:'', 
       timerSet: false
@@ -45,7 +51,7 @@ class App extends Component {
        timerSet:true
     })
   }
-  
+
   stopTime = ()=>{
     this.setState({
       finalTime:this.state.timerSet,
@@ -64,16 +70,18 @@ class App extends Component {
   componentDidMount =  async ()=>{
     console.log('running')
     const response = await Axios.get('/main')
+    setInterval(this.setTime, 500)
     const invoices = await Axios.get('/records')
     console.log(invoices);
     setInterval(this.setTime, 1000)    
+
     this.setState({
       root:response.data.message,
       invoices: invoices.data.records[0].title, 
       isLoaded:true
     })
   }
-  
+
   handleChange = (event)=>{
     const {name, value} = event.target
     this.setState({[name]: value})
@@ -90,12 +98,12 @@ class App extends Component {
       // timeElapsed:
       service: this.state.form1,
       rate: this.state.form2,
-      // comment: 
+      // comment:
     }
 
     alert(`${formData.service} - ${formData.rate}` )
     }
-   
+
   render() {
     return (
       <div className="App">
@@ -134,6 +142,9 @@ class App extends Component {
             {this.state.isLoaded && this.state.invoices}<br/>
            {this.state.root}
           </a>
+          <RateForm
+            className="RateForm"
+             />
         </header>
         <React.Fragment><ListContainer /></React.Fragment>
         <React.Fragment><MainInvoice /></React.Fragment>
