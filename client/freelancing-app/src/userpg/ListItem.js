@@ -10,14 +10,6 @@ class ListItem extends React.Component{
         }
     }
 
-    componentDidMount= async () => {
-        const response = await Axios.get('/records')
-        this.setState({
-            listInfo: response.data
-        })
-        console.log(response.data)
-    }
-
     render(){
         
                 return(

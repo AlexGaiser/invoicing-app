@@ -9,17 +9,35 @@ class ListContainer extends React.Component{
         super()
     }
 
+    
+   
 
 
     render(){
+    
         return( 
         <div className="list-container">
-            <ListItem />
+            
         </div>
    ) }
-        
-
 }
+d
+const ListContainer = (props) => {
+    componentDidMount= async ()=>{
+        
+    } 
+    <div className="list-container">
+            
+            </div>
+    const listItems 
+
+
+    return(
+        {listItems}
+    )
+    
+}
+
 
 export default ListContainer
 

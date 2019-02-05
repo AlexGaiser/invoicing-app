@@ -19,7 +19,6 @@ class MainInvoice extends React.Component{
           isLoaded:true
         })
         console.log(response.data.records[0].title)
-
     }
 
     render(){
