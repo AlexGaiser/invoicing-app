@@ -16,9 +16,23 @@ const main = async () =>{
 
   const UserAlex = await User.create({
     buisness_name: 'Jason Gaiser Designs',
+    user_name: 'Jason Gaiser',
     user_email: 'Kwalex.json@gmail.com',
-    user_phone: '3472223231'
+    user_phone: '3472223231',
+    user_street: '1223 Fake st',
+    user_city:'Falseberg',
+    user_zip:'12345'
   });
+
+  const UserFakeman = await User.create({
+      buisness_name: 'Extant Industries',
+      user_name: 'John Notperson',
+      user_email: 'Kwalex.json@gmail.com',
+      user_phone: '5555555555',
+      user_street: '1344 Fake ave.',
+      user_city:'Notaplace',
+      user_zip:'54321'
+  })
 //---------------------------------------------------
  
     // Seed a client
@@ -47,7 +61,10 @@ const main = async () =>{
   });
 
 
-  await Job1.setClient(Google);
+  await Job1.setClient(Google)
+  await Job1.setUser(UserAlex)
+  
+  ;
 }
 
 main()

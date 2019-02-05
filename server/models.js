@@ -45,11 +45,24 @@ const User = db.define('User',{
     buisness_name:{
         type: Sequelize.STRING
     },
+    user_name:{
+        type: Sequelize.STRING
+    },
+
     user_email:{
         type: Sequelize.STRING
     },
     user_phone:{
         type: Sequelize.BIGINT
+    },
+    user_street:{
+        type: Sequelize.TEXT
+    },
+    user_city:{
+        type: Sequelize.STRING
+    },
+    user_zip: {
+        type: Sequelize.STRING
     }
 })
 

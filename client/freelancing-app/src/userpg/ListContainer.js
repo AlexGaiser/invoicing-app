@@ -1,34 +1,20 @@
 import React from "react"
 import Axios from 'axios'
 import ListItem from './ListItem'
+import '../App.css'
 
 
 
-// class ListContainer extends React.Component{
-//     constructor(){
-//         super()
-//     }
-
-    
-   
 
 
-//     render(){
-    
-//         return( 
-//         <div className="list-container">
-            
-//         </div>
-//    ) }
-// }
-// d
 const ListContainer = (props) => {
     return(
-        <div className="list-container">
-            {props.listItems}
-        </div>
+        <div className= "list-container-wrapper">
+            <div className="list-container">
+                {props.listItems}
+            </div>
+       </div>
     )
-    
 }
 
 

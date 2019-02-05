@@ -18,8 +18,8 @@ class UserPage extends Component {
         //     allInvoices: response,
         //     isLoaded:true
         // })
-        const listInvoices = response.data.records.map((invoice)
-s
+        const listInvoices = response.data.records.map((invoice))
+
     }
     renderMainInvoice =()=>{
 

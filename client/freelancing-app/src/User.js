@@ -11,16 +11,17 @@ import Axios from 'axios'
 import logo from './logo.svg';
 import './App.css';
 
-class UserPage extends Component {
+class User extends Component {
   constructor(props) {
       super(props);
       this.state = {isLoaded:false}
   }
 
   getData = async()=>{
-      const response = await Axios.get('/records')
+      const response = await Axios.get('/records/1')
       console.log(response.data)
-      const listInvoices = response.data.records.map((invoice)=>{
+      const userInfo = response.data.userInfo
+      const listInvoices = response.data.userInfo.invoices.map((invoice)=>{
         return <ListItem
             invoice={invoice} 
             key={invoice.id}
@@ -29,6 +30,7 @@ class UserPage extends Component {
             />
       })
       this.setState({
+          userInfo:userInfo,
           listItems: listInvoices,
           isLoaded:true
       })
@@ -45,12 +47,14 @@ class UserPage extends Component {
 
   render() { 
       return ( 
-          <ListContainer 
-              listItems={this.state.listItems}
-          />
-
+          <div className="user-page-wrapper">
+            <ListContainer 
+                listItems={this.state.listItems}
+            />
+            <MainInvoice />
+          </div>
        );
   }
 }
 
-export default UserPage;
+export default User;
