@@ -55,11 +55,13 @@ class Stopwatch extends Component {
                 totalTime: timerValue,
                 hours:hours,
                 minutes:minutes,
-                seconds:seconds    
+                seconds:seconds,
+                
             },
+            timerStarted:true,
             displayTime: `${hours}:${minutes}:${seconds}`
         })
-        this.props.liftState(this.state.timerValue)
+        this.props.liftState('timerValue',this.state.timerValue)
     }
    
 

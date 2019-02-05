@@ -24,7 +24,8 @@ class App extends Component {
       button1:'',
       invoices: 'pending',
       button1:'', 
-      timerSet: false
+      timerSet: false,
+      timerStarted:false
     }
   }
   
@@ -107,12 +108,10 @@ class App extends Component {
     alert(`${formData.service} - ${formData.rate}` )
     }
 
-  liftState = (state)=>{
-    console.log(state);  
-    return state
+  liftState = (name,state)=>{
+    this.setState({[name]:state})
   }
 
-  
   render() {
     return (
       <div className="App">
@@ -133,9 +132,11 @@ class App extends Component {
           <h1>Title</h1>
           <div>
           <InvoiceForm
+            timerValue={this.state.timerValue}
             liftState={this.liftState}
-            form1={this.state.form1}
-            form2={this.state.form2}
+            jobtitle={this.state.jobtitle}
+            rate={this.state.rate}
+            name={this.state.name}
             handleChange={this.handleChange}
             sendData={this.sendData}
           />
