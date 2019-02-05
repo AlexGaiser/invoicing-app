@@ -104,9 +104,9 @@ class App extends Component {
   };
 
   render() {
-    
+
     return (
-      
+
       <div className="App">
 
         <header className="App-header">
@@ -143,21 +143,6 @@ class App extends Component {
                     sendData={this.sendData}
                   />
                 </div>
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                  Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                  className="App-link"
-                  href="https://reactjs.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {this.state.isLoaded && this.state.invoices}
-                  <br />
-                  {this.state.root}
-                </a>
-
               </div>
             </div>
           </div>
@@ -170,4 +155,3 @@ class App extends Component {
 }
 
 export default App;
-
