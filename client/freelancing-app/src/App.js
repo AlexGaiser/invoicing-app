@@ -91,19 +91,17 @@ class App extends Component {
     console.log(data);
     await Axios.post('/records', data)
     }
-    
 
-    alert(`${formData.service} - ${formData.rate}`);
-  };
 
   liftState = (name, state) => {
     this.setState({ [name]: state });
   };
 
   render() {
+    
     return (
       <div className="App">
-        <header className="App-header d-none">
+        <header className="App-header">
           <div className="container">
             <div className="row">
               <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">

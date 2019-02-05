@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Main-styles.css'
+import moment from 'moment';
 
 class InvoiceForm extends Component {
     constructor(props) {
@@ -25,9 +26,9 @@ class InvoiceForm extends Component {
             description:this.props.comments,
             extra_details:'info for extra details goes here',
             extra_fees:300,
-            date: '2019-01-01 00:00:00-05'
+            date: '2019-01-01 00:00:00-05',
+            logged_time: moment().format('hh:mm:ss a')
         }
-        
         this.props.sendData(data)
         // clearInterval(this.state.interval)
     }
@@ -40,14 +41,9 @@ class InvoiceForm extends Component {
 
 
 
-    render() {
-        return (
-            <React.Fragment>
-
-
+    
     // this.props.liftState(this.state.object)
     render() {
-
         return ( 
             <React.Fragment>
                 <h3>{this.props.name}</h3>
@@ -69,4 +65,6 @@ class InvoiceForm extends Component {
 
         }
 }
+
+export default InvoiceForm
  
