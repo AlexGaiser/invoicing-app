@@ -14,9 +14,6 @@ class Stopwatch extends Component {
     }
 
     startTime = ()=>{
-
-
-        
         if(this.state.newTimer){
             const startTime = new Date().getTime()
             this.setState({startTime:startTime})     

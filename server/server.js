@@ -42,13 +42,18 @@ app.get('/records', async (req,res)=>{
 })
 
 app.post('/records', async (req,res)=>{
+    console.log(req.body)
+    
     try{
-       res.json({
+        const newInvoice = await Invoice.create(req.body)
         
-    }) 
+        res.json({newInvoice})
+        console.log('success')
     }
     catch(e){
-        res.json({"message":e.message})
+        res.status({
+            "message": e.message
+        })
     }
 })
 
