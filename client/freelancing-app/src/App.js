@@ -10,6 +10,8 @@ import User from './User';
 import Axios from 'axios'
 import logo from './logo.svg';
 import './App.css';
+import MyModalWithGrid from './InvoiceModal/InvoiceModal'
+import Modal from 'react-bootstrap/Modal'
 
 import {
   InputGroup,
@@ -37,7 +39,8 @@ class App extends Component {
       invoices: "pending",
       button1: "",
       timerSet: false,
-      timerStarted: false
+      timerStarted: false,
+      modalShow:false
     };
   }
 
@@ -104,6 +107,7 @@ class App extends Component {
   };
 
   render() {
+    let modalClose = () => this.setState({modalShow:false});
 
     return (
 
@@ -146,7 +150,12 @@ class App extends Component {
               </div>
             </div>
           </div>
-
+          <Button variant="primary"
+                  onClick={() => this.setState({ modalShow:true })}
+                >
+                Click Here to see Modal!
+                </Button>
+                <MyModalWithGrid show={this.state.modalShow} onHide={modalClose} />
 
         </header>
       </div>
