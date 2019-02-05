@@ -1,14 +1,26 @@
-h1, h2 {font-family: 'Source Sans Pro', sans-serif;}
-h3, h4, h5, h6, p, a {font-family: 'Raleway', sans-serif;}
+
+
+h1, h2 {
+  font-family: 'Source Sans Pro', sans-serif;
+  color:white !important;
+
+}
+h3, h4, h5, h6, p, a {
+  font-family: 'Raleway', sans-serif;
+  color:white !important;
+}
 
 
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+/* ----------------------------------------- */
+/* APP COMPONENT STYLES  */
+/* ----------------------------------------- */
 .App {
   text-align: center;
+  justify-content: center;
 }
 
 .App-logo {
@@ -51,4 +63,56 @@ h3, h4, h5, h6, p, a {font-family: 'Raleway', sans-serif;}
 
 .appTitle{
   color:#ffffff;
+}
+
+
+
+
+
+/* ----------------------------------------- */
+/* LIST CONTAINER COMPONENT STYLES  */
+/* ----------------------------------------- */
+.list-container{
+  /* height:auto; */
+  /* margin-top: 40px; */
+	overflow: auto;
+	height:100vh;
+}
+
+
+/* ----------------------------------------- */
+/* LIST ITEM COMPONENT STYLES  */
+/* ----------------------------------------- */
+.list-info{
+  width:33vw;
+  border:white solid;
+  background-color: rgba(150, 37, 37, 0.671)
+}
+.item-title{
+  font-weight: 800;
+  font-size: 20pt
+}
+.item-id{
+font-size: 15pt;
+}
+.item-date{
+font-size: 10pt;
+font-weight: 200;
+}
+.item-edit-delete-btn{
+  height:2%;
+  width:15%;
+}
+
+/* ----------------------------------------- */
+/* MAIN INVOICE COMPONENT STYLES  */
+/* ----------------------------------------- */
+
+.invoice-container{
+  border:gold solid;
+  background-color: gold;
+  width:66%;
+}
+.user-page-wrapper{
+  display:flex;
 }
