@@ -96,17 +96,11 @@ class App extends Component {
     this.setState({[name]:value})
   }
 
-  sendData = (event)=>{
-    // event.preventDefault()
-    const formData = {
-      // timeElapsed:
-      service: this.state.form1,
-      rate: this.state.form2,
-      // comment:
+  sendData = async (data)=>{
+    console.log(data);
+    await Axios.post('/records', data)
     }
     
-    alert(`${formData.service} - ${formData.rate}` )
-    }
 
   liftState = (name,state)=>{
     this.setState({[name]:state})
@@ -137,8 +131,10 @@ class App extends Component {
             jobtitle={this.state.jobtitle}
             rate={this.state.rate}
             name={this.state.name}
+            comments={this.state.comments}
             handleChange={this.handleChange}
             sendData={this.sendData}
+
           />
           </div>
           <img src={logo} className="App-logo" alt="logo" />
