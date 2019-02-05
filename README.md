@@ -24,17 +24,23 @@ Simply put, this app allows users to track their freelancing work invoices in a 
 
 ## Wireframes / Diagrams
 
-**LowFi App Wireframe w/ App Component List**
-[View Image](https://files.slack.com/files-pri/T0351JZQ0-FFWDYALH2/image_from_ios.jpg)
+**LowFi App Wireframe 1 w/ App Component List**
+[View Image](https://res.cloudinary.com/jasonethedesigner/image/upload/v1549294446/invoice-app/wireframe-1.jpg)
+
+**LowFi App Invoice Wireframe 1**
+[View Image](https://wireframe.cc/uK22kE)
 
 **Dependencies**
-[View Image](https://files.slack.com/files-pri/T0351JZQ0-FFXLJ3G8P/image_from_ios.jpg)
+[View Image](https://res.cloudinary.com/jasonethedesigner/image/upload/v1549294446/invoice-app/dependencies.jpg)
+
+**Backend Relations**
+[View Image](https://res.cloudinary.com/ddz7dotz5/image/upload/v1549377879/Screen_Shot_2019-02-05_at_9.43.45_AM.png)
 
 **File Architecture**
-[View Image](https://files.slack.com/files-pri/T0351JZQ0-FFWFHD7HR/image_from_ios.jpg)
+[View Image](https://res.cloudinary.com/jasonethedesigner/image/upload/v1549294446/invoice-app/directory-1.jpg)
 
 **Matrix Diagram Image**
-[View Image](https://files.slack.com/files-pri/T0351JZQ0-FFW0XFXTK/image_from_ios.jpg)
+[View Image](https://res.cloudinary.com/jasonethedesigner/image/upload/v1549294446/invoice-app/priority-matrix-1.jpg)
 
 
 
@@ -81,29 +87,30 @@ Simply put, this app allows users to track their freelancing work invoices in a 
 
 ## React Architectural Design
 
-TBD
-
-#### [SAMPLE FROM A MAP BASED PROJECT](https://res.cloudinary.com/dvjtpejbw/image/upload/v1540221204/20181022_111216.jpg)
+#### [React Component Heirharchy](https://www.lucidchart.com/invitations/accept/526f5e66-8e57-4c9e-a0a4-eeef3ce2529c)
 
 ## Functional Components
 
-TBD
-
 | Component | Description |
 | --- | :---: |  
-| Search/Input | This will append your keywords to URL Query |
-| Body/Container | Will render the search results |
+| Stopwatch | Renders the time and allows user to create timestamps of the current task and timebox. |
+| Invoice Form | User can create, edit invoice in sync with stopwatch. Populates end state of invoice proposal |
+| Rate Form | User can create or select rates per job/task and append that data to invoice table.
+| Main Invoice | All data submitted creates a proposal invoice. User can edit/delete.
+| Comment Form | User/Client can leave comments with each invoice or task.
 
-#### SAMPLE.....
+## Component Timeline
 | Component | Priority | Estimated Time | Actual Time |
 | --- | :---: |  :---: | :---: |
-| API Data Render | H | 6hrs| 12.5hrs |
-| API Data Sorting | H | 3hrs| 8hrs |
-| API Data Sorting | H | 3hrs| 8hrs |
-| Total | H | 6hrs| 5hrs |
+| Stopwatch | H | 5hrs | 10 hrs |
+| Invoice Form | H | 3hrs | 8hrs |
+| Rate Form | H | 3hrs| 5hrs |
+| Main Invoice | H | 4hrs | 6hrs |
+| Comment Field | L | 2hrs | 3hrs |
+| Total | ---- | 23hrs| 37hrs |
 
 ## Helper Functions
-Helper functions should be generic enought that they can be reused in other applications. Use this section to document all helper functions that fall into this category.
+TBD
 
 #### SAMPLE.....
 | Function | Description |
@@ -111,23 +118,59 @@ Helper functions should be generic enought that they can be reused in other appl
 | Capitalize | This will capitalize the first letter in a string of text |
 
 ## Additional Libraries
- Use this section to list all supporting libraries and thier role in the project.
+ A list of all supporting libraries and thier role in the project.
 
 | Library | What it Does |
 | --- | :---: |  
-| Bootstrap | Used to help style my application |
-| Giphy API | Used to get gifs to use |
+| Bootstrap | Used to help with base style and style reset |
+| ReactStrap | bootstrap element integration with React |
+| Node js | . |
+| nodemon | . |
+| Sequelize | . |
+| pg | . |
+| Express | . |
+| React | . |
+| Sequelize | . |
+| body-parser | . |
+| axios | . |
+| express-route | . |
+
 
 
 ## Code Snippet
 
-Use this section to include a brief code snippet of functionality that you are proud of an a brief description  
+Snippets of code we are most proud of within the app front and end backend using React.
 
-#### SAMPLE.....
+#### Bootstrap w/ React Dropdown to Populate Input field
 ```
-function reverse(string) {
-	// here is the code to reverse a string of text
-}
+
+this.toggleDropDown = this.toggleDropDown.bind(this);
+this.toggleSplit = this.toggleSplit.bind(this);
+    this.state = {
+      dropdownOpen: false,
+      splitButtonOpen: false,
+      dropdownClick:null,
+      inputValue:" "
+    };
+
+toggleDropDown(evt) {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen,
+      dropdownClick: evt.target.value, //event dropdown click
+      inputValue: evt.target.value
+    });
+  }
+
+<InputGroup>
+   <Input value={this.state.inputValue}/>
+   <InputGroupButtonDropdown componentClass="select" placeholder="Select Rate" addonType="append" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>
+       <DropdownMenu>
+           <DropdownItem header>Rates</DropdownItem>
+           <DropdownItem value="20.00">$20.00</DropdownItem>
+           <DropdownItem value="40.00">$40.00</DropdownItem>
+       </DropdownMenu>
+  </InputGroupButtonDropdown>
+</InputGroup>
 ```
 
 ## Change Log
