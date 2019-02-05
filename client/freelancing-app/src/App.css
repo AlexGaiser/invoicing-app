@@ -15,6 +15,7 @@ h3, h4, h5, h6, p, a {
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow:hidden;
 }
 /* ----------------------------------------- */
 /* APP COMPONENT STYLES  */
@@ -73,10 +74,16 @@ h3, h4, h5, h6, p, a {
 /* ----------------------------------------- */
 /* LIST CONTAINER COMPONENT STYLES  */
 /* ----------------------------------------- */
+list-container-wrapper{
+    overflow: hidden;
+
+}
+
 .list-container{
   /* height:auto; */
   /* margin-top: 40px; */
 	overflow: auto;
+  ;
 	height:100vh;
 }
 
@@ -84,17 +91,24 @@ h3, h4, h5, h6, p, a {
 /* ----------------------------------------- */
 /* LIST ITEM COMPONENT STYLES  */
 /* ----------------------------------------- */
+.list-item-wrapper{
+  padding-top: 2%;
+}
+
 .list-info{
   width:33vw;
   border:white solid;
-  background-color: rgba(150, 37, 37, 0.671)
+  background-color: rgba(150, 37, 37, 0.671);
+  padding:5%;
+  height: 13vh;
+  
 }
 .item-title{
   font-weight: 800;
-  font-size: 20pt
+  font-size: 16pt
 }
 .item-id{
-font-size: 15pt;
+font-size: 13pt;
 }
 .item-date{
 font-size: 10pt;
@@ -105,15 +119,21 @@ font-weight: 200;
   width:15%;
 }
 
+
+
 /* ----------------------------------------- */
 /* MAIN INVOICE COMPONENT STYLES  */
 /* ----------------------------------------- */
 
 .invoice-container{
-  border:gold solid;
-  background-color: gold;
+  background-color: darkcyan;
   width:66%;
+  margin-left:5%;
+  
 }
 .user-page-wrapper{
+  background-color: rgba(221,221,221,1);
   display:flex;
+  padding-left:10%;
+  padding-right:10%;
 }

@@ -4,7 +4,7 @@ import Axios from 'axios';
 
  const ListItem =(props)=>{
         return(
-                <div >
+                <div className = "list-item-wrapper" >
                   <div onClick={props.renderMainInvoice} className = "list-info">
                       <h1 className = "item-title">{props.invoice.title}</h1>
                       <h3 className = "item-id">Invoice ID:{props.invoice.id}</h3>
