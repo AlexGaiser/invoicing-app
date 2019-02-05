@@ -48,6 +48,7 @@ class User extends Component {
   render() { 
       return ( 
         <div className="farthest-user-background">
+        <div className="half-background">
           <div className="user-background">
             <div className="user-page-wrapper">
                 <ListContainer 
@@ -56,6 +57,7 @@ class User extends Component {
                 <MainInvoice />
             </div>
           </div>
+        </div>
         </div>
        );
   }

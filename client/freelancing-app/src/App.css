@@ -2,12 +2,11 @@
 
 h1, h2 {
   font-family: 'Source Sans Pro', sans-serif;
-  color:white !important;
+  
 
 }
 h3, h4, h5, h6, p, a {
   font-family: 'Raleway', sans-serif;
-  color:white !important;
 }
 
 
@@ -90,22 +89,29 @@ h3, h4, h5, h6, p, a {
 /* ----------------------------------------- */
 .list-item-wrapper{
   padding-top: 2%;
+  box-shadow: 3px 3px 20px 3px rgba(0,0,0,0.1);
+  color:black !important;
+
 }
 
 .list-info{
   width:33vw;
   border:white solid;
-  background-color: rgba(150, 37, 37, 0.671);
+  background-color: rgba(255, 255, 255, 0.671);
   padding:2%;
   height: auto;
   justify-content: center;
   display: flex;
+  align-content: center;
   
   
 }
 .item-title{
   font-weight: 800;
-  font-size: 16pt
+  font-size: 16pt;
+  color:rgba(0,0,0,0.7);
+  
+
 }
 .title-line{
   width:2px;
@@ -113,16 +119,19 @@ h3, h4, h5, h6, p, a {
   background-color: white;
 }
 .item-id{
-font-size: 13pt;
+font-size: 12pt;
 }
 .item-date{
 font-size: 10pt;
 font-weight: 200;
+color:rgba(0,0,0,0.45)
 }
 .item-edit-delete-btn{
-  padding:%;
+  padding:2%;
   height:auto;
   width:auto;
+  border:solid rgba(0,0,0,0.9) 0.3pt;
+  /* border-radius: 2%; */
 }
 
 
@@ -132,18 +141,47 @@ font-weight: 200;
 /* ----------------------------------------- */
 
 .invoice-container{
-  background-color: darkcyan;
+  background-color: white;
+  /* border:black solid; */
   width:70%;
   height:85vh;
   margin-left:5%;
   margin-top:3%;
-  padding:2%;
+  padding:3%;
+  color:black;
+  box-shadow: 3px 3px 20px 3px rgba(0,0,0,0.3);
+}
+.main-details{
+  color:black !important;
+}
+.main-heading{
+  display:flex;
+  justify-content: space-between;
+}
+.main-title{
+  font-weight: 800;
+  font-size: 30pt;
+}
+.main-id{
+  font-weight: 300;
+  font-size: 16pt;
+  color:rbga(0,0,0,0.2) !important;
+}
+.main-line-1{
+  width:95%;
+  margin:0 auto;
+  height:1px;
+  background-color: black;
 }
 .user-background{
-  background-color: white;
+  background-color:white;
   width:87vw;
   height:100vh;
   margin:0 auto;
+}
+.half-background{
+  height:50vh;
+  background:whitesmoke;
 }
 .user-page-wrapper{
   background-color: white;
