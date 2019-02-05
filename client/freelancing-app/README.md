@@ -33,6 +33,9 @@ Simply put, this app allows users to track their freelancing work invoices in a 
 **Dependencies**
 [View Image](https://res.cloudinary.com/jasonethedesigner/image/upload/v1549294446/invoice-app/dependencies.jpg)
 
+**Backend Relations**
+[View Image](https://res.cloudinary.com/ddz7dotz5/image/upload/v1549377879/Screen_Shot_2019-02-05_at_9.43.45_AM.png)
+
 **File Architecture**
 [View Image](https://res.cloudinary.com/jasonethedesigner/image/upload/v1549294446/invoice-app/directory-1.jpg)
 
