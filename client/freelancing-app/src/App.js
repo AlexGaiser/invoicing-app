@@ -2,10 +2,17 @@ import React, { Component } from 'react';
 import Stopwatch from './Main/Stopwatch'
 import InvoiceForm from './Main/InvoiceForm'
 import RateForm from './Main/RateForm'
-import { Button } from 'reactstrap';
-import Moment from 'moment'
-import MainInvoice from './userpg/MainInvoice'
-import ListContainer from './userpg/ListContainer'
+
+import {   InputGroup,
+  InputGroupAddon,
+  InputGroupButtonDropdown,
+  InputGroupDropdown,
+  Input,
+  Button,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap';
 
 
 import Axios from 'axios'
@@ -18,43 +25,31 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      isLoaded:false,
       time:'00:00',
       root: 'pending',
       button1:'',
-      invoices: 'pending',
-      button1:'', 
       timerSet: false
     }
   }
-  
-
-
   setTime = ()=> {
-    const elapsedTime = Moment.duration((Moment().diff(this.state.timeStart)))
-    // console.log('running time set: ');
+    const time = new Date()
     this.setState({
-      time: Moment(),
-      elapsedTime: elapsedTime
+      time:time.toLocaleTimeString(),
+      seconds:time.getTime()
     })
-    // console.log(this.state.time)
   }
 
   setTimeStart = ()=>{
-    const timeStart  = Moment()
-    // let elapsedTime = Moment.duration(Moment().diff(startTime))
-    // elapsedTime.asSeconds()
-    // console.log(elapsedTime);
-    // console.log(elapsedTime.asSeconds());
+    console.log(this.state.seconds);
     this.setState({
-       timeStart: timeStart,
-       timerSet:true
-    })
+       timeStart:this.state.seconds,
+       timerSet: true
+      })
   }
 
   stopTime = ()=>{
     this.setState({
-      finalTime:this.state.timerSet,
+      finalTime:this.state.timeStart,
       timeStart:0,
       timerSet:false
     })
@@ -71,14 +66,8 @@ class App extends Component {
     console.log('running')
     const response = await Axios.get('/main')
     setInterval(this.setTime, 500)
-    const invoices = await Axios.get('/records')
-    console.log(invoices);
-    setInterval(this.setTime, 1000)    
-
     this.setState({
-      root:response.data.message,
-      invoices: invoices.data.records[0].title, 
-      isLoaded:true
+      root:response.data.message
     })
   }
 
@@ -100,54 +89,56 @@ class App extends Component {
       rate: this.state.form2,
       // comment:
     }
-
-    alert(`${formData.service} - ${formData.rate}` )
+    alert()
     }
+
+
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <div>
-          <Stopwatch
-            time={this.state.time}
-            elapsedTime={this.state.elapsedTime}
-            // seconds={this.state.seconds}
-            click={this.handleClick}
-            timeStart={this.state.timeStart}
-            timerSet={this.state.timerSet}
-            setTimeStart={this.setTimeStart}
-            stopTime={this.stopTime}
-          />
-          </div>
-          <h1>Title</h1>
-          <div>
-          <InvoiceForm
-            form1={this.state.form1}
-            form2={this.state.form2}
-            handleChange={this.handleChange}
-            sendData={this.sendData}
-          />
-          </div>
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {this.state.isLoaded && this.state.invoices}<br/>
-           {this.state.root}
-          </a>
-          <RateForm
-            className="RateForm"
-             />
+        <header className="App-header d-none">
         </header>
-        <React.Fragment><ListContainer /></React.Fragment>
-        <React.Fragment><MainInvoice /></React.Fragment>
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div className="app-container">
+                  <div className="timerClock">
+                    <Stopwatch
+                      time={this.state.time}
+                      seconds={this.state.seconds}
+                      click={this.handleClick}
+                      timeStart={this.state.timeStart}
+                      timerSet={this.state.timerSet}
+                      setTimeStart={this.setTimeStart}
+                      stopTime={this.stopTime}
+                    />
+                  </div>
+                  <h1 className="appTitle">Title</h1>
+                    <RateForm
+                    className="RateForm"
+                     />
+                  <div>
+                    <InvoiceForm
+                      form1={this.state.form1}
+                      form2={this.state.form2}
+                      handleChange={this.handleChange}
+                      sendData={this.sendData}
+                    />
+                  </div>
+                  <a
+                    className="App-link"
+                    href="https://reactjs.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                   {this.state.root}
+                  </a>
+
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

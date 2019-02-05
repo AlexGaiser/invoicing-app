@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Moment from 'moment'
+import './Main-styles.css'
+
 class Stopwatch extends Component {
     constructor(props) {
         super(props);
@@ -11,7 +13,7 @@ class Stopwatch extends Component {
     }
     startTime = ()=>{
         const startTime = new Date().getTime()
-        this.setState({startTime:startTime})  
+        this.setState({startTime:startTime})
         console.log(this.state.startTime)
         setInterval(this.displayTimer, 100)
     }
@@ -28,24 +30,24 @@ class Stopwatch extends Component {
     }
 
     renderTime = (time)=>{
-        
+
     }
 
 
-    
+
     render() {
         console.log(this.props.timeStart)
         console.log(this.props.elapsedTime)
 
         return (
-            <div>
+            <div className="stopWatch">
                 <h1>{Moment().format("hh:mm:ss a")}</h1>
                 <h3>{this.state.displayTime}</h3>
                 {/* <h3>{this.props.timerSet ?this.props.elapsedTime : '00:00:00'}</h3> */}
                 {/* <h3>{this.props.timerSet ? this.props.time.subtract(this.props.timeStart):'00:00:00'}</h3> */}
-                <button name='button1' onClick={this.startTime} value='start time'>Start</button>
-                <button onClick={this.props.stopTime}>Stop</button>
-                <button>Reset</button>
+                <button className="mr-3 btn btn-primary" name='button1' onClick={this.startTime} value='start time'>Start</button>
+                <button className="mr-3 btn btn-primary" onClick={this.props.stopTime}>Stop</button>
+                <button className="btn btn-danger">Reset</button>
             </div>
         )
     }
