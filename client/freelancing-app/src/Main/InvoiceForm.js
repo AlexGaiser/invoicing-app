@@ -27,7 +27,8 @@ class InvoiceForm extends Component {
             extra_details:'info for extra details goes here',
             extra_fees:300,
             date: '2019-01-01 00:00:00-05',
-            logged_time: moment().format('hh:mm:ss a')
+            logged_time: moment().format('hh:mm:ss a'),
+            UserId:1
         }
         this.props.sendData(data)
         // clearInterval(this.state.interval)
