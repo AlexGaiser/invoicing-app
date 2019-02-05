@@ -18,9 +18,10 @@ class User extends Component {
   }
 
   getData = async()=>{
-      const response = await Axios.get('/records/')
+      const response = await Axios.get('/records/1')
       console.log(response.data)
-      const listInvoices = response.data.records.map((invoice)=>{
+      const userInfo = response.data.userInfo
+      const listInvoices = response.data.userInfo.invoices.map((invoice)=>{
         return <ListItem
             invoice={invoice} 
             key={invoice.id}
@@ -29,6 +30,7 @@ class User extends Component {
             />
       })
       this.setState({
+          userInfo:userInfo,
           listItems: listInvoices,
           isLoaded:true
       })

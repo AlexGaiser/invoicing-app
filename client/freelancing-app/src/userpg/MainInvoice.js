@@ -27,6 +27,9 @@ class MainInvoice extends React.Component{
                 <div>
                     {/* <h1 className="invoice-title">Google Logo Redesign</h1> */}
                     <h3 className="invoice-number">{this.state.isLoaded && this.state.information[0].title}</h3>
+                    <h3 className="invoice-number">Invoice ID: {this.state.isLoaded && this.state.information[0].id}</h3>
+                    <h3 className="invoice-number">{this.state.isLoaded && this.state.information[0].date}</h3>
+                    <h3 className="invoice-number">{this.state.isLoaded && this.state.information[0].description}</h3>
                 </div>
             </div>
         )

@@ -41,6 +41,23 @@ app.get('/records', async (req,res)=>{
     }
 })
 
+app.get('/records/:id', async (req, res)=>{
+    const userId = req.params.id
+    try{
+        const userInfo = await User.findOne({
+            where:{id:userId},
+            include:[Invoice]})
+        console.log(userInfo);
+        res.json({
+            userInfo
+        })
+    }
+   
+    catch(e){
+        res.json({"message":e.message})
+    }
+})
+
 app.post('/records', async (req,res)=>{
     console.log(req.body)
     

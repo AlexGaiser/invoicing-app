@@ -9,11 +9,12 @@ import '../App.css'
 
 const ListContainer = (props) => {
     return(
-        <div className="list-container">
-            {props.listItems}
-        </div>
+        <div className= "list-container-wrapper">
+            <div className="list-container">
+                {props.listItems}
+            </div>
+       </div>
     )
-    
 }
 
 
