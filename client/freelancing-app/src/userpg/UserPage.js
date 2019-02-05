@@ -8,14 +8,24 @@ import Axios from 'axios';
 class UserPage extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {isLoaded:false}
     }
 
     getData = async()=>{
         const response = await Axios.get('/records')
         console.log(response.data)
-        this.setState({allInvoices: response})
+        // this.setState({
+        //     allInvoices: response,
+        //     isLoaded:true
+        // })
+        const listInvoices = response.data.records.map((invoice)
+s
     }
+    renderMainInvoice =()=>{
+
+    }
+
+
 
     componentDidMount =()=>{
         this.getData()
@@ -25,8 +35,10 @@ class UserPage extends Component {
     render() { 
         return ( 
             <ListContainer 
-                
+
+
             />
+
          );
     }
 }

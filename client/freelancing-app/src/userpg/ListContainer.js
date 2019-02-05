@@ -4,36 +4,29 @@ import ListItem from './ListItem'
 
 
 
-class ListContainer extends React.Component{
-    constructor(){
-        super()
-    }
+// class ListContainer extends React.Component{
+//     constructor(){
+//         super()
+//     }
 
     
    
 
 
-    render(){
+//     render(){
     
-        return( 
-        <div className="list-container">
+//         return( 
+//         <div className="list-container">
             
-        </div>
-   ) }
-}
-d
+//         </div>
+//    ) }
+// }
+// d
 const ListContainer = (props) => {
-    componentDidMount= async ()=>{
-        
-    } 
-    <div className="list-container">
-            
-            </div>
-    const listItems 
-
-
     return(
-        {listItems}
+        <div className="list-container">
+            {props.listItems}
+        </div>
     )
     
 }
