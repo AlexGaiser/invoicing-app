@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import User from './User';
 import App from './App';
 
-
+import NavBar from './NavBar/NavBar';
 
 import Axios from 'axios'
 import logo from './logo.svg';
@@ -20,23 +20,24 @@ class Homepage extends Component{
     constructor(){
         super()
         }
-    
+
 
 
     render(){
         return(
             <Router>
             <React.Fragment>
-              <Link to="/userProfile">User Invoices</Link>
-              <Link to="InvoiceGenerator">Invoice Generator</Link>
-  
+              <NavBar />
+              {/*<Link to="/userProfile">User Invoices</Link>*/}
+              {/*<Link to="InvoiceGenerator">Invoice Generator</Link>*/}
+
               {/* <a href ='./user.html'>User Invoices</a> */}
               <Route path='/userProfile' component={ User } />
               <Route path='/InvoiceGenerator' component={ App } />
             </React.Fragment>
-  
+
           </Router>
-         
+
         )
     }
 }
