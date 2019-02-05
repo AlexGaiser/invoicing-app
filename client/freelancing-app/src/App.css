@@ -17,7 +17,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.main-invoice-container{
+  border:solid 5pt red;
+}
 .App-link {
   color: #61dafb;
 }

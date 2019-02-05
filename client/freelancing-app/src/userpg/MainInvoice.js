@@ -5,7 +5,8 @@ class MainInvoice extends React.Component{
     constructor(){
         super()
         this.state={
-            information:[]
+            information:[],
+            isLoading:false
         }
     }
     
@@ -13,16 +14,18 @@ class MainInvoice extends React.Component{
         const response = await Axios.get('/records')
 
         this.setState({
-            information: response.data
+            information: response.data,
+            isLoading: true
         })
+        console.log(response.data.records[0].title)
+
     }
 
     render(){
         return(
             <div className="invoice-container">
                 <div>
-                    <h1 className="invoice-title">Google Logo Redesign</h1>
-                    <h3 className="invoice-number">{this.state.information}</h3>
+                    <h3 className="invoice-title">{this.state.isLoading && this.state.information.records[0].title}</h3>
                 </div>
             </div>
         )
