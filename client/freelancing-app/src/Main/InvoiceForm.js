@@ -1,33 +1,52 @@
 import React, { Component } from 'react';
+import './Main-styles.css'
 
 class InvoiceForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {total: 0.00 }
+        this.state = {total: 0.00,
+            object:{name:'Kwalex',
+            ocupation:'coolguy'}}
     }
     calculateTotal = ()=>{
         this.setState({
-            // total:this.props.
+           
         })
+    }
+    submitForm=(event)=>{
+        console.log();
+        event.preventDefault()
+        this.props.liftState(this.state.object)
+        this.props.sendData(event)
     }
 
 
-    render() { 
+
+    render() {
+        return (
+            <React.Fragment>
+
+
+    // this.props.liftState(this.state.object)
+    render() {
         return ( 
             <React.Fragment>
-                <h1>{this.props.form1}</h1>
-                <h3>{this.props.form2}</h3>
-                <form onSubmit={this.props.sendData}>
-                    <input name='form1' type="text" placeholder="enter job" onChange={this.props.handleChange}/>
-                    <input name='form2' type="text" placeholder="enter rate" onChange={this.props.handleChange}/>
+                <h3>{this.props.name}</h3>
+                <h1>{this.props.jobtitle}</h1>
+                <h3>{this.props.rate}</h3>
+                <form className="form-group" onSubmit={this.submitForm}>
+                    <input className="form-control mb-2" name='jobtitle' type="text" placeholder="enter job" onChange={this.props.handleChange}/>
+                    <input className="form-control" name='rate' type="text" placeholder="enter rate" onChange={this.props.handleChange}/>
+                    <input className="form-control" name='name' type="text" placeholder="enter name" onChange={this.props.handleChange}/>
                     
-                    <h1>{`$${this.state.total}`}</h1>                    
-                    <button>Submit</button>
+                    <h1 className="f-white">{this.props.timerValue && this.props.timerValue.seconds * parseInt(this.props.rate)}</h1>                    
+                    <button className="btn btn-primary btn-lg btn-block">Submit</button>
+
                 </form>
             </React.Fragment>
          );
 
         }
     }
- 
+
 export default InvoiceForm;
