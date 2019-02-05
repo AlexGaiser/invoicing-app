@@ -77,9 +77,15 @@ app.get('/users', async (req,res)=>{
 })
 
 app.get('/users/:id', async (req,res)=>{
+    const userId = req.params.id
     try{
-        const message = `this is the display page for user ${req.params.id}`
-        res.json({"message":message})
+        const userInfo = await User.findOne({
+            where:{id:userId},
+            include:[Invoice]})
+        console.log(userInfo);
+        res.json({
+            userInfo
+        })
     }
    
     catch(e){

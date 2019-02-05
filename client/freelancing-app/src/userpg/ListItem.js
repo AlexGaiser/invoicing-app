@@ -10,7 +10,7 @@ import Axios from 'axios';
                       <h3>{props.invoice.id}</h3><h2>{props.invoice.description}</h2>
                     <button onClick={props.renderMainInvoice}>Click</button>
                   </div>	
-        </div>)   
+        </div>)
     }
 
 export default ListItem
