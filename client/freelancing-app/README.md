@@ -1,68 +1,151 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Freelancer Invoice App
+## Project Description
+Imagine being able to dynamically track your task/job time from a starting timestamp to an end timestamp with notes commited to each timestamp. Now with your task or job completed, the backend will render an invoice containing properties and notes inputted by the user.
+Simply put, this app allows users to track their freelancing work invoices in a quick, easy and comprehensive way.
+##### Developed & Designed by Jason, Alex, and Kwadwo
 
-## Available Scripts
+##### App Prototype Link - [Freelance Invoice App](http://www.google.com)
+##### App Link - [Freelance Invoice App](http://www.google.com)
 
-In the project directory, you can run:
+## Projected Schedule
 
-### `npm start`
+|  Day | Deliverable | Status
+|---|---| ---|
+|Day 1| Project Description / Proposal | Complete
+|Day 2| Wireframes / Priority Matrix / Functional Components | Complete
+|Day 3| Core Application Structure (HTML, CSS, etc.)  / LowFi Prototype | In Progress
+|Day 4| Pseudocode / Database / React / CSS | In Progress
+|Day 5| Initial Clickable Model  | Pending
+|Day 6| MVP | Pending
+|Day 7| Present | Pending
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Wireframes / Diagrams
 
-### `npm run build`
+**LowFi App Wireframe 1 w/ App Component List**
+[View Image](https://res.cloudinary.com/jasonethedesigner/image/upload/v1549294446/invoice-app/wireframe-1.jpg)
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**LowFi App Invoice Wireframe 1**
+[View Image](https://wireframe.cc/uK22kE)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+**Dependencies**
+[View Image](https://res.cloudinary.com/jasonethedesigner/image/upload/v1549294446/invoice-app/dependencies.jpg)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Backend Relations**
+[View Image](https://res.cloudinary.com/ddz7dotz5/image/upload/v1549377879/Screen_Shot_2019-02-05_at_9.43.45_AM.png)
 
-### `npm run eject`
+**File Architecture**
+[View Image](https://res.cloudinary.com/jasonethedesigner/image/upload/v1549294446/invoice-app/directory-1.jpg)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**Matrix Diagram Image**
+[View Image](https://res.cloudinary.com/jasonethedesigner/image/upload/v1549294446/invoice-app/priority-matrix-1.jpg)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Priority Matrix
+#### High Priority/Urgent Features
 
-## Learn More
+- Create React App
+- Create DB
+- Setup Server
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### High Priority/Not Urgent Features
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- CRUD for rates
+- Implement Timer Functions
+- Style Layout
+- Track User Login
 
-### Code Splitting
+#### Low Priority/Urgent Features
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- Branding
 
-### Analyzing the Bundle Size
+#### Low Priority/Not Urgent Features
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- Implement info / API
+- Implement Commenting
 
-### Making a Progressive Web App
+## MVP/PostMVP
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+#### MVP
 
-### Advanced Configuration
+- Database
+- Front End React
+- DB Tables / Models
+- Clock / Timer
+- Rates Dropdown
+- Final Quote / Invoice
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+#### PostMVP
+- Branding
+- Reddit Integration
+- Commenting / Bot Integration
+- Reminders / Alarms
+- Live Public Server
 
-### Deployment
+## React Architectural Design
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+#### [React Component Heirharchy](https://www.lucidchart.com/invitations/accept/526f5e66-8e57-4c9e-a0a4-eeef3ce2529c)
 
-### `npm run build` fails to minify
+## Functional Components
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+| Component | Description |
+| --- | :---: |  
+| Stopwatch | Renders the time and allows user to create timestamps of the current task and timebox. |
+| Invoice Form | User can create, edit invoice in sync with stopwatch. Populates end state of invoice proposal |
+| Rate Form | User can create or select rates per job/task and append that data to invoice table.
+| Main Invoice | All data submitted creates a proposal invoice. User can edit/delete.
+| |
+
+#### SAMPLE.....
+| Component | Priority | Estimated Time | Actual Time |
+| --- | :---: |  :---: | :---: |
+| API Data Render | H | 6hrs| 12.5hrs |
+| API Data Sorting | H | 3hrs| 8hrs |
+| API Data Sorting | H | 3hrs| 8hrs |
+| Total | H | 6hrs| 5hrs |
+
+## Helper Functions
+Helper functions should be generic enought that they can be reused in other applications. Use this section to document all helper functions that fall into this category.
+
+#### SAMPLE.....
+| Function | Description |
+| --- | :---: |  
+| Capitalize | This will capitalize the first letter in a string of text |
+
+## Additional Libraries
+ Use this section to list all supporting libraries and thier role in the project.
+
+| Library | What it Does |
+| --- | :---: |  
+| Bootstrap | Used to help style my application |
+| Giphy API | Used to get gifs to use |
+
+
+## Code Snippet
+
+Use this section to include a brief code snippet of functionality that you are proud of an a brief description  
+
+#### SAMPLE.....
+```
+function reverse(string) {
+	// here is the code to reverse a string of text
+}
+```
+
+## Change Log
+ Use this section to document what changes were made and the reasoning behind those changes.  
+
+#### SAMPLE.....
+| Original Plan | Outcome |
+| --- | :---: |  
+| Have one Book component | Split that component into BookInfo and BookInteraction as the component grew too complicated |
+
+## Issues and Resolutions
+ Use this section to list of all major issues encountered and their resolution.
+
+#### SAMPLE.....
+**ERROR**: app.js:34 Uncaught SyntaxError: Unexpected identifier                                
+**RESOLUTION**: Missing comma after first object in sources {} object
