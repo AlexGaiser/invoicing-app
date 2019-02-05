@@ -18,7 +18,7 @@ class UserPage extends Component {
   }
 
   getData = async()=>{
-      const response = await Axios.get('/users/1')
+      const response = await Axios.get('/records/')
       console.log(response.data)
       const listInvoices = response.data.records.map((invoice)=>{
         return <ListItem
