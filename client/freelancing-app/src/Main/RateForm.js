@@ -59,8 +59,8 @@ class RateComponent extends Component {
               <DropdownItem value="20.00">$20.00</DropdownItem>
               <DropdownItem value="40.00">$40.00</DropdownItem>
               <DropdownItem value="50.00">$50.00</DropdownItem>
-              <DropdownItem>$20.00</DropdownItem>
-              <DropdownItem>$20.00</DropdownItem>
+              <DropdownItem value="60.00">$60.00</DropdownItem>
+              <DropdownItem value="70.00">$70.00</DropdownItem>
             </DropdownMenu>
           </InputGroupButtonDropdown>
         </InputGroup>

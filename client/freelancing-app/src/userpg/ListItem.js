@@ -12,7 +12,7 @@ import Axios from 'axios';
                     <button className ="item-edit-delete-btn" onClick={props.renderMainInvoice}>Edit</button>
                     <button className ="item-edit-delete-btn" onClick={props.renderMainInvoice} onClick={props.renderMainInvoice}>Delete</button>
                   </div>	
-        </div>)   
+        </div>)
     }
 
 export default ListItem
