@@ -14,9 +14,12 @@ class MainInvoice extends React.Component{
         const response = await Axios.get('/records')
         console.log(response.data);
         this.setState({
-            information: response.data.records,
-            isLoaded:true
+          information: response.data,
+          information: response.data.records,
+          isLoaded:true
         })
+        console.log(response.data.records[0].title)
+
     }
 
     render(){
