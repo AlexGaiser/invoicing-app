@@ -47,12 +47,16 @@ class User extends Component {
 
   render() { 
       return ( 
-          <div className="user-page-wrapper">
-            <ListContainer 
-                listItems={this.state.listItems}
-            />
-            <MainInvoice />
+        <div className="farthest-user-background">
+          <div className="user-background">
+            <div className="user-page-wrapper">
+                <ListContainer 
+                    listItems={this.state.listItems}
+                />
+                <MainInvoice />
+            </div>
           </div>
+        </div>
        );
   }
 }

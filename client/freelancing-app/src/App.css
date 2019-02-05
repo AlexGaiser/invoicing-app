@@ -15,7 +15,7 @@ h3, h4, h5, h6, p, a {
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow:hidden;
+  /* overflow:hidden; */
 }
 /* ----------------------------------------- */
 /* APP COMPONENT STYLES  */
@@ -25,10 +25,7 @@ h3, h4, h5, h6, p, a {
   justify-content: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
+
 
 .App-header {
   background-color: none;
@@ -74,10 +71,10 @@ h3, h4, h5, h6, p, a {
 /* ----------------------------------------- */
 /* LIST CONTAINER COMPONENT STYLES  */
 /* ----------------------------------------- */
-list-container-wrapper{
+/* .list-container-wrapper{
     overflow: hidden;
 
-}
+} */
 
 .list-container{
   /* height:auto; */
@@ -99,13 +96,21 @@ list-container-wrapper{
   width:33vw;
   border:white solid;
   background-color: rgba(150, 37, 37, 0.671);
-  padding:5%;
-  height: 13vh;
+  padding:2%;
+  height: auto;
+  justify-content: center;
+  display: flex;
+  
   
 }
 .item-title{
   font-weight: 800;
   font-size: 16pt
+}
+.title-line{
+  width:2px;
+  height:100%;
+  background-color: white;
 }
 .item-id{
 font-size: 13pt;
@@ -115,8 +120,9 @@ font-size: 10pt;
 font-weight: 200;
 }
 .item-edit-delete-btn{
-  height:2%;
-  width:15%;
+  padding:%;
+  height:auto;
+  width:auto;
 }
 
 
@@ -127,13 +133,27 @@ font-weight: 200;
 
 .invoice-container{
   background-color: darkcyan;
-  width:66%;
+  width:70%;
+  height:85vh;
   margin-left:5%;
-  
+  margin-top:3%;
+  padding:2%;
+}
+.user-background{
+  background-color: white;
+  width:87vw;
+  height:100vh;
+  margin:0 auto;
 }
 .user-page-wrapper{
-  background-color: rgba(221,221,221,1);
+  background-color: white;
   display:flex;
-  padding-left:10%;
-  padding-right:10%;
+  padding-left:3%;
+  padding-right:3%;
+}
+
+.farthest-user-background{
+  background-color: rgba(221,221,221,1);
+  width:100vw;
+  height:100vh;
 }

@@ -11,7 +11,7 @@ const ListContainer = (props) => {
     return(
         <div className= "list-container-wrapper">
             <div className="list-container">
-                {props.listItems}
+               <div>{props.listItems}</div>
             </div>
        </div>
     )
