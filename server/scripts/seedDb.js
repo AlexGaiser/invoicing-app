@@ -14,7 +14,7 @@ const main = async () =>{
     // Seed a User
 
   const UserAlex = await User.create({
-    buisness_name: 'Jason Gaiser Designs',
+    business_name: 'Jason Gaiser Designs',
     name:'Jason Gaiser',
     username: 'JasonGaiser',
     password: 'password123',
@@ -26,7 +26,7 @@ const main = async () =>{
   });
 
   const UserFakeman = await User.create({
-      buisness_name: 'Extant Industries',
+      business_name: 'Extant Industries',
       name:'John Notperson',
       username: 'JohnNotperson88',
       password:'2334Pass',
