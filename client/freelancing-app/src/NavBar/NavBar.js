@@ -26,14 +26,14 @@ const NavBar = (props) => {
                 <Nav.Link href="/userProfile">Profile</Nav.Link>
                 <Nav.Link href="/InvoiceGenerator">Invoice Generator</Nav.Link>
               </Nav>
-              <Form inline className="d-none">
-                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                <Button variant="outline-success">Search</Button>
+              <Form onSubmit={()=>alert('form submitted')}inline className="">
+                <Form.Control type="text" placeholder="Username" className="mr-sm-2" />
+                <Form.Control type="text" placeholder="Password" className="mr-sm-2" />
+                <Button type="submit" className="" variant="outline-success">LOGIN</Button>
               </Form>
             </Navbar.Collapse>
           </Navbar>;
       </React.Fragment>
-
     )
 
 

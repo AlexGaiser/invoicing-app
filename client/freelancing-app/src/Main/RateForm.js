@@ -49,7 +49,7 @@ class RateComponent extends Component {
     return (
       <div className="rates-input-container">
         <InputGroup>
-          <Input value={this.state.inputValue}/>
+          <Input name="dropdownRate" onChange={this.props.handleChange} value={this.state.inputValue}/>
           <InputGroupButtonDropdown componentClass="select" placeholder="Select Rate" addonType="append" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>
             <DropdownToggle caret>
               Rates
