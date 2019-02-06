@@ -14,8 +14,8 @@ import './App.css';
 class User extends Component {
   constructor(props) {
       super(props);
-      this.state = {isLoaded:false
-    
+      this.state = {isLoaded:false,
+        invoiceClicked:false
         }
   }
 
@@ -33,20 +33,21 @@ class User extends Component {
   }
 
   getData = async()=>{
-    const header = this.createAuthHeader()
+     const header = this.createAuthHeader()
 
       const response = await Axios.get(`/records/${localStorage.getItem('id')}`, header)
  
       console.log(response.data)
       const userInfo = response.data.userInfo
-      console.log(userInfo)
+      console.log(userInfo.invoices[0])
+      this.setState({invoiceDefault:userInfo.invoices[0]})
       
       const listInvoices = response.data.userInfo.invoices.map((invoice)=>{
         return <ListItem
             invoice={invoice} 
             key={invoice.id}
             id={invoice.id}
-            renderMainInvoice={this.renderMainInvoice}
+            renderMainInvoice={()=>this.renderMainInvoice(invoice)}
             />
       })
       this.setState({
@@ -63,20 +64,21 @@ class User extends Component {
   }
 
   renderMainInvoice = async (invoice)=>{
-    const header = this.createAuthHeader()
-
-
-    const response = await Axios.get(`/records/${invoice.id}`, header)
-    console.log(response.data.user)
-    const userInfo = response.data.userInfo
-      return <MainInvoice
-          invoice={invoice.title} 
-          key={invoice.id}
-        //   id={invoice.id}
-          />
+    const header = this.createAuthHeader() 
+    const response = await Axios.get(`/invoice/${invoice.id}`, header)
+    console.log(invoice.id);
+    console.log(response.data.invoice)
+    this.setState({
+      invoiceInfo:response.data.invoice,
+      invoiceClicked:true
+    })  
+      
   }
+
   
-  render() { 
+  render() {
+      const invoiceDisplayed = this.state.invoiceClicked ? this.state.invoiceInfo : this.state.invoiceDefault
+      console.log(this.state.defaultInvoice); 
       return ( 
         <div className="farthest-user-background">
         <div className="half-background">
@@ -89,7 +91,10 @@ class User extends Component {
                         deleteData={this.deleteData}
                     />
                 </div>
-                <MainInvoice />
+                <MainInvoice
+                  invoiceDisplayed={invoiceDisplayed}
+                  isLoaded={this.state.isLoaded}
+                />
             </div>
           </div>
         </div>
