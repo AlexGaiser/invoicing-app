@@ -1,8 +1,9 @@
-
+/* Font Styles
+--------------------*/
 
 h1, h2 {
   font-family: 'Source Sans Pro', sans-serif;
-  
+
 
 }
 h3, h4, h5, h6, p, a {
@@ -11,11 +12,20 @@ h3, h4, h5, h6, p, a {
 
 
 
+/* Antialias for Smoother Fonts
+-----------------------------------*/
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* overflow:hidden; */
 }
+
+
+
+
+
+
+
 /* ----------------------------------------- */
 /* APP COMPONENT STYLES  */
 /* ----------------------------------------- */
@@ -108,7 +118,7 @@ h3, h4, h5, h6, p, a {
   display: flex;
   align-content: center;
   cursor: pointer;
-  
+
 }
 .list-info:hover{
   background-color: rgba(220, 220, 220, 0.671);
@@ -118,7 +128,7 @@ h3, h4, h5, h6, p, a {
   font-weight: 650;
   font-size: 16pt;
   color:rgba(0,0,0,0.7);
-  
+
 
 }
 .title-line{
