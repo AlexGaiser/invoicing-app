@@ -17,16 +17,16 @@ const Header = (props) => {
     return (
 
       <React.Fragment>
-        <Jumbotron className="Hero-One">
+        <Jumbotron className="Hero-One mb-0">
           <Container>
             <Row>
-              <Col>
+              <Col xs={12} md={12} lg={6}>
 
               </Col>
             </Row>
           </Container>
-          <h1>This is our App...</h1>
-          <p className="hero-txt-one">
+          <h1 className="display-2 font-weight-bold">This is our App...</h1>
+          <p className="hero-txt-one lead">
             Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic, you know how you can tell who the arch-villain's going to be?
           </p>
           <p>
