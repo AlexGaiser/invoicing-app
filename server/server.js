@@ -1,5 +1,8 @@
 // initializing dependencies and packages:
 const express = require('express')
+// const cors = require('cors');
+const { passport, sign } = require('./auth');
+const bcrypt = require('bcrypt')
 const app = express()
 const logger = require('morgan')
 const bodyParser = require('body-parser');
@@ -24,14 +27,18 @@ app.get('/main', async (req, res)=>{
             "message":"this is the root directory"
         })
     }
-   catch(e){
-       res.json({"message":e.message})
-   }
+    catch(e){
+        res.json({"message":e.message})
+    }
 })
 
 // setting routes for records directory
-app.get('/records', async (req,res)=>{
+app.get('/records',
+    passport.authenticate('jwt', {session:false}),
+    async (req,res)=>{
+    
     const records = await Invoice.findAll({})
+
     console.log(records)
     try{
     res.json({records})
@@ -41,7 +48,9 @@ app.get('/records', async (req,res)=>{
     }
 })
 
-app.get('/records/:id', async (req, res)=>{
+app.get('/records/:id', 
+    passport.authenticate('jwt', {session:false}),
+    async (req, res)=>{
     const userId = req.params.id
     try{
         const userInfo = await User.findOne({
@@ -58,12 +67,14 @@ app.get('/records/:id', async (req, res)=>{
     }
 })
 
-app.post('/records', async (req,res)=>{
+app.post('/records', 
+    passport.authenticate('jwt', {session:false}),
+
+    async (req,res)=>{
     console.log(req.body)
     
     try{
         const newInvoice = await Invoice.create(req.body)
-        
         res.json({newInvoice})
         console.log('success')
     }
@@ -74,7 +85,10 @@ app.post('/records', async (req,res)=>{
     }
 })
 
-app.put('/records', async (req,res)=>{
+app.put('/records', 
+    passport.authenticate('jwt', {session:false}),
+    
+    async (req,res)=>{
     try{
         res.send({"message":"record updated"})
     }
@@ -84,21 +98,52 @@ app.put('/records', async (req,res)=>{
 })
 
 // setting routes for users
-app.get('/users', async (req,res)=>{
+app.get('/users', 
+    passport.authenticate('jwt', {session:false}),
+    
+    async (req,res)=>{
     try{
-    res.json({"message":"this is where information for all users will be displayed."})
+        const allUsers = await User.findAll({})
+    res.json({allUsers})
     }
     catch(e){
         res.json({"message":e.message})
     }
 })
 
-app.get('/users/:id', async (req,res)=>{
+app.post('/users',
+    
+    async(req, res)=>{
+    try{
+        // console.log('running'.repeat(100));
+        const newUser = await User.create(req.body);
+        console.log(newUser);
+        
+       
+        const {id, name} = newUser.dataValues
+        const token = sign({
+            id,
+            name
+        });
+        res.json(token)
+            // , token)     
+    }
+    catch(e){
+        res.json({
+            "message":e.message,
+            "route":"/users"
+        })
+    }
+})
+
+app.get('/users/:id', 
+    passport.authenticate('jwt', {session:false}),
+
+    async (req,res)=>{
+
     const userId = req.params.id
     try{
-        const userInfo = await User.findOne({
-            where:{id:userId},
-            include:[Invoice]})
+        const userInfo = await User.findByPk(userId)
         console.log(userInfo);
         res.json({
             userInfo
@@ -107,5 +152,32 @@ app.get('/users/:id', async (req,res)=>{
    
     catch(e){
         res.json({"message":e.message})
+    }
+})
+
+app.post('/login', 
+    passport.authenticate('jwt', {session:false}),
+    
+    async (req,res)=>{
+    try{
+        const { username, password} = req.body;
+        const user = await User.find({where:{username}})
+        const passwordValid = await bcrypt.compare(password, user.password)
+        const {id, name} = user
+        if(passwordValid){
+            const token = sign({
+                id, username, name
+            })
+            res.json({token})
+        }
+        else
+            {
+                throw Error('Invalid Credentials');
+            }
+    }
+    catch(e){
+        res.json({"message":e.message,
+        "route": '/login'
+        })
     }
 })
