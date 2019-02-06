@@ -18,10 +18,10 @@ class User extends Component {
     
         }
   }
-  
+
   componentDidMount = ()=>{
-      localStorage.setItem('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJKYXNvbkdhaXNlciIsIm5hbWUiOiJKYXNvbiBHYWlzZXIiLCJpYXQiOjE1NDk0MTUxMzh9.4sjp6RsuacvigP8ULSzD2m-Z26WVqsx7yaw2ir2M7iM');
-      console.log(localStorage.getItem('token'));
+      
+    this.getData()
   }
   createAuthHeader = ()=>{
     const token = localStorage.getItem('token')
@@ -35,10 +35,12 @@ class User extends Component {
   getData = async()=>{
     const header = this.createAuthHeader()
 
-      const response = await Axios.get('/records/1', header)
+      const response = await Axios.get(`/records/${localStorage.getItem('id')}`, header)
  
       console.log(response.data)
       const userInfo = response.data.userInfo
+      console.log(userInfo)
+      
       const listInvoices = response.data.userInfo.invoices.map((invoice)=>{
         return <ListItem
             invoice={invoice} 
@@ -62,20 +64,18 @@ class User extends Component {
 
   renderMainInvoice = async (invoice)=>{
     const header = this.createAuthHeader()
-    console.log('rendermaininvoice')
+
+
     const response = await Axios.get(`/records/${invoice.id}`, header)
-    console.log(response.data.records[invoice.id])
-    const userInfo = response.data.records[invoice.id]
-   
+    console.log(response.data.user)
+    const userInfo = response.data.userInfo
+      return <MainInvoice
+          invoice={invoice.title} 
+          key={invoice.id}
+        //   id={invoice.id}
+          />
   }
-
-
-
   
-  componentDidMount =()=>{
-      this.getData()
-  }
-
   render() { 
       return ( 
         <div className="farthest-user-background">
