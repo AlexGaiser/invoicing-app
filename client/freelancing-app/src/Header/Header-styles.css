@@ -5,5 +5,52 @@
 
 
 .Hero-One{
-  min-height: 50vh;
+  min-height: 94vh
+
+}
+
+
+.hero-bg {
+    background: url(data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBzb…FkaWFsR3JhZGllbnQtMykiPjwvcGF0aD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    min-height: 280px;
+}
+
+.animate-bg {
+    -ms-transform: translateY(-60px);
+    transform: translateY(-60px);
+    opacity: 0;
+}
+
+
+.bg-pan-left {
+	-webkit-animation: bg-pan-left 30000ms ease-in infinite both;
+	        animation: bg-pan-left 30000ms ease-in infinite both;
+}
+
+/*Typography
+---------------------------*/
+
+.headline-font{}
+
+
+
+
+@-webkit-keyframes bg-pan-left {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes bg-pan-left {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
