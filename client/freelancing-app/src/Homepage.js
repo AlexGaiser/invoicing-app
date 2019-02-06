@@ -11,6 +11,7 @@ import User from './User';
 import App from './App';
 
 import NavBar from './NavBar/NavBar';
+import Header from './Header/Header';
 
 import Axios from 'axios'
 import logo from './logo.svg';
@@ -28,6 +29,7 @@ class Homepage extends Component{
             <Router>
             <React.Fragment>
               <NavBar />
+              <Header />
               {/*<Link to="/userProfile">User Invoices</Link>*/}
               {/*<Link to="InvoiceGenerator">Invoice Generator</Link>*/}
 
