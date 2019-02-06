@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import {Jumbotron, Container, Col, Row, } from 'react-bootstrap';
 
+
 import './Header-styles.css';
 
 
@@ -17,7 +18,7 @@ const Header = (props) => {
     return (
 
       <React.Fragment>
-        <Jumbotron className="Hero-One mb-0">
+        <Jumbotron className="Hero-One mb-0 rounded-0">
           <Container>
             <Row>
               <Col xs={12} md={12} lg={6}>

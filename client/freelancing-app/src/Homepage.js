@@ -12,6 +12,7 @@ import App from './App';
 
 import NavBar from './NavBar/NavBar';
 import Header from './Header/Header';
+import AboutSection from './AboutSection/AboutSection';
 
 import Axios from 'axios'
 import logo from './logo.svg';
@@ -28,6 +29,7 @@ class Homepage extends Component{
         return(
           <React.Fragment>
             <Header />
+
             <Router>
             <React.Fragment>
               <NavBar />
@@ -39,8 +41,9 @@ class Homepage extends Component{
               <Route path='/userProfile' component={ User } />
               <Route path='/InvoiceGenerator' component={ App } />
 
-            </React.Fragment>    
+            </React.Fragment>
           </Router>
+          <AboutSection />
           </React.Fragment>
 
         )
