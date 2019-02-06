@@ -11,12 +11,13 @@ const main = async () =>{
     await User.destroy({
         where: {}
     })
-
     // Seed a User
 
   const UserAlex = await User.create({
-    buisness_name: 'Jason Gaiser Designs',
-    user_name: 'Jason Gaiser',
+    business_name: 'Jason Gaiser Designs',
+    name:'Jason Gaiser',
+    username: 'JasonGaiser',
+    password: 'password123',
     user_email: 'Kwalex.json@gmail.com',
     user_phone: '3472223231',
     user_street: '1223 Fake st',
@@ -25,8 +26,10 @@ const main = async () =>{
   });
 
   const UserFakeman = await User.create({
-      buisness_name: 'Extant Industries',
-      user_name: 'John Notperson',
+      business_name: 'Extant Industries',
+      name:'John Notperson',
+      username: 'JohnNotperson88',
+      password:'2334Pass',
       user_email: 'Kwalex.json@gmail.com',
       user_phone: '5555555555',
       user_street: '1344 Fake ave.',

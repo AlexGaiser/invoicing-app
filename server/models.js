@@ -1,9 +1,18 @@
 const Sequelize = require('sequelize');
+const bcrypt = require('bcrypt');
+const SALT = 5;
+
 
 //accessing a database called invoice_db so that models can be placed
 const db = new Sequelize({
     database: 'invoice_db',
-    dialect: 'postgres'
+    dialect: 'postgres',
+    // 
+    operatorsAliases: false,
+    define:{
+        underscored: true
+    }
+    // 
 });
 
 //defining models
@@ -41,16 +50,21 @@ const Invoice = db.define('invoice', {
 
 
 const User = db.define('User',{
-    
-    buisness_name:{
+    password:Sequelize.STRING,
+    business_name:{
         type: Sequelize.STRING
     },
-    user_name:{
-        type: Sequelize.STRING
+    name:{
+        type:Sequelize.STRING
     },
-
+    username:{
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false
+    },
     user_email:{
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
     },
     user_phone:{
         type: Sequelize.BIGINT
@@ -66,10 +80,12 @@ const User = db.define('User',{
     }
 })
 
-
+User.beforeCreate((user, options)=>{
+    const password_digest = bcrypt.hashSync(user.password, 10);
+    user.password = password_digest;
+})
 
 const Client = db.define('Client',{
-   
     client_name:{
         type: Sequelize.STRING
     },
@@ -80,7 +96,6 @@ const Client = db.define('Client',{
         type: Sequelize.INTEGER
     }
 })
-
 
 //Creating associations
 

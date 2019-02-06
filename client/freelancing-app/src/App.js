@@ -43,7 +43,25 @@ class App extends Component {
       modalShow:false
     };
   }
+  createAuthHeader = ()=>{
+      const token = localStorage.getItem('token')
+      return {
+        headers: {
+          'Authorization': "bearer " + token
+        }
+      };
+    }
+   
 
+  componentDidMount = async () => {
+    localStorage.setItem('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJKYXNvbkdhaXNlciIsIm5hbWUiOiJKYXNvbiBHYWlzZXIiLCJpYXQiOjE1NDk0MTUxMzh9.4sjp6RsuacvigP8ULSzD2m-Z26WVqsx7yaw2ir2M7iM');
+    console.log("running");
+    const response = await Axios.get("/main");
+    setInterval(this.setTime, 500);
+    this.setState({
+      root: response.data.message
+    });
+  };
   stopWatch = stopwatch => {};
 
   setTime = () => {
@@ -77,14 +95,6 @@ class App extends Component {
     });
   };
 
-  componentDidMount = async () => {
-    console.log("running");
-    const response = await Axios.get("/main");
-    setInterval(this.setTime, 500);
-    this.setState({
-      root: response.data.message
-    });
-  };
 
   handleChange = event => {
     const { name, value } = event.target;
@@ -97,10 +107,15 @@ class App extends Component {
   };
 
   sendData = async (data)=>{
-    console.log(data);
-    await Axios.post('/records', data)
+    // const token = localStorage.getItem('token')
+    // const header = {
+    //   headers:{'Authorization':  "bearer " +token}
+    // }
+    const header = this.createAuthHeader()
+    localStorage.setItem('authorization', header)
+    await Axios.post('/records', data, header)
     }
-
+    
 
   liftState = (name, state) => {
     this.setState({ [name]: state });
