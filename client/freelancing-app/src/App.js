@@ -148,8 +148,8 @@ class App extends Component {
                   </div>
                 </div>
 
-                <h1 className="appTitle">Title</h1>
-                <RateForm className="RateForm" />
+                <h1 className="appTitle">{this.state.dropdownRate}</h1>
+                <RateForm className="RateForm" handleChange={this.handleChange}/>
                 <div>
                   <InvoiceForm
                     timerValue={this.state.timerValue}
