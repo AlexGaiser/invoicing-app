@@ -35,12 +35,12 @@ class User extends Component {
           isLoaded:true
       })
   }
-
   renderMainInvoice = async (invoice)=>{
     alert('invoice selected')
     // const response = await Axios.get(`/records/${invoice.id}`) 
   }
 
+  
   componentDidMount =()=>{
       this.getData()
   }
