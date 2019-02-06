@@ -18,7 +18,7 @@ class User extends Component {
     
         }
   }
-  
+
   componentDidMount = ()=>{
       localStorage.setItem('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJKYXNvbkdhaXNlciIsIm5hbWUiOiJKYXNvbiBHYWlzZXIiLCJpYXQiOjE1NDk0MTUxMzh9.4sjp6RsuacvigP8ULSzD2m-Z26WVqsx7yaw2ir2M7iM');
       console.log(localStorage.getItem('token'));
@@ -65,7 +65,6 @@ class User extends Component {
           />
   }
 
-  
   componentDidMount =()=>{
       this.getData()
   }
