@@ -12,7 +12,7 @@ const main = async () =>{
         where: {}
     })
     // Seed a User
-
+  
   const UserAlex = await User.create({
     business_name: 'Jason Gaiser Designs',
     name:'Jason Gaiser',
