@@ -13,6 +13,7 @@ const opts = {
   secretOrKey: SECRET
 };
 
+
 passport.use(new JwtStrategy(opts, async (payload, done) => {
   // it takes the passport variable defined from the passport middleware package and sets to use a new instance of the jwtstrategy package taking the payload from the request and takes the payload 's id (request body's id value if present) and returns it for use in authentication in the server.js file. That user information is then used inside server.js to compare against the records in the database. If it fails to find a corresponding id it returns false and authentication will fail in server.js resulting in a 401 error code.
   // essentially it decodes the token passed to the server.js and checks if it matches the required token in the records database. If it does it returns the user information and if it fails it returns false along with the error message. 

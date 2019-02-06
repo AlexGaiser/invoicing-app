@@ -118,8 +118,6 @@ app.post('/users',
         // console.log('running'.repeat(100));
         const newUser = await User.create(req.body);
         console.log(newUser);
-        
-       
         const {id, name} = newUser.dataValues
         const token = sign({
             id,
