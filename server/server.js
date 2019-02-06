@@ -166,7 +166,7 @@ app.post('/login',
             const token = sign({
                 id, username, name
             })
-            res.json({token})
+            res.json({token, id:id})
         }
         else
             {

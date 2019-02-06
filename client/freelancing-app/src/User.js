@@ -20,9 +20,8 @@ class User extends Component {
   }
 
   componentDidMount = ()=>{
-      localStorage.setItem('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJKYXNvbkdhaXNlciIsIm5hbWUiOiJKYXNvbiBHYWlzZXIiLCJpYXQiOjE1NDk0MTUxMzh9.4sjp6RsuacvigP8ULSzD2m-Z26WVqsx7yaw2ir2M7iM');
-      console.log(localStorage.getItem('token'));
-      this.getData()
+      
+    this.getData()
   }
   createAuthHeader = ()=>{
     const token = localStorage.getItem('token')
@@ -36,7 +35,7 @@ class User extends Component {
   getData = async()=>{
       const header = this.createAuthHeader()
 
-      const response = await Axios.get('/records/1', header)
+      const response = await Axios.get(`/records/${localStorage.getItem('id')}`, header)
  
       console.log(response.data)
       const userInfo = response.data.userInfo
