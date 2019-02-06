@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import LoginPanel from '../Login/Login';
+import LogoutButton from '../LogoutButton/LogoutButton'
 
 import {Navbar, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap'
 
@@ -28,6 +29,7 @@ const NavBar = (props) => {
                 <Nav.Link href="/InvoiceGenerator">Invoice Generator</Nav.Link>
               </Nav>
               <LoginPanel />
+              <LogoutButton />
             </Navbar.Collapse>
           </Navbar>
       </React.Fragment>
