@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './Main-styles.css'
+import jspdf from 'jspdf'
+
 import moment from 'moment';
 
 class InvoiceForm extends Component {
@@ -30,12 +32,37 @@ class InvoiceForm extends Component {
             logged_time: moment().format('hh:mm:ss a'),
             UserId:1
         }
+        // let doc = new jspdf({
+        //     orientation: 'landscape',
+        //     unit: 'in',
+        //     format: [4, 2]
+        //   })
+        const doc = new jspdf()
+        
+        const printPdf = ()=>{
+            doc.text(10,10, `title: ${data.title} | ${data.rate} | $${data.total_amount} |${data.name}`)
+            doc.save('invoicepdf.pdf')
+        }
+        
+        printPdf()
+
+        
+        
         this.props.sendData(data)
+
+
         // clearInterval(this.state.interval)
     }
-
+    createAuthHeader = ()=>{
+        const token = localStorage.getItem('token')
+        const header = {
+        headers:{'Authorization':  "bearer " +token}
+        }
+        localStorage.setItem('authorization', header)
+    }
     
     componentDidMount=()=>{
+       
         const start= setInterval(this.calculateEarnings,500)
         this.setState({interval:start})
     }

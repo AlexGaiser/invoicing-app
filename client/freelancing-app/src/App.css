@@ -89,25 +89,33 @@ h3, h4, h5, h6, p, a {
 /* ----------------------------------------- */
 .list-item-wrapper{
   padding-top: 2%;
-  box-shadow: 3px 3px 20px 3px rgba(0,0,0,0.1);
   color:black !important;
+  box-shadow: 3px 3px 2px 3px rgba(0,0,0,0.04);
 
 }
 
 .list-info{
   width:33vw;
-  border:white solid;
-  background-color: rgba(255, 255, 255, 0.671);
+  border:rgba(0,0,0,0.1) solid 3pt;
+  border-left:hidden;
+  border-top:white 2pt;
+  border-bottom:rgba(0,0,0,0.1) solid 2pt;
+  background-color: rgba(230, 230, 230, 0.671);
+  border-radius: 10px 0 0 0;
   padding:2%;
   height: auto;
   justify-content: center;
   display: flex;
   align-content: center;
-  
+  cursor: pointer;
   
 }
+.list-info:hover{
+  background-color: rgba(220, 220, 220, 0.671);
+
+}
 .item-title{
-  font-weight: 800;
+  font-weight: 650;
   font-size: 16pt;
   color:rgba(0,0,0,0.7);
   
@@ -126,12 +134,41 @@ font-size: 10pt;
 font-weight: 200;
 color:rgba(0,0,0,0.45)
 }
-.item-edit-delete-btn{
+
+.edit-container{
+  height:23px;
+  width:23px;
+  padding-top: 8%;
+
+}
+.delete-container{
+  height:23px;
+  width:23px;
+  padding-top: 8%;
+}
+.item-edit-btn{
+  background-image: url("./media/edit_icon.png");
+  background-size: cover;
   padding:2%;
-  height:auto;
-  width:auto;
-  border:solid rgba(0,0,0,0.9) 0.3pt;
+  height:20px;
+  width:20px;
+  opacity: 0.2;
+}
+.item-delete-btn{
+  background-image: url("./media/delete_icon.png");
+  background-size: cover;
+  padding:2%;
+  height:23px;
+  width:23px;
+  opacity: 0.2;
+  /* border:solid rgba(0,0,0,0.9) 0.3pt; */
   /* border-radius: 2%; */
+}
+.item-edit-btn:hover{
+  opacity: 0.8;
+}
+.item-delete-btn:hover{
+  opacity: 0.8;
 }
 
 
@@ -142,13 +179,14 @@ color:rgba(0,0,0,0.45)
 
 .invoice-container{
   background-color: white;
-  /* border:black solid; */
+  border:black;
   width:70%;
   height:85vh;
   margin-left:5%;
   margin-top:3%;
   padding:3%;
   color:black;
+  border-radius: 15px 0 0 0;
   box-shadow: 3px 3px 20px 3px rgba(0,0,0,0.3);
 }
 .main-details{
@@ -159,13 +197,14 @@ color:rgba(0,0,0,0.45)
   justify-content: space-between;
 }
 .main-title{
-  font-weight: 800;
+  font-weight: 650;
   font-size: 30pt;
+  color:rgba(0,0,0,0.8) !important;
 }
 .main-id{
   font-weight: 300;
   font-size: 16pt;
-  color:rbga(0,0,0,0.2) !important;
+  color:rbga(0,0,0,0.2);
 }
 .main-line-1{
   width:95%;
@@ -173,6 +212,8 @@ color:rgba(0,0,0,0.45)
   height:1px;
   background-color: black;
 }
+.main-description{}
+
 .user-background{
   background-color:white;
   width:87vw;
@@ -182,6 +223,7 @@ color:rgba(0,0,0,0.45)
 .half-background{
   height:50vh;
   background:whitesmoke;
+	background-image: linear-gradient(rgba(200,200,200,0.2),rgba(200,200,200,1) );
 }
 .user-page-wrapper{
   background-color: white;

@@ -14,11 +14,29 @@ import './App.css';
 class User extends Component {
   constructor(props) {
       super(props);
-      this.state = {isLoaded:false}
+      this.state = {isLoaded:false
+    
+        }
+  }
+  
+  componentDidMount = ()=>{
+      localStorage.setItem('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJKYXNvbkdhaXNlciIsIm5hbWUiOiJKYXNvbiBHYWlzZXIiLCJpYXQiOjE1NDk0MTUxMzh9.4sjp6RsuacvigP8ULSzD2m-Z26WVqsx7yaw2ir2M7iM');
+      console.log(localStorage.getItem('token'));
+  }
+  createAuthHeader = ()=>{
+    const token = localStorage.getItem('token')
+    return {
+      headers: {
+        'Authorization': "bearer " + token
+      }
+    };
   }
 
   getData = async()=>{
-      const response = await Axios.get('/records/1')
+      const header = this.createAuthHeader()
+
+      const response = await Axios.get('/records/1', header)
+ 
       console.log(response.data)
       const userInfo = response.data.userInfo
       const listInvoices = response.data.userInfo.invoices.map((invoice)=>{
@@ -35,12 +53,19 @@ class User extends Component {
           isLoaded:true
       })
   }
-
   renderMainInvoice = async (invoice)=>{
-    alert('invoice selected')
-    // const response = await Axios.get(`/records/${invoice.id}`) 
+      
+    const response = await Axios.get(`/records/${invoice.id}`)
+    console.log(response.data.user)
+    const userInfo = response.data.userInfo
+      return <MainInvoice
+          invoice={invoice.title} 
+          key={invoice.id}
+        //   id={invoice.id}
+          />
   }
 
+  
   componentDidMount =()=>{
       this.getData()
   }
