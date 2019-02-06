@@ -53,9 +53,16 @@ class InvoiceForm extends Component {
 
         // clearInterval(this.state.interval)
     }
-
+    createAuthHeader = ()=>{
+        const token = localStorage.getItem('token')
+        const header = {
+        headers:{'Authorization':  "bearer " +token}
+        }
+        localStorage.setItem('authorization', header)
+    }
     
     componentDidMount=()=>{
+       
         const start= setInterval(this.calculateEarnings,500)
         this.setState({interval:start})
     }

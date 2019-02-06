@@ -155,9 +155,7 @@ app.get('/users/:id',
     }
 })
 
-app.post('/login', 
-    passport.authenticate('jwt', {session:false}),
-    
+app.post('/login',     
     async (req,res)=>{
     try{
         const { username, password} = req.body;

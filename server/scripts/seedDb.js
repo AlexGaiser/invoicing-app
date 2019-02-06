@@ -11,7 +11,6 @@ const main = async () =>{
     await User.destroy({
         where: {}
     })
-
     // Seed a User
 
   const UserAlex = await User.create({

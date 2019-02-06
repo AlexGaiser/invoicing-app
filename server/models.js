@@ -58,11 +58,13 @@ const User = db.define('User',{
         type:Sequelize.STRING
     },
     username:{
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false
     },
-    
     user_email:{
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
     },
     user_phone:{
         type: Sequelize.BIGINT
@@ -94,7 +96,6 @@ const Client = db.define('Client',{
         type: Sequelize.INTEGER
     }
 })
-
 
 //Creating associations
 
