@@ -54,8 +54,15 @@ class User extends Component {
       })
   }
   renderMainInvoice = async (invoice)=>{
-    alert('invoice selected')
-    // const response = await Axios.get(`/records/${invoice.id}`) 
+      
+    const response = await Axios.get(`/records/${invoice.id}`)
+    console.log(response.data.user)
+    const userInfo = response.data.userInfo
+      return <MainInvoice
+          invoice={invoice.title} 
+          key={invoice.id}
+        //   id={invoice.id}
+          />
   }
 
   
