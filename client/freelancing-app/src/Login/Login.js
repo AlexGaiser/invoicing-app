@@ -40,12 +40,15 @@ class LoginPanel extends Component {
       if(response.data.token){
         alert('logged in ')
         localStorage.setItem('token', response.data.token)
+        localStorage.setItem('id', response.data.id)
+
         this.setState({redirectInvoice:true})        
         // window.location('/invoiceGenerator')
       }
       else{
         alert('invalid username or password')
         localStorage.setItem('token', 'null')
+        localStorage.setItem('id', 'null')
       }
       
       
