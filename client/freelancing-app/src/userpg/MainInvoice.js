@@ -10,16 +10,28 @@ class MainInvoice extends React.Component{
         }
     }
     
+    createAuthHeader = ()=>{
+        const token = localStorage.getItem('token')
+        return {
+          headers: {
+            'Authorization': "bearer " + token
+          }
+        };
+      }
+
     componentDidMount= async () => {
-        const response = await Axios.get('/records')
+       const header = this.createAuthHeader()
+        const response = await Axios.get('/records',header)
         console.log(response.data);
         this.setState({
-          information: response.data,
           information: response.data.records,
           isLoaded:true
         })
         console.log(this.state.information[0].title)
     }
+
+
+
 
     render(){
         return(
