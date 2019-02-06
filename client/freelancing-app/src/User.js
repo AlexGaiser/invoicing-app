@@ -55,9 +55,10 @@ class User extends Component {
           isLoaded:true
       })
   }
+
   renderMainInvoice = async (invoice)=>{
     const header = this.createAuthHeader()
-
+    
     const response = await Axios.get(`/records/${invoice.id}`, header)
     console.log(response.data.user)
     const userInfo = response.data.userInfo
