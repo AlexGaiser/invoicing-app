@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
+import {Redirect}  from "react-router-dom"
 import {Navbar, Nav, NavDropdown, Form, FormControl, ListGroup } from 'react-bootstrap';
 
 import './Login-styles.css'
@@ -15,14 +15,17 @@ class LoginPanel extends Component {
 
     }
   }
-  createAuthHeader = ()=>{
-    const token = localStorage.getItem('token')
-    return {
-      headers: {
-        'Authorization': "bearer " + token
-      }
-    };
+  componentDidMount=()=>{
+    this.setState({redirectInvoice:false})
   }
+  // createAuthHeader = ()=>{
+  //   const token = localStorage.getItem('token')
+  //   return {
+  //     headers: {
+  //       'Authorization': "bearer " + token
+  //     }
+  //   };
+  // }
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
@@ -37,6 +40,8 @@ class LoginPanel extends Component {
       if(response.data.token){
         alert('logged in ')
         localStorage.setItem('token', response.data.token)
+        this.setState({redirectInvoice:true})        
+        // window.location('/invoiceGenerator')
       }
       else{
         alert('invalid username or password')
@@ -50,8 +55,14 @@ class LoginPanel extends Component {
 
 
   render(){
+    if (this.state.redirectInvoice === true) {
+      return <Redirect to='/InvoiceGenerator' />
+    }
     return (
+      
+  
       <React.Fragment>
+
         <Form onSubmit={this.sendLoginInfo}inline className="">
           <Form.Control name="username" type="text" placeholder="Username" className="mr-sm-2" onChange={this.handleChange}/>
           <Form.Control name="password" type="text" placeholder="Password" className="mr-sm-2" onChange={this.handleChange}/>
