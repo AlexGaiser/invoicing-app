@@ -103,7 +103,7 @@ h3, h4, h5, h6, p, a {
   background-color: rgba(230, 230, 230, 0.671);
   border-radius: 10px 0 0 0;
   padding:2%;
-  height: auto;
+  height: 10%;
   justify-content: center;
   display: flex;
   align-content: center;
@@ -133,6 +133,9 @@ font-size: 12pt;
 font-size: 10pt;
 font-weight: 200;
 color:rgba(0,0,0,0.45)
+}
+.your-invoices{
+  font-weight: 200;
 }
 
 .edit-container{

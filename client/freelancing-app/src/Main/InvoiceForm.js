@@ -30,7 +30,7 @@ class InvoiceForm extends Component {
             extra_fees:300,
             date: '2019-01-01 00:00:00-05',
             logged_time: moment().format('hh:mm:ss a'),
-            UserId:1
+            user_id:1        
         }
         // let doc = new jspdf({
         //     orientation: 'landscape',

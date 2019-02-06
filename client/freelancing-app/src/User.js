@@ -33,7 +33,7 @@ class User extends Component {
   }
 
   getData = async()=>{
-      const header = this.createAuthHeader()
+    const header = this.createAuthHeader()
 
       const response = await Axios.get('/records/1', header)
  
@@ -53,17 +53,23 @@ class User extends Component {
           isLoaded:true
       })
   }
-  renderMainInvoice = async (invoice)=>{
-      
-    const response = await Axios.get(`/records/${invoice.id}`)
-    console.log(response.data.user)
-    const userInfo = response.data.userInfo
-      return <MainInvoice
-          invoice={invoice.title} 
-          key={invoice.id}
-        //   id={invoice.id}
-          />
+
+  deleteData = async()=>{
+    const header = this.createAuthHeader()
+    console.log('delete')
+    await Axios.delete('/records/1', header)
   }
+
+  renderMainInvoice = async (invoice)=>{
+    const header = this.createAuthHeader()
+    console.log('rendermaininvoice')
+    const response = await Axios.get(`/records/${invoice.id}`, header)
+    console.log(response.data.records[invoice.id])
+    const userInfo = response.data.records[invoice.id]
+   
+  }
+
+
 
   
   componentDidMount =()=>{
@@ -76,9 +82,13 @@ class User extends Component {
         <div className="half-background">
           <div className="user-background">
             <div className="user-page-wrapper">
-                <ListContainer 
-                    listItems={this.state.listItems}
-                />
+                <div>
+                    <h1 className= "your-invoices">Your Invoices</h1>
+                    <ListContainer 
+                        listItems={this.state.listItems}
+                        deleteData={this.deleteData}
+                    />
+                </div>
                 <MainInvoice />
             </div>
           </div>
