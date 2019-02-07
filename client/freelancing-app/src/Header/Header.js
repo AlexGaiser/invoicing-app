@@ -30,9 +30,9 @@ const Header = (props) => {
           <p className="hero-txt-one lead">
             Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic, you know how you can tell who the arch-villain's going to be?
           </p>
-          <p>
-            <Button variant="primary">Learn more</Button>
-          </p>
+
+            <button type="button" class="btn btn-outline-light">Learn More</button>
+
         </Jumbotron>
       </React.Fragment>
     )
