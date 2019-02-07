@@ -6,6 +6,7 @@ import {Jumbotron, Container, Col, Row, } from 'react-bootstrap';
 
 
 import './Header-styles.css';
+import AboutSection from '../AboutSection/AboutSection';
 
 
 
@@ -34,6 +35,7 @@ const Header = (props) => {
             <button type="button" class="btn btn-lg btn-outline-light">Learn More</button>
 
         </Jumbotron>
+        <AboutSection />
       </React.Fragment>
     )
 

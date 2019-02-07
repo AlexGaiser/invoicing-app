@@ -28,7 +28,7 @@ class Homepage extends Component{
     render(){
         return(
           <React.Fragment>
-            <Header />
+            {/* <Header /> */}
 
             <Router>
             <React.Fragment>
@@ -38,12 +38,13 @@ class Homepage extends Component{
               {/*<Link to="InvoiceGenerator">Invoice Generator</Link>*/}
 
               {/* <a href ='./user.html'>User Invoices</a> */}
+              
+              <Route path='/Header' component={ Header } />
               <Route path='/userProfile' component={ User } />
               <Route path='/InvoiceGenerator' component={ App } />
 
             </React.Fragment>
           </Router>
-          <AboutSection />
           </React.Fragment>
 
         )
