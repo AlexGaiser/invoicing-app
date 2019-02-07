@@ -20,7 +20,6 @@ class User extends Component {
   }
 
   componentDidMount = ()=>{
-      
     this.getData()
   }
   createAuthHeader = ()=>{
@@ -48,6 +47,7 @@ class User extends Component {
             key={invoice.id}
             id={invoice.id}
             renderMainInvoice={()=>this.renderMainInvoice(invoice)}
+            deleteInvoice={()=>this.deleteInvoice(invoice)}
             />
       })
       this.setState({
@@ -56,6 +56,21 @@ class User extends Component {
           isLoaded:true
       })
   }
+
+  deleteInvoice = async(invoice)=>{
+    console.log('listitems'+this.state.listItems);
+    const header = this.createAuthHeader()
+    console.log('delete')
+   
+    this.setState((prevState) => {
+      let listItems = prevState.listItems.filter((item)=>item.props.id!==invoice.id)
+      return {listItems: listItems}
+    })
+    console.log('listitems'+this.state.listItems[0].props.id);
+   
+    await Axios.delete(`/invoice/${invoice.id}`, header)
+  }
+
 
   renderMainInvoice = async (invoice)=>{
     const header = this.createAuthHeader() 

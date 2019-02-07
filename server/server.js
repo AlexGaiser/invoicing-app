@@ -169,7 +169,23 @@ app.get('/invoice/:id',
                 "route":"/invoice"       })
         }
     })
-
+app.delete('/invoice/:id', 
+    passport.authenticate('jwt', {session:false}),
+    async (req,res)=>{
+    try{
+        const invoiceId = req.params.id
+        console.log(invoiceId)
+        const deleteInvoice = await Invoice.findByPk(invoiceId)
+        deleteInvoice.destroy()
+        res.json(deleteInvoice)
+    }
+    catch(e){
+        res.json({
+            "message": e.message,
+            "route":"/invoice/"
+        })  
+    }
+})
 
 app.post('/login',     
     async (req,res)=>{
