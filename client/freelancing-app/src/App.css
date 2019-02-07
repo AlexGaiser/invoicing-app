@@ -305,6 +305,7 @@ color:rgba(0,0,0,0.45)
   font-weight: 650;
   font-size: 30pt;
   color:rgba(0,0,0,0.8) !important;
+  padding-bottom: 35px;
 }
 .main-id{
   font-weight: 300;
@@ -347,6 +348,7 @@ color:rgba(0,0,0,0.45)
   text-align: right;
   font-weight: 800;
   font-size: 16pt;
+  padding-right: 10px;
 }
 
 .main-total{

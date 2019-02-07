@@ -8,7 +8,7 @@ class InvoiceForm extends Component {
     constructor(props) {
         super(props);
         this.state = {earnings: 0.00,
-
+                extra_fees:0.00
           }
         }
 
@@ -22,14 +22,16 @@ class InvoiceForm extends Component {
         event.preventDefault()
         const data = {
             // Need to add Client Email, User Email, User Phone Number, User Address 
-            total_amount:this.state.earnings,
+            total_amount:this.state.earnings +this.state.extra_fees, //+extra_fees 
+            hourly_earnings:this.state.earnings,
             rate:this.props.rate,
             title: this.props.jobtitle,
-            name:this.props.name,
+            client_name:this.props.name,
+            user_name:this.props.name,// pull from userprofile in database
             description:this.props.comments,
-            extra_details:'info for extra details goes here',
-            extra_fees:300,
-            date: '2019-01-01 00:00:00-05',
+            extra_details:'info for extra details goes here',// new text field for extra details
+            extra_fees:300,// extra fees need an input field and they can be added to the "total_amount"
+            date: '2019-01-01 00:00:00-05',// Need a dynamic date /time to be logged
             logged_time: moment().format('hh:mm:ss a'),
             user_id:localStorage.getItem('id')
         }
