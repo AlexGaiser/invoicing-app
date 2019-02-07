@@ -13,3 +13,8 @@
 .stopWatch button{
 
 }
+
+.app-txt-wrap{
+  overflow: auto;
+  word-break: break-word;
+}
