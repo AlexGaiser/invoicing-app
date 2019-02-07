@@ -36,9 +36,7 @@ class User extends Component {
 
       const response = await Axios.get(`/records/${localStorage.getItem('id')}`, header)
  
-      console.log(response.data)
       const userInfo = response.data.userInfo
-      console.log(userInfo.invoices[0])
       this.setState({invoiceDefault:userInfo.invoices[0]})
       
       const listInvoices = response.data.userInfo.invoices.map((invoice)=>{
@@ -58,24 +56,18 @@ class User extends Component {
   }
 
   deleteInvoice = async(invoice)=>{
-    console.log('listitems'+this.state.listItems);
     const header = this.createAuthHeader()
-    console.log('delete')
-   
     this.setState((prevState) => {
       let listItems = prevState.listItems.filter((item)=>item.props.id!==invoice.id)
       return {listItems: listItems}
     })
-    console.log('listitems'+this.state.listItems[0].props.id);
-   
     await Axios.delete(`/invoice/${invoice.id}`, header)
+    this.renderMainInvoice(this.state.listItems)
   }
 
   renderMainInvoice = async (invoice)=>{
     const header = this.createAuthHeader() 
     const response = await Axios.get(`/invoice/${invoice.id}`, header)
-    console.log(invoice.id);
-    console.log(response.data.invoice)
     this.setState({
       invoiceInfo:response.data.invoice,
       invoiceClicked:true
@@ -85,9 +77,8 @@ class User extends Component {
 
   
   render() {
-      const invoiceDisplayed = this.state.invoiceClicked ? this.state.invoiceInfo : this.state.invoiceDefault
-      console.log(this.state.defaultInvoice); 
-      return ( 
+      let invoiceDisplayed = this.state.invoiceClicked && this.state.invoiceInfo ? this.state.invoiceInfo : this.state.invoiceDefault
+      return (
         <div className="farthest-user-background">
         <div className="half-background">
           <div className="user-background">
