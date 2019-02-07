@@ -21,8 +21,10 @@ import Axios from 'axios';
                       <div className= "title-line"></div>
                       <h3 className = "item-id">Invoice ID:{props.invoice.id}</h3>
                       <h2 className = "item-date">Date submitted: {props.invoice.date}</h2>
-                    <div className="edit-container"><div className ="item-edit-btn" onClick={props.renderMainInvoice}></div></div>
-                    <div className="delete-container"><div className ="item-delete-btn" onClick={props.deleteInvoice}></div></div>
+                      <div className="buttons-wrapper">
+                        <div className="edit-container"><div className ="item-edit-btn" onClick={props.renderMainInvoice}></div></div>
+                        <div className="delete-container"><div className ="item-delete-btn" onClick={props.deleteInvoice}></div></div>
+                      </div>
                   </div>	
         </div>)
     }

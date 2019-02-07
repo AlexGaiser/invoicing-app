@@ -155,6 +155,11 @@ html {
   color:black !important;
   box-shadow: 3px 3px 2px 3px rgba(0,0,0,0.04);
 }
+@media(max-width:950px){
+  .list-item-wrapper{
+    width:80vw;  }
+
+}
 
 .list-info{
   width:33vw;
@@ -168,9 +173,14 @@ html {
   height: 10%;
   justify-content: center;
   display: flex;
+  justify-content: space-around;
   align-content: center;
   cursor: pointer;
-
+  /* vertical-align: middle; */
+}
+@media(max-width:950px){
+  .list-info{
+    width:80vw;  }
 }
 .list-info:hover{
   background-color: rgba(220, 220, 220, 0.671);
@@ -196,9 +206,22 @@ font-size: 10pt;
 font-weight: 200;
 color:rgba(0,0,0,0.45)
 }
+@media(max-width:400px){
+  .item-date{
+    display:none;  }
+
+}
 .your-invoices{
   font-weight: 200;
+  padding-top: 10%;
+  /* padding-bottom: 1%; */
 }
+
+/* @media(max-width:850px){
+  .list-info{
+    width:80vw;  }
+
+} */
 
 .edit-container{
   height:23px;
@@ -245,6 +268,9 @@ color:rgba(0,0,0,0.45)
   opacity: 0.8;
 }
 
+.buttons-wrapper{
+  display:flex;
+}
 
 
 /* ----------------------------------------- */
@@ -263,6 +289,13 @@ color:rgba(0,0,0,0.45)
   border-radius: 15px 0 0 0;
   box-shadow: 3px 3px 20px 3px rgba(0,0,0,0.3);
 }
+@media(max-width:950px){
+  .invoice-container{
+    width:90vw; 
+    margin-left: 0;
+  }
+
+}
 .main-details{
   color:black !important;
 }
@@ -279,6 +312,10 @@ color:rgba(0,0,0,0.45)
   font-weight: 300;
   font-size: 16pt;
   color:rbga(0,0,0,0.2);
+}
+.main-date{
+  font-weight: 400;
+  font-size: 15pt;
 }
 .main-line-1{
   width:95%;
@@ -306,8 +343,16 @@ color:rgba(0,0,0,0.45)
   padding-right:3%;
 }
 
+@media(max-width:950px){
+  .user-page-wrapper{
+flex-wrap: wrap-reverse;  }
+
+}
+
 .farthest-user-background{
   background-color: rgba(221,221,221,1);
   width:100vw;
   height:100vh;
 }
+
+
