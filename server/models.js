@@ -16,7 +16,7 @@ const db = new Sequelize({
 });
 
 //defining models
-const Invoice = db.define('invoice', {
+const Invoice = db.define('Invoice', {
     title: {
         type: Sequelize.TEXT
     },
@@ -78,6 +78,7 @@ const User = db.define('User',{
     user_zip: {
         type: Sequelize.STRING
     }
+    
 })
 
 User.beforeCreate((user, options)=>{
@@ -85,7 +86,7 @@ User.beforeCreate((user, options)=>{
     user.password = password_digest;
 })
 
-const Client = db.define('Client',{
+const Client = db.define('client',{
     client_name:{
         type: Sequelize.STRING
     },
@@ -94,6 +95,15 @@ const Client = db.define('Client',{
     },
     client_phone:{
         type: Sequelize.INTEGER
+    },
+    client_street:{
+        type: Sequelize.TEXT
+    },
+    client_city:{
+        type: Sequelize.STRING
+    },
+    client_zip: {
+        type: Sequelize.STRING
     }
 })
 

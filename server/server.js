@@ -203,6 +203,24 @@ app.delete('/invoice/:id',
     }
 })
 
+// app.get('/clients/:name', async (req,res)=>{
+//     const name = req.params.name.split('_').join(' ')
+//     console.log(name)
+//     try{
+//         const client = await Client.findOne({
+//             where: {client_name: name}
+//         })
+//         res.json(client)
+//     }
+//     catch(e){
+//         res.json({
+//             "message": e.message,
+//             "route":"/clients/"
+//         })  
+//     }
+// })
+
+
 app.post('/login',     
     async (req,res)=>{
     try{

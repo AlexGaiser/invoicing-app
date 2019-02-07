@@ -27,9 +27,9 @@ const main = async () =>{
 
   const UserFakeman = await User.create({
       business_name: 'Extant Industries',
-      name:'John Notperson',
+      name:'admin',
       username: 'JohnNotperson88',
-      password:'2334Pass',
+      password:'password',
       user_email: 'Kwalex.json@gmail.com',
       user_phone: '5555555555',
       user_street: '1344 Fake ave.',
@@ -43,7 +43,10 @@ const main = async () =>{
   const Google = await Client.create({
     client_name: 'Google',
     client_email: 'Google@gmail.com',
-    client_phone: '2123336543'
+    client_phone: '2123336543',
+    client_street: '1344 Fake ave.',
+    client_city:'Notaplace',
+    client_zip:'54321'
   });
 
 

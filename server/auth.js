@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken');
 const SECRET = "my super duper secret sacrt";
 const sign = (payload) => jwt.sign(payload, SECRET);
 
+
 const opts = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: SECRET
