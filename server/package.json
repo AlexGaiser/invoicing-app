@@ -14,7 +14,6 @@
     "db:drop-reset": "dropdb invoice_db; createdb invoice_db",
     "start": "node server.js",
     "heroku-postbuild": " cd ../client/freelancing-app && npm install && npm install --only=dev --no-shrinkwrap npm run build"
-  
   },
   "repository": {
     "type": "git",
