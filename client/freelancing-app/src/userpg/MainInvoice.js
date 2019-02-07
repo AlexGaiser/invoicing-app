@@ -22,7 +22,7 @@ const MainInvoice=(props)=> {
     //     })
     //     console.log(this.state.information[0].title)
     // }
-        console.log(props.invoiceDisplayed);
+        console.log('invoice displayed: '+props.invoiceDisplayed);
         return(
             
             <div className="invoice-container">
