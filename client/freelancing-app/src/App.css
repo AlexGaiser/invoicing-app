@@ -36,12 +36,14 @@ body{
 .App {
   text-align: center;
   justify-content: center;
+  padding:100px 0px;
+  background-color: #fff;
 }
 
 
 
 .App-header {
-  background-color: none;
+  background-color: #d6d6d6;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -49,6 +51,12 @@ body{
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    border: 1px solid #c7c7c7;
+    padding: 15px 0px;
+        border-radius: 3px;
 }
 .main-invoice-container{
   border:solid 5pt red;
@@ -69,12 +77,27 @@ body{
 
 .app-container{
   width:100%;
-  max-width: 500px;
+  max-width: 700px;
   margin:0 auto;
 }
 
 .appTitle{
   color:#ffffff;
+}
+
+.start-btn{
+  width: 100%;
+  max-width: 255px;
+}
+.stop-btn{
+  width: 100%;
+  max-width: 255px;
+}
+.end-btn{}
+
+.stopWatch{
+  background-color: #a0a0a0;
+  padding: 20px;
 }
 
 

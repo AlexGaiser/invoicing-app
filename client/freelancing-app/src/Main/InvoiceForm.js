@@ -8,16 +8,16 @@ class InvoiceForm extends Component {
     constructor(props) {
         super(props);
         this.state = {earnings: 0.00,
-            
+
             ocupation:'coolguy'}
         }
-    
+
     calculateEarnings= ()=>{
         this.setState({earnings:this.props.timerValue?  this.props.timerValue.seconds * parseInt(this.props.rate) : '0.00'})
     }
 
     submitForm=(event)=>{
-        
+
         console.log();
         event.preventDefault()
         const data = {
@@ -38,7 +38,7 @@ class InvoiceForm extends Component {
         //     format: [4, 2]
         //   })
         const doc = new jspdf()
-        
+
         const printPdf = ()=>{
             doc.setFontSize(30);
             doc.text(20,40, `title: ${data.title}`);
@@ -47,11 +47,11 @@ class InvoiceForm extends Component {
             
             doc.save('invoicepdf.pdf')
         }
-        
+
         printPdf()
 
-        
-        
+
+
         this.props.sendData(data)
 
 
@@ -64,19 +64,19 @@ class InvoiceForm extends Component {
         }
         localStorage.setItem('authorization', header)
     }
-    
+
     componentDidMount=()=>{
-       
+
         const start= setInterval(this.calculateEarnings,500)
         this.setState({interval:start})
     }
 
 
 
-    
+
     // this.props.liftState(this.state.object)
     render() {
-        return ( 
+        return (
             <React.Fragment>
                 <h3>{this.props.name}</h3>
                 <h1>{this.props.jobtitle}</h1>
@@ -84,12 +84,12 @@ class InvoiceForm extends Component {
                  <h4>{this.props.comments}</h4>
 
                 <form className="form-group" onSubmit={this.submitForm}>
-                    <input className="form-control mb-2" name='jobtitle' type="text" placeholder="enter job" onChange={this.props.handleChange}/>
-                    <input className="form-control" name='rate' type="text" placeholder="enter rate" onChange={this.props.handleChange}/>
-                    <input className="form-control" name='name' type="text" placeholder="enter name" onChange={this.props.handleChange}/>
-                    <textarea name='comments' placeholder='enter comments' onChange={this.props.handleChange}/>
-                    <h1 className="f-white" >{`$${this.state.earnings}`}</h1>                    
-                    <button className="btn btn-primary btn-lg btn-block">Submit</button>
+                    <input className="form-control mb-2 input-lg" name='jobtitle' type="text" placeholder="enter job" onChange={this.props.handleChange}/>
+                    <input className="form-control mb-2 input-lg" name='rate' type="text" placeholder="enter rate" onChange={this.props.handleChange}/>
+                    <input className="form-control mb-2 input-lg" name='name' type="text" placeholder="enter name" onChange={this.props.handleChange}/>
+                    <textarea className="form-control input-lg" name='comments' placeholder='enter comments' onChange={this.props.handleChange}/>
+                    <h1 className="f-white" >{`$${this.state.earnings}`}</h1>
+                    <button className="btn btn-success btn-lg btn-block">Submit</button>
 
                 </form>
             </React.Fragment>
@@ -99,4 +99,3 @@ class InvoiceForm extends Component {
 }
 
 export default InvoiceForm
- 
