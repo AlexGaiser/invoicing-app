@@ -43,24 +43,56 @@ class InvoiceForm extends Component {
         const doc = new jspdf()
 
         const printPdf = ()=>{
-            doc.setFontSize(15);
-            doc.text(20,15,`This is place holder for username`);
+            doc.setFontSize(13);
+            doc.text(15,20,`This is place holder for username`);
 
-            doc.setFontSize(15);
-            doc.text(20,22,`This is place holder for address`);
+            doc.setFontSize(13);
+            doc.text(15,27,`This is place holder for  useraddress`);
 
-            doc.setFontSize(15);
-            doc.text(20,29,`This is place holder for phone and email`);
+            doc.setFontSize(13);
+            doc.text(15,34,`This is place holder for phone and email`);
 
             doc.setFontSize(35);
-            doc.text(20,50, ` ${data.title}`);
+            doc.text(11,57, ` ${data.title}`);
+
+            doc.setFontSize(10);
+            doc.text(175,20,`Invoice ID: 1`);
+            //line
+            doc.line(100,0,0,0)
+
+            doc.setFontSize(10);
+            doc.text(15,68,`DATE: ${data.date}`);
+
+            doc.setFontSize(20);
+            doc.text(15,82,`For:`);
+
+            doc.setFontSize(12);
+            doc.text(15,120,`Description: ${data.description}`);
+
+            doc.setFontSize(13);
+            doc.text(15,90,`Placeholder for clientname`);
+
+            doc.setFontSize(13);
+            doc.text(15,97,`Placeholder for client  phone and email`);
+
+            doc.setFontSize(13);
+            doc.text(15,104,`Placeholder for client address`);
+            //line
 
             doc.setFontSize(15);
-            doc.text(20,20,`Invoice ID: 1`);
-            
-            // doc.setFontSize(15);
-            // doc.text(20,20,`Rate: ${data.client_name}`);
+            doc.text(15,190,`${data.extra_details}`);
 
+            doc.setFontSize(15);
+            doc.text(120,190,`Rate: placeholder `);
+
+            doc.setFontSize(15);
+            doc.text(120,200,`Time Worked: placeholder`);
+
+            //line
+
+            doc.setFontSize(20);
+            doc.text(150,240,`Total Amount: $3000`);
+            
             doc.save('invoicepdf.pdf')
         }
 
