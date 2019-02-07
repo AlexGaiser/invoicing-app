@@ -24,9 +24,9 @@ class InvoiceForm extends Component {
         event.preventDefault()
         const invoice = {
 
-            // Need to add Client Email, User Email, User Phone Number, User Address 
-            
-           
+            // Need to add Client Email, User Email, User Phone Number, User Address
+
+
             // Job Information
             title: this.state.jobtitle,
             invoice_number: this.state.invoice_number,
@@ -34,13 +34,13 @@ class InvoiceForm extends Component {
             description:this.state.description,
             extra_details: this.state.extra_details,
             logged_time: moment().format('hh:mm:ss a'),
-            //Billing Information  
+            //Billing Information
 
             billable_hours: this.state.billable_hours,
             rate:this.state.rate,
             hourly_earnings:this.state.earnings,
             extra_fees:300,// extra fees need an input field and they can be added to the "total_amount"
-            total_amount:this.state.total_amount, //+extra_fees 
+            total_amount:this.state.total_amount, //+extra_fees
             // client information
             client_name:this.state.client_name,
             client_email: this.state.client_email,
@@ -50,10 +50,10 @@ class InvoiceForm extends Component {
             client_zip: this.state.client_zip,
 
             // user information
-            
+
 
         }
-      
+
         // let doc = new jspdf({
         //     orientation: 'landscape',
         //     unit: 'in',
@@ -85,12 +85,16 @@ class InvoiceForm extends Component {
 
             doc.setFontSize(20);
             doc.text(15,82,`For:`);
-            
+
             doc.setFontSize(20);
             doc.text(15,120,`Description:`);
 
 
+<<<<<<< HEAD
             const splitTitle = doc.splitTextToSize(` ${invoice.description}`, 280);
+=======
+            const splitTitle = doc.splitTextToSize(` Description: {data.description}`, 280);
+>>>>>>> d0f72539e9d63105e8f52a7308996a1bfa3c81fb
             doc.setFontSize(13);
             doc.text(15, 130, splitTitle);
             // doc.text(15,120,`Description: ${data.description}`);
@@ -119,10 +123,15 @@ class InvoiceForm extends Component {
 
             doc.setFontSize(18);
             doc.text(115,240,`Total Amount:`);
-            
+
             doc.setFontSize(20);
+<<<<<<< HEAD
             doc.text(170,240,`$${invoice.total_amount}.00`);
             
+=======
+            doc.text(170,240,`$3000`);
+
+>>>>>>> d0f72539e9d63105e8f52a7308996a1bfa3c81fb
             doc.save('invoicepdf.pdf')
         }
 
@@ -145,14 +154,14 @@ class InvoiceForm extends Component {
         return header
     }
 
-    
+
 
     fetchUserInfo = async ()=>{
         const header = this.createAuthHeader()
         const user = localStorage.getItem('id')
         const response = await Axios.get(`/users/${user}`,header)
         console.log(response.data)
-        
+
         this.setState({userInfo:response.data})
     }
 
@@ -162,7 +171,7 @@ class InvoiceForm extends Component {
         console.log(billable_hours)
         const earnings = billable_hours* parseInt(this.state.rate)
         this.setState({
-            billable_hours: billable_hours, 
+            billable_hours: billable_hours,
             earnings: earnings,
             total_amount: parseInt( earnings) + parseInt(this.state.extra_fees)})
         }
@@ -175,9 +184,9 @@ class InvoiceForm extends Component {
 
     updateInvoiceData =()=>{
         const invoice = {
-            // Need to add Client Email, User Email, User Phone Number, User Address 
-            
-           
+            // Need to add Client Email, User Email, User Phone Number, User Address
+
+
             // Job Information
             title: this.state.jobtitle,
             invoice_number: this.state.invoice_number,
@@ -185,13 +194,13 @@ class InvoiceForm extends Component {
             description:this.state.description,
             extra_details: this.state.extra_details,
             logged_time: moment().format('hh:mm:ss a'),
-            //Billing Information  
+            //Billing Information
 
             billable_hours: this.state.billable_hours,
             rate:this.state.rate,
             hourly_earnings:this.state.earnings,
             extra_fees:300,// extra fees need an input field and they can be added to the "total_amount"
-            total_amount:this.state.total_amount, //+extra_fees 
+            total_amount:this.state.total_amount, //+extra_fees
             // client information
             client_name:this.state.name,
             client_email: this.state.client_email,
@@ -199,7 +208,7 @@ class InvoiceForm extends Component {
             client_address:this.state.client_address,
             client_city:this.state.client_city,
             client_zip: parseInt(this.state.client_zip),
-    
+
         }
         this.props.liftState(invoice)
 
@@ -217,25 +226,56 @@ class InvoiceForm extends Component {
 
                 <form className="form-group" onSubmit={this.submitForm}>
                     {/*client information  */}
-                    <input className="form-control mb-2 input-lg" name='client_name' type="text" placeholder="Enter Client name" onChange={this.handleChange}/>
-                    <input className="form-control mb-2 input-lg" name='client_email' type="text" placeholder="example@business.com" onChange={this.handleChange}/>
-                    <input className="form-control mb-2 input-lg" name='client_phone' type="text" placeholder="Enter Client Phone Number" onChange={this.handleChange}/>
-                    
-                    <input className="form-control mb-2 input-lg" name='client_city' type="text" placeholder="Enter Client City" onChange={this.handleChange}/>
-                    <input className="form-control mb-2 input-lg" name='client_address' type="text" placeholder="Enter Client Address" onChange={this.handleChange}/>
-                    <input className="form-control mb-2 input-lg" name='client_zip' type="text" placeholder="Enter Client Zip Code" onChange={this.handleChange}/>
-                    
-                    
+                    <h4>Client Information</h4>
+                    <div class="form-group">
+                    <label for="exampleDropdownFormEmail2">Name</label>
+                      <input className="form-control mb-2 input-lg" name='client_name' type="text" placeholder="Client Name" onChange={this.handleChange}/>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleDropdownFormEmail2">Email</label>
+                      <input className="form-control mb-2 input-lg" name='client_email' type="text" placeholder="example@business.com" onChange={this.handleChange}/>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleDropdownFormEmail2">Phone Number</label>
+                      <input className="form-control mb-2 input-lg" name='client_phone' type="text" placeholder="Client Phone Number" onChange={this.handleChange}/>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleDropdownFormEmail2">City</label>
+                      <input className="form-control mb-2 input-lg" name='client_city' type="text" placeholder="Client City" onChange={this.handleChange}/>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleDropdownFormEmail2">Address</label>
+                      <input className="form-control mb-2 input-lg" name='client_address' type="text" placeholder="Client Address" onChange={this.handleChange}/>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleDropdownFormEmail2">Client Zipcode</label>
+                      <input className="form-control mb-2 input-lg" name='client_zip' type="text" placeholder="Client Zip Code" onChange={this.handleChange}/>
+                    </div>
+
+
                     {/* job information  */}
-                    <input className="form-control mb-2 input-lg" name='jobtitle' type="text" placeholder="Enter Invoice Title" onChange={this.handleChange}/>
-                    <input className="form-control mb-2 input-lg" name='name' type="text" placeholder="enter name" onChange={this.handleChange}/>
-                    <textarea className="form-control input-lg" name='description' placeholder='Enter Description' onChange={this.handleChange}/>
-                    <textarea className="form-control input-lg" name='extra_details' placeholder='Extra Details' onChange={this.handleChange}/>
-                   
+                    <div class="form-group">
+                    <h4>Job Information</h4>
+                      <label for="exampleDropdownFormEmail2">Title</label>
+                      <input className="form-control mb-2 input-lg" name='jobtitle' type="text" placeholder="Invoice Title" onChange={this.handleChange}/>
+                      <label for="exampleDropdownFormEmail2">Name</label>
+                      <input className="form-control mb-2 input-lg" name='name' type="text" placeholder="Name" onChange={this.handleChange}/>
+                      <label for="exampleDropdownFormEmail2">Description</label>
+                      <textarea className="form-control input-lg" name='description' placeholder='Description' onChange={this.handleChange}/>
+                      <label for="exampleDropdownFormEmail2">Extra Details</label>
+                      <textarea className="form-control input-lg" name='extra_details' placeholder='Extra Details' onChange={this.handleChange}/>
+                    </div>
+
                    {/* Bill information */}
-                    <input className="form-control mb-2 input-lg" name='rate' type="text" placeholder="enter rate" onChange={this.handleChange}/>
+                   <div class="form-group">
+                    <h4>Billing Information</h4>
+                    <label for="exampleDropdownFormEmail2">Rate</label>
+                    <input className="form-control mb-2 input-lg" name='rate' type="text" placeholder="Rate" onChange={this.handleChange}/>
+                    <label for="exampleDropdownFormEmail2">Extra Fees</label>
                     <input className="form-control mb-2 input-lg" name='extra_fees' type="text" placeholder="Extra Fees" onChange={this.handleChange}/>
+                    <label for="exampleDropdownFormEmail2">Invoice No.</label>
                     <input className="form-control mb-2 input-lg" name='invoice_number' type="text" placeholder="InvoiceNo." onChange={this.handleChange}/>
+                  </div>
 
 
                     <h1 className="f-white" >{`$${this.state.earnings}`}</h1>
