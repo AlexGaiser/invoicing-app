@@ -91,7 +91,7 @@ class InvoiceForm extends Component {
             doc.text(130,200,`Time Logged: placeholder`);
 
             //line
-            doc.line(200,220,20,220)
+            doc.line(200,212,20,212)
 
             doc.setFontSize(18);
             doc.text(115,240,`Total Amount:`);
