@@ -13,7 +13,7 @@ const { Invoice, User, Client } = require('./models')
 
 app.use(bodyParser.json())
 app.use(logger('dev'))
-app.use("/", express.static("../client/freelancing-app/build/"));
+app.use(express.static("../client/freelancing-app/build/"));
 
 const path = require('path')
 
