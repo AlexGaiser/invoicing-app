@@ -155,6 +155,22 @@ app.get('/users/:id',
     }
 })
 
+app.get('/invoice/:id',
+    passport.authenticate('jwt', {session:false}),
+    async (req,res)=>{
+        const invoiceId = req.params.id
+        try{
+           const invoice = await Invoice.findByPk(invoiceId)
+           res.json({invoice})
+        } 
+        catch(e){
+            res.json({
+                "message":e.message,
+                "route":"/invoice"       })
+        }
+    })
+
+
 app.post('/login',     
     async (req,res)=>{
     try{
