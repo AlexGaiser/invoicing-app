@@ -16,7 +16,7 @@ class Stopwatch extends Component {
     startTime = ()=>{
         if(this.state.newTimer){
             const startTime = new Date().getTime()
-            this.setState({startTime:startTime})     
+            this.setState({startTime:startTime})
             const start = setInterval(this.displayTimer,500)
             this.setState({
                 interval:start,
@@ -42,7 +42,7 @@ class Stopwatch extends Component {
         })
 
         this.stopTimer()
-        
+
 
     }
 
@@ -58,7 +58,7 @@ class Stopwatch extends Component {
                 hours:hours,
                 minutes:minutes,
                 seconds:seconds,
-                
+
             },
             timerStarted:true,
             displayTime: `${hours}:${minutes}:${seconds}`
@@ -71,15 +71,15 @@ class Stopwatch extends Component {
     render() {
 
         return (
-            <div className="stopWatch">
+            <div className="stopWatch mb-3">
                 <h1>{Moment().format("hh:mm:ss a")}</h1>
                 <h3>{this.state.displayTime}</h3>
                 {/* <h3>{this.props.timerSet ?this.props.elapsedTime : '00:00:00'}</h3> */}
                 {/* <h3>{this.props.timerSet ? this.props.time.subtract(this.props.timeStart):'00:00:00'}</h3> */}
 
-                <button className="mr-3 btn btn-primary" name='button1' onClick={this.startTime} value='start time'>Start</button>
-                <button className="mr-3 btn btn-primary" onClick={this.stopTimer}>Stop</button>
-                <button className="btn btn-danger" onClick={this.resetTimer}>Reset</button>
+                <button className="start-btn mr-3 btn-lg btn btn-primary" name='button1' onClick={this.startTime} value='start time'>Start</button>
+                <button className="stop-btn mr-3 btn-lg btn btn-primary" onClick={this.stopTimer}>Stop</button>
+                <button className="reset-btn btn btn-lg btn-danger" onClick={this.resetTimer}>Reset</button>
             </div>
         )
     }
