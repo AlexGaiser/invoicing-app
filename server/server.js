@@ -18,7 +18,10 @@ app.use("/", express.static("./build/"));
 const path = require('path')
 
 // establishing port that server will run on
-// const PORT = process.env.PORT || 9000
+const PORT = process.env.PORT || 9000
+
+
+
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}!`))
 
