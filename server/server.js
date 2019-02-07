@@ -6,12 +6,13 @@ const bcrypt = require('bcrypt')
 const app = express()
 const logger = require('morgan')
 const bodyParser = require('body-parser');
-
+const path = require('path')
 
 const { Invoice, User, Client } = require('./models')
 
 app.use(bodyParser.json())
 app.use(logger('dev'))
+app.use("/", express.static("./build/"))
 
 
 // establishing port that server will run on
@@ -244,3 +245,9 @@ app.post('/login',
         })
     }
 })
+
+if(process.env.NODE_ENV == "production") {
+    app.get("/*", function(request, response)) {
+        response.sendFile(path.join(__dirname, "build", "index.html"))
+    }
+}
