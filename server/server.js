@@ -142,7 +142,6 @@ app.get('/users/:id',
             userInfo
         })
     }
-   
     catch(e){
         res.json({"message":e.message})
     }

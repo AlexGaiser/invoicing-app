@@ -16,13 +16,14 @@ const db = new Sequelize({
 });
 
 //defining models
-const Invoice = db.define('Invoice', {
+const Invoice = db.define('invoice', {
     title: {
         type: Sequelize.TEXT
     },
     invoice_number: {
         type: Sequelize.BIGINT
     },
+
     date: {
         type: Sequelize.DATE
     },
@@ -35,7 +36,13 @@ const Invoice = db.define('Invoice', {
     logged_time: {
         type: Sequelize.TIME
     },
+    billable_hours:{
+        type:Sequelize.FLOAT
+    },
     rate: {
+        type: Sequelize.FLOAT
+    },
+    hourly_earnings:{
         type: Sequelize.FLOAT
     },
     extra_fees: {
@@ -43,13 +50,31 @@ const Invoice = db.define('Invoice', {
     },
     total_amount: {
         type: Sequelize.FLOAT
+    },
+    client_name:{
+        type: Sequelize.STRING
+    },
+    client_email:{
+        type: Sequelize.STRING
+    },
+    client_phone:{
+        type: Sequelize.INTEGER
+    },
+    client_street:{
+        type: Sequelize.TEXT
+    },
+    client_city:{
+        type: Sequelize.STRING
+    },
+    client_zip: {
+        type: Sequelize.STRING
     }
     
 })
 
 
 
-const User = db.define('User',{
+const User = db.define('user',{
     password:Sequelize.STRING,
     business_name:{
         type: Sequelize.STRING

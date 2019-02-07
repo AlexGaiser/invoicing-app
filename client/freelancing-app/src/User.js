@@ -35,7 +35,8 @@ class User extends Component {
      const header = this.createAuthHeader()
 
       const response = await Axios.get(`/records/${localStorage.getItem('id')}`, header)
- 
+      console.log(response.data);
+
       const userInfo = response.data.userInfo
       this.setState({invoiceDefault:userInfo.invoices[0]})
       
