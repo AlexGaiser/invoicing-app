@@ -68,7 +68,7 @@ class LoginPanel extends Component {
 
         <Form onSubmit={this.sendLoginInfo}inline className="">
           <Form.Control name="username" type="text" placeholder="Username" className="mr-sm-2" onChange={this.handleChange}/>
-          <Form.Control name="password" type="text" placeholder="Password" className="mr-sm-2" onChange={this.handleChange}/>
+          <Form.Control name="password" type="password" placeholder="Password" className="mr-sm-2" onChange={this.handleChange}/>
           <Button type="submit" className="" variant="outline-success">LOGIN</Button>
         </Form>
       </React.Fragment>
