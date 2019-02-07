@@ -50,7 +50,7 @@ class InvoiceForm extends Component {
             client_zip: this.state.client_zip,
 
             // user information
-
+            business_name:this.state.business_name,
 
         }
 
@@ -64,7 +64,7 @@ class InvoiceForm extends Component {
 
         const printPdf = ()=>{
             doc.setFontSize(13);
-            doc.text(15,20,`This is place holder for username`);
+            doc.text(15,20,`${invoice.business_name}`);
 
             doc.setFontSize(13);
             doc.text(15,27,`This is place holder for  useraddress`);
@@ -73,10 +73,10 @@ class InvoiceForm extends Component {
             doc.text(15,34,`This is place holder for phone and email`);
 
             doc.setFontSize(35);
-            doc.text(11,57, ` {data.title}`);
+            doc.text(11,57, ` ${invoice.title}`);
 
             doc.setFontSize(10);
-            doc.text(175,20,`Invoice ID: 1`);
+            doc.text(175,20,`${invoice.invoice_number}`);
             //line
             doc.line(200,63,15,63)
 
@@ -90,11 +90,7 @@ class InvoiceForm extends Component {
             doc.text(15,120,`Description:`);
 
 
-<<<<<<< HEAD
             const splitTitle = doc.splitTextToSize(` ${invoice.description}`, 280);
-=======
-            const splitTitle = doc.splitTextToSize(` Description: {data.description}`, 280);
->>>>>>> d0f72539e9d63105e8f52a7308996a1bfa3c81fb
             doc.setFontSize(13);
             doc.text(15, 130, splitTitle);
             // doc.text(15,120,`Description: ${data.description}`);
@@ -110,7 +106,7 @@ class InvoiceForm extends Component {
             //line
 
             doc.setFontSize(15);
-            doc.text(15,190,`{data.extra_details}`);
+            doc.text(15,190,`${invoice.extra_details}`);
 
             doc.setFontSize(15);
             doc.text(130,190,`Rate: $${invoice.rate}.00 `);
@@ -125,13 +121,10 @@ class InvoiceForm extends Component {
             doc.text(115,240,`Total Amount:`);
 
             doc.setFontSize(20);
-<<<<<<< HEAD
             doc.text(170,240,`$${invoice.total_amount}.00`);
             
-=======
-            doc.text(170,240,`$3000`);
 
->>>>>>> d0f72539e9d63105e8f52a7308996a1bfa3c81fb
+
             doc.save('invoicepdf.pdf')
         }
 
