@@ -90,11 +90,8 @@ class InvoiceForm extends Component {
             doc.text(15,120,`Description:`);
 
 
-<<<<<<< HEAD
             const splitTitle = doc.splitTextToSize(` ${invoice.description}`, 280);
-=======
-            const splitTitle = doc.splitTextToSize(` Description: {data.description}`, 280);
->>>>>>> d0f72539e9d63105e8f52a7308996a1bfa3c81fb
+           
             doc.setFontSize(13);
             doc.text(15, 130, splitTitle);
             // doc.text(15,120,`Description: ${data.description}`);
@@ -125,13 +122,10 @@ class InvoiceForm extends Component {
             doc.text(115,240,`Total Amount:`);
 
             doc.setFontSize(20);
-<<<<<<< HEAD
+
             doc.text(170,240,`$${invoice.total_amount}.00`);
             
-=======
-            doc.text(170,240,`$3000`);
 
->>>>>>> d0f72539e9d63105e8f52a7308996a1bfa3c81fb
             doc.save('invoicepdf.pdf')
         }
 

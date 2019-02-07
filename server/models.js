@@ -4,7 +4,7 @@ const SALT = 5;
 
 
 //accessing a database called invoice_db so that models can be placed
-const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:5432/fanstar_db', {
+const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:9000/invoice_db', {
     dialect: 'postgres',
     operatorsAliases: false,
     define:{
