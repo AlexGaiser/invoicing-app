@@ -56,15 +56,9 @@ class User extends Component {
       })
   }
 
-  deleteData = async()=>{
-    const header = this.createAuthHeader()
-    console.log('delete')
-    await Axios.delete('/records/1', header)
-  }
-
   renderMainInvoice = async (invoice)=>{
     const header = this.createAuthHeader()
-
+    
 
     const response = await Axios.get(`/records/${invoice.id}`, header)
     console.log(response.data.user)
