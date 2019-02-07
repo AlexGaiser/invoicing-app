@@ -7,7 +7,13 @@ import React, { Component } from 'react';
 import './InvoiceModal.css'
 
 
-class InvoiceModalOne extends Component {
+class InvoiceModal extends Component {
+  constructor(props){
+    super(props)
+  }
+
+
+
   render () {
     return (
       <Modal
@@ -16,20 +22,37 @@ class InvoiceModalOne extends Component {
       size="lg"
       centered
       >
+            <h4>{this.props.id}</h4>
+
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Title Goes Here
+          <h1 id="modal-title">{this.props.jobtitle}</h1> 
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Header>
+        <Modal.Title id="modal-name">
+        <h1 id="modal-name">{this.props.name}</h1> 
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Container>
-          <Row ClassName="show-grid">
+          <Row className="show-grid">
             <Col xs={12} md={12}>
-              <p>Invoice INSIDE 12 Grid Column... yes inside the modal</p>
+              <p className="modal-description"><span className="description-bold">Description:   </span>{this.props.comments}</p>
             </Col>
           </Row>
         </Container>
+        <Row className="show-grid">
+            <Col xs={12} md={2} className="text-right">
+              <p>Rate: ${this.props.rate}</p>
+              <p><span>x</span>Total Time: {this.props.timerValue}</p>
+            </Col>
+          </Row>
       </Modal.Body>
+
+      <Modal.Footer>
+        <h1>Total:</h1>
+      </Modal.Footer>
       <Modal.Footer>
         <Button onClick={this.props.onHide}>Close</Button>
       </Modal.Footer>
@@ -41,4 +64,4 @@ class InvoiceModalOne extends Component {
 
 }
 
-export default InvoiceModalOne;
+export default InvoiceModal;

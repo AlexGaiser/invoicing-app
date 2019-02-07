@@ -1,0 +1,24 @@
+#modal-title{
+    font-size: 36pt;
+    font-weight: 700;
+    /* text-align:center;
+    margin:0 auto; */
+}
+#multiply{
+    text-align: right;
+}
+
+#modal-name{
+    font-size: 20pt;
+    font-weight: 700;
+}
+.modal-description{
+    font-size: 14pt;
+    font-weight: 300; 
+}
+
+.description-bold{
+    font-weight: 500;
+    font-size: 15pt;
+
+}
