@@ -13,3 +13,9 @@
 .AboutSection p{
   color: #ededed;
 }
+
+.AboutSection .about-text-one{
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
