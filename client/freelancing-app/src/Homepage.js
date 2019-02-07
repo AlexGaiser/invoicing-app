@@ -21,12 +21,15 @@ import './App.css';
 class Homepage extends Component{
     constructor(){
         super()
+
         }
 
     render(){
         return(
           <React.Fragment>
-            {/* <Header /> */}
+
+
+          <React.Fragment>
 
             <Router>
             <React.Fragment>
@@ -36,13 +39,17 @@ class Homepage extends Component{
               {/*<Link to="InvoiceGenerator">Invoice Generator</Link>*/}
 
               {/* <a href ='./user.html'>User Invoices</a> */}
-              
-              <Route path='/Header' component={ Header } />
+
+              <Route exact path='/' component={ Header } />
               <Route path='/userProfile' component={ User } />
               <Route path='/InvoiceGenerator' component={ App } />
 
             </React.Fragment>
+
           </Router>
+
+          </React.Fragment>
+
           </React.Fragment>
 
         )

@@ -3,6 +3,7 @@ import './Main-styles.css'
 import jspdf from 'jspdf'
 
 import moment from 'moment';
+import Axios from 'axios';
 
 class InvoiceForm extends Component {
     constructor(props) {
@@ -12,41 +13,58 @@ class InvoiceForm extends Component {
           }
         }
 
-    calculateEarnings= ()=>{
-        this.setState({earnings:this.props.timerValue?  this.props.timerValue.seconds * parseInt(this.props.rate) : '0.00'})
-    }
+    componentDidMount= ()=>{
+            this.fetchUserInfo()
+            const start= setInterval(this.calculateEarnings,500)
+            this.setState({interval:start})
+        }
 
     submitForm=(event)=>{
-
         console.log();
         event.preventDefault()
-        const data = {
+        const invoice = {
+
+            // Need to add Client Email, User Email, User Phone Number, User Address
 
 
-            // Need to add Client Email, User Email, User Phone Number, User Address 
-            total_amount:this.state.earnings +this.state.extra_fees, //+extra_fees 
-            hourly_earnings:this.state.earnings,
-            rate:this.props.rate,
-            title: this.props.jobtitle,
-            client_name:this.props.name,
-            user_name:this.props.name,// pull from userprofile in database
-            description:this.props.comments,
-            extra_details:'info for extra details goes here',// new text field for extra details
-            extra_fees:300,// extra fees need an input field and they can be added to the "total_amount"
-            date: '2019-01-01 00:00:00-05',// Need a dynamic date /time to be logged
+            // Job Information
+            title: this.state.jobtitle,
+            invoice_number: this.state.invoice_number,
+            // date: ,
+            description:this.state.description,
+            extra_details: this.state.extra_details,
             logged_time: moment().format('hh:mm:ss a'),
-            user_id:localStorage.getItem('id')
+            //Billing Information
+
+            billable_hours: this.state.billable_hours,
+            rate:this.state.rate,
+            hourly_earnings:this.state.earnings,
+            extra_fees:300,// extra fees need an input field and they can be added to the "total_amount"
+            total_amount:this.state.total_amount, //+extra_fees
+            // client information
+            client_name:this.state.client_name,
+            client_email: this.state.client_email,
+            client_phone: parseInt(this.state.client_phone),
+            client_address:this.state.client_address,
+            client_city:this.state.client_city,
+            client_zip: this.state.client_zip,
+
+            // user information
+            business_name:this.state.business_name,
+
         }
+
         // let doc = new jspdf({
         //     orientation: 'landscape',
         //     unit: 'in',
         //     format: [4, 2]
         //   })
+
         const doc = new jspdf()
 
         const printPdf = ()=>{
             doc.setFontSize(13);
-            doc.text(15,20,`This is place holder for username`);
+            doc.text(15,20,`${invoice.business_name}`);
 
             doc.setFontSize(13);
             doc.text(15,27,`This is place holder for  useraddress`);
@@ -55,50 +73,59 @@ class InvoiceForm extends Component {
             doc.text(15,34,`This is place holder for phone and email`);
 
             doc.setFontSize(35);
-            doc.text(11,57, ` ${data.title}`);
+            doc.text(11,57, ` ${invoice.title}`);
 
             doc.setFontSize(10);
-            doc.text(175,20,`Invoice ID: 1`);
+            doc.text(175,20,`${invoice.invoice_number}`);
             //line
             doc.line(200,63,15,63)
 
             doc.setFontSize(10);
-            doc.text(15,68,`DATE: ${data.date}`);
+            doc.text(15,68,`DATE: {data.date}`);
 
             doc.setFontSize(20);
             doc.text(15,82,`For:`);
 
-            doc.setFontSize(12);
-            doc.text(15,120,`Description: ${data.description}`);
+            doc.setFontSize(20);
+            doc.text(15,120,`Description:`);
+
+
+            const splitTitle = doc.splitTextToSize(` ${invoice.description}`, 280);
+            doc.setFontSize(13);
+            doc.text(15, 130, splitTitle);
+            // doc.text(15,120,`Description: ${data.description}`);
 
             doc.setFontSize(13);
-            doc.text(15,90,`Placeholder for clientname`);
+            doc.text(15,90,`${invoice.client_name}`);
 
             doc.setFontSize(13);
-            doc.text(15,97,`Placeholder for client  phone and email`);
+            doc.text(15,97,`${invoice.client_email} ${invoice.client_phone}`);
 
             doc.setFontSize(13);
-            doc.text(15,104,`Placeholder for client address`);
+            doc.text(15,104,`${invoice.client_address} ${invoice.client_city} ${invoice.client_zip}`);
             //line
 
             doc.setFontSize(15);
-            doc.text(15,190,`${data.extra_details}`);
+            doc.text(15,190,`${invoice.extra_details}`);
 
             doc.setFontSize(15);
-            doc.text(130,190,`Rate: placeholder `);
+            doc.text(130,190,`Rate: $${invoice.rate}.00 `);
 
             doc.setFontSize(15);
-            doc.text(130,200,`Time Logged: placeholder`);
+            doc.text(130,200,`Time Logged: ${invoice.logged_time}`);
 
             //line
-            doc.line(200,220,20,220)
+            doc.line(200,212,20,212)
 
             doc.setFontSize(18);
             doc.text(115,240,`Total Amount:`);
-            
+
             doc.setFontSize(20);
-            doc.text(170,240,`$3000`);
+            doc.text(170,240,`$${invoice.total_amount}.00`);
             
+
+
+
             doc.save('invoicepdf.pdf')
         }
 
@@ -106,7 +133,8 @@ class InvoiceForm extends Component {
 
 
 
-        this.props.sendData(data)
+        this.props.sendData(invoice)
+        alert('data sent')
 
 
         // clearInterval(this.state.interval)
@@ -117,34 +145,135 @@ class InvoiceForm extends Component {
         headers:{'Authorization':  "bearer " +token}
         }
         localStorage.setItem('authorization', header)
-    }
-
-    componentDidMount=()=>{
-
-        const start= setInterval(this.calculateEarnings,500)
-        this.setState({interval:start})
+        return header
     }
 
 
 
+    fetchUserInfo = async ()=>{
+        const header = this.createAuthHeader()
+        const user = localStorage.getItem('id')
+        const response = await Axios.get(`/users/${user}`,header)
+        console.log(response.data)
 
+        this.setState({userInfo:response.data})
+    }
+
+
+    calculateEarnings= ()=>{
+        const billable_hours = this.props.timerValue ? this.props.timerValue.seconds/3600 : 0
+        console.log(billable_hours)
+        const earnings = billable_hours* parseInt(this.state.rate)
+        this.setState({
+            billable_hours: billable_hours,
+            earnings: earnings,
+            total_amount: parseInt( earnings) + parseInt(this.state.extra_fees)})
+        }
+
+    handleChange = event => {
+        const { name, value } = event.target;
+        this.setState({ [name]: value });
+        this.updateInvoiceData()
+    };
+
+    updateInvoiceData =()=>{
+        const invoice = {
+            // Need to add Client Email, User Email, User Phone Number, User Address
+
+
+            // Job Information
+            title: this.state.jobtitle,
+            invoice_number: this.state.invoice_number,
+            date: moment(),
+            description:this.state.description,
+            extra_details: this.state.extra_details,
+            logged_time: moment().format('hh:mm:ss a'),
+            //Billing Information
+
+            billable_hours: this.state.billable_hours,
+            rate:this.state.rate,
+            hourly_earnings:this.state.earnings,
+            extra_fees:300,// extra fees need an input field and they can be added to the "total_amount"
+            total_amount:this.state.total_amount, //+extra_fees
+            // client information
+            client_name:this.state.name,
+            client_email: this.state.client_email,
+            client_phone: this.state.client_phone,
+            client_address:this.state.client_address,
+            client_city:this.state.client_city,
+            client_zip: parseInt(this.state.client_zip),
+
+        }
+        this.props.liftState(invoice)
+
+    }
     // this.props.liftState(this.state.object)
     render() {
         return (
             <React.Fragment>
               <div className="app-txt-wrap">
-                <h3>{this.props.name}</h3>
-                <h1>{this.props.jobtitle}</h1>
-                <h3>{this.props.rate}</h3>
-                <h4>{this.props.comments}</h4>
+                <h3>{this.state.name}</h3>
+                <h1>{this.state.jobtitle}</h1>
+                <h3>{this.state.rate}</h3>
+                 <h4>{this.state.comments}</h4>
               </div>
 
                 <form className="form-group" onSubmit={this.submitForm}>
-                    <input className="form-control mb-2 input-lg" name='jobtitle' type="text" placeholder="enter job" onChange={this.props.handleChange}/>
-                    <input className="form-control mb-2 input-lg" name='rate' type="text" placeholder="enter rate" onChange={this.props.handleChange}/>
-                    <input className="form-control mb-2 input-lg" name='name' type="text" placeholder="enter name" onChange={this.props.handleChange}/>
-                    <textarea className="form-control input-lg" name='comments' placeholder='enter comments' onChange={this.props.handleChange}/>
+                    {/*client information  */}
+                    <h4>Client Information</h4>
+                    <div class="form-group">
+                    <label for="exampleDropdownFormEmail2">Name</label>
+                      <input className="form-control mb-2 input-lg" name='client_name' type="text" placeholder="Client Name" onChange={this.handleChange}/>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleDropdownFormEmail2">Email</label>
+                      <input className="form-control mb-2 input-lg" name='client_email' type="text" placeholder="example@business.com" onChange={this.handleChange}/>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleDropdownFormEmail2">Phone Number</label>
+                      <input className="form-control mb-2 input-lg" name='client_phone' type="text" placeholder="Client Phone Number" onChange={this.handleChange}/>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleDropdownFormEmail2">City</label>
+                      <input className="form-control mb-2 input-lg" name='client_city' type="text" placeholder="Client City" onChange={this.handleChange}/>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleDropdownFormEmail2">Address</label>
+                      <input className="form-control mb-2 input-lg" name='client_address' type="text" placeholder="Client Address" onChange={this.handleChange}/>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleDropdownFormEmail2">Client Zipcode</label>
+                      <input className="form-control mb-2 input-lg" name='client_zip' type="text" placeholder="Client Zip Code" onChange={this.handleChange}/>
+                    </div>
+
+
+                    {/* job information  */}
+                    <div class="form-group">
+                    <h4>Job Information</h4>
+                      <label for="exampleDropdownFormEmail2">Title</label>
+                      <input className="form-control mb-2 input-lg" name='jobtitle' type="text" placeholder="Invoice Title" onChange={this.handleChange}/>
+                      <label for="exampleDropdownFormEmail2">Name</label>
+                      <input className="form-control mb-2 input-lg" name='name' type="text" placeholder="Name" onChange={this.handleChange}/>
+                      <label for="exampleDropdownFormEmail2">Description</label>
+                      <textarea className="form-control input-lg" name='description' placeholder='Description' onChange={this.handleChange}/>
+                      <label for="exampleDropdownFormEmail2">Extra Details</label>
+                      <textarea className="form-control input-lg" name='extra_details' placeholder='Extra Details' onChange={this.handleChange}/>
+                    </div>
+
+                   {/* Bill information */}
+                   <div class="form-group">
+                    <h4>Billing Information</h4>
+                    <label for="exampleDropdownFormEmail2">Rate</label>
+                    <input className="form-control mb-2 input-lg" name='rate' type="text" placeholder="Rate" onChange={this.handleChange}/>
+                    <label for="exampleDropdownFormEmail2">Extra Fees</label>
+                    <input className="form-control mb-2 input-lg" name='extra_fees' type="text" placeholder="Extra Fees" onChange={this.handleChange}/>
+                    <label for="exampleDropdownFormEmail2">Invoice No.</label>
+                    <input className="form-control mb-2 input-lg" name='invoice_number' type="text" placeholder="InvoiceNo." onChange={this.handleChange}/>
+                  </div>
+
+
                     <h1 className="f-white" >{`$${this.state.earnings}`}</h1>
+                    <h1 className="f-white" >{`$${this.state.total_amount}`}</h1>
                     <button className="btn btn-success btn-lg btn-block">Submit</button>
 
                 </form>

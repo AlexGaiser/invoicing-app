@@ -32,7 +32,7 @@ const Header = (props) => {
             Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic, you know how you can tell who the arch-villain's going to be?
           </p>
 
-            <button type="button" class="btn btn-lg btn-outline-light">Learn More</button>
+            <button type="button" class="btn btn-outline-light">Learn More</button>
 
         </Jumbotron>
         <AboutSection />

@@ -20,7 +20,7 @@ const main = async () =>{
     password: 'password123',
     user_email: 'Kwalex.json@gmail.com',
     user_phone: '3472223231',
-    user_street: '1223 Fake st',
+    user_address: '1223 Fake st',
     user_city:'Falseberg',
     user_zip:'12345'
   });
@@ -32,7 +32,7 @@ const main = async () =>{
       password:'password',
       user_email: 'Kwalex.json@gmail.com',
       user_phone: '5555555555',
-      user_street: '1344 Fake ave.',
+      user_address: '1344 Fake ave.',
       user_city:'Notaplace',
       user_zip:'54321'
   })
@@ -44,7 +44,7 @@ const main = async () =>{
     client_name: 'Google',
     client_email: 'Google@gmail.com',
     client_phone: '2123336543',
-    client_street: '1344 Fake ave.',
+    client_address: '1344 Fake ave.',
     client_city:'Notaplace',
     client_zip:'54321'
   });
@@ -69,7 +69,7 @@ const main = async () =>{
     client_name: 'Google',
     client_email: 'Google@gmail.com',
     client_phone: '2123336543',
-    client_street: '1344 Fake ave.',
+    client_address: '1344 Fake ave.',
     client_city:'Notaplace',
     client_zip:'54321'
   });

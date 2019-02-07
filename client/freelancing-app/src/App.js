@@ -11,6 +11,7 @@ import Axios from 'axios'
 import logo from './logo.svg';
 import './App.css';
 import MyModalWithGrid from './InvoiceModal/InvoiceModal'
+import RegistrationModal from './RegistrationModal/RegistrationModal'
 import Modal from 'react-bootstrap/Modal'
 
 import {
@@ -51,7 +52,7 @@ class App extends Component {
         }
       };
     }
-   
+
 
   componentDidMount = async () => {
     // localStorage.setItem('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJKYXNvbkdhaXNlciIsIm5hbWUiOiJKYXNvbiBHYWlzZXIiLCJpYXQiOjE1NDk0MTUxMzh9.4sjp6RsuacvigP8ULSzD2m-Z26WVqsx7yaw2ir2M7iM');
@@ -113,12 +114,17 @@ class App extends Component {
     // }
     const header = this.createAuthHeader()
     // localStorage.setItem('authorization', header)
-    await Axios.post('/records', data, header)
-    }
+    const response =  await Axios.post('/records', data, header)
+    console.log(response.data);
+  
+  }
     
 
-  liftState = (name, state) => {
-    this.setState({ [name]: state });
+
+  liftState = (invoice, user) => {
+      this.setState({
+        invoiceData: invoice,
+        userInvoice:user})
   };
 
   render() {
@@ -154,10 +160,6 @@ class App extends Component {
                   <InvoiceForm
                     timerValue={this.state.timerValue}
                     liftState={this.liftState}
-                    jobtitle={this.state.jobtitle}
-                    rate={this.state.rate}
-                    name={this.state.name}
-                    comments={this.state.comments}
                     handleChange={this.handleChange}
                     sendData={this.sendData}
                   />
@@ -168,9 +170,13 @@ class App extends Component {
           <Button variant="primary"
                   onClick={() => this.setState({ modalShow:true })}
                 >
-                Click Here to see Modal!
+                Click Here to preview!
                 </Button>
+
                 <MyModalWithGrid 
+                invoiceData={this.state.invoiceData}
+                
+
                 timerValue={this.state.timerValue}
                 liftState={this.liftState}
                 jobtitle={this.state.jobtitle}
@@ -179,6 +185,7 @@ class App extends Component {
                 comments={this.state.comments}
                 handleChange={this.handleChange}
                 sendData={this.sendData}
+
                 show={this.state.modalShow} onHide={modalClose} />
 
         </header>

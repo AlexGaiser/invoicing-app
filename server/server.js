@@ -83,7 +83,7 @@ app.post('/records',
     try{
         const newInvoice = await Invoice.create(req.body)
         res.json({newInvoice})
-        console.log('success')
+        console.log('success=======================================================>')
     }
     catch(e){
         res.status({
