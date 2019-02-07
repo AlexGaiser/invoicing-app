@@ -33,6 +33,7 @@ app.get('/main', async (req, res)=>{
 })
 
 // setting routes for records directory
+// these routes maybe should be merged with invoices
 app.get('/records',
     passport.authenticate('jwt', {session:false}),
     async (req,res)=>{
@@ -85,19 +86,11 @@ app.post('/records',
     }
 })
 
-app.put('/records', 
-    passport.authenticate('jwt', {session:false}),
-    
-    async (req,res)=>{
-    try{
-        res.send({"message":"record updated"})
-    }
-    catch(e){
-        res.json({"message":e.message})
-    }
-})
+
 
 // setting routes for users
+//| ---------------------------------------------------|
+
 app.get('/users', 
     passport.authenticate('jwt', {session:false}),
     
@@ -155,6 +148,8 @@ app.get('/users/:id',
     }
 })
 
+// routes for invoices
+//| ---------------------------------------------------|
 app.get('/invoice/:id',
     passport.authenticate('jwt', {session:false}),
     async (req,res)=>{
@@ -169,6 +164,27 @@ app.get('/invoice/:id',
                 "route":"/invoice"       })
         }
     })
+
+app.put('/invoice/:id', 
+    passport.authenticate('jwt', {session:false}),
+    
+    async (req,res)=>{
+    const invoiceId = req.params.id
+    try{
+        const editInvoice= await Invoice.findByPk(invoiceId)
+        
+        editInvoice.update(req.body)
+        
+        res.json({
+            "message":"record updated", 
+            editInvoice
+        })
+    }
+    catch(e){
+        res.json({"message":e.message})
+    }
+})
+
 app.delete('/invoice/:id', 
     passport.authenticate('jwt', {session:false}),
     async (req,res)=>{

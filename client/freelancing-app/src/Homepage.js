@@ -23,8 +23,6 @@ class Homepage extends Component{
         super()
         }
 
-
-
     render(){
         return(
           <React.Fragment>
