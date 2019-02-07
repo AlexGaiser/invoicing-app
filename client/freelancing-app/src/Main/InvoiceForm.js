@@ -21,6 +21,7 @@ class InvoiceForm extends Component {
         console.log();
         event.preventDefault()
         const data = {
+            // Need to add Client Email, User Email, User Phone Number, User Address 
             total_amount:this.state.earnings,
             rate:this.props.rate,
             title: this.props.jobtitle,
