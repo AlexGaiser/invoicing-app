@@ -58,7 +58,7 @@ const Invoice = db.define('invoice', {
         type: Sequelize.STRING
     },
     client_phone:{
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
     },
     client_address:{
         type: Sequelize.TEXT
