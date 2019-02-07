@@ -85,7 +85,7 @@ class InvoiceForm extends Component {
                     <input className="form-control mb-2 input-lg" name='name' type="text" placeholder="enter name" onChange={this.props.handleChange}/>
                     <textarea className="form-control input-lg" name='comments' placeholder='enter comments' onChange={this.props.handleChange}/>
                     <h1 className="f-white" >{`$${this.state.earnings}`}</h1>
-                    <button className="btn btn-primary btn-lg btn-block">Submit</button>
+                    <button className="btn btn-success btn-lg btn-block">Submit</button>
 
                 </form>
             </React.Fragment>
