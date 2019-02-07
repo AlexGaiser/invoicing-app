@@ -40,7 +40,11 @@ class InvoiceForm extends Component {
         const doc = new jspdf()
         
         const printPdf = ()=>{
-            doc.text(10,10, `title: ${data.title} | ${data.rate} | $${data.total_amount} |${data.name}`)
+            doc.setFontSize(30);
+            doc.text(20,40, `title: ${data.title}`);
+            doc.setFontSize(15);
+            doc.text(20,20,`Rate: ${data.rate}`);
+            
             doc.save('invoicepdf.pdf')
         }
         

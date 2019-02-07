@@ -11,13 +11,13 @@ const AboutSection = (props) => {
         <Row>
           <Col></Col>
           <Col xs={6} sm={6} md={12} lg={12}>
-            <h2 className="display-4 font-weight-bold text-center">About Section</h2>
+            <h2 className="display-4 font-weight-bold text-center">So whats the big deal?</h2>
           </Col>
           <Col></Col>
         </Row>
         <Row>
         <Col xs={12} sm={12} md={12} lg={12}>
-          <p className="lead text-center">He's the exact opposite of the hero. And most times they're friends, like you and me! I should've known way back when... You know why, David? Because of the kids. They called me Mr Glass.</p>
+          <p className="about-text-one lead text-center">He's the exact opposite of the hero. And most times they're friends, like you and me! I should've known way back when... You know why, David? Because of the kids. They called me Mr Glass.</p>
         </Col>
         </Row>
         <Row>

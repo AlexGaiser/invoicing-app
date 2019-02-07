@@ -71,6 +71,7 @@ class User extends Component {
     await Axios.delete(`/invoice/${invoice.id}`, header)
   }
 
+
   renderMainInvoice = async (invoice)=>{
     const header = this.createAuthHeader() 
     const response = await Axios.get(`/invoice/${invoice.id}`, header)
@@ -81,6 +82,7 @@ class User extends Component {
       invoiceClicked:true
     })  
       
+
   }
 
   
