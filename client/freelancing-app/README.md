@@ -97,18 +97,31 @@ Simply put, this app allows users to track their freelancing work invoices in a 
 | Invoice Form | User can create, edit invoice in sync with stopwatch. Populates end state of invoice proposal |
 | Rate Form | User can create or select rates per job/task and append that data to invoice table.
 | Main Invoice | All data submitted creates a proposal invoice. User can edit/delete.
-| |
+| Comment Form | User/Client can leave comments with each invoice or task. |
+| User Login | User Can Register and Create Login to access web app.
+| Dynamic Modal | Modal populates with Invoice Preview before confirming
+| Invoice PDF | PDF is generated and can be downloaded
+| User Profile | User Can Now create a profile
 
-#### SAMPLE.....
+## Component Timeline
 | Component | Priority | Estimated Time | Actual Time |
 | --- | :---: |  :---: | :---: |
-| API Data Render | H | 6hrs| 12.5hrs |
-| API Data Sorting | H | 3hrs| 8hrs |
-| API Data Sorting | H | 3hrs| 8hrs |
-| Total | H | 6hrs| 5hrs |
+| Stopwatch | H | 5hrs | 4hrs |
+| Invoice Form | H | 4hrs | 10hrs |
+| Rate Form | H | 5hrs| 6hrs |
+| Comment Field | L | 3hrs | 2hrs |
+| User Profile | H | 8hrs | 5hrs |
+| Invoice Delete | H | 3hrs | 3hrs |
+| User Login | L | 3hrs | 3hrs |
+| User Authentication | L | 6hrs | 5hrs |
+| Dynamic Modal | L | 2hrs | 4hrs |
+| PDF Creation | L | 3hrs | 2hrs |
+| Content Layout | L | 10hrs | In Progress |
+| App Styles | L | 10hrs | In Progress |
+| Total | ---- | 42hrs| 44hrs |
 
 ## Helper Functions
-Helper functions should be generic enought that they can be reused in other applications. Use this section to document all helper functions that fall into this category.
+TBD
 
 #### SAMPLE.....
 | Function | Description |
@@ -116,23 +129,59 @@ Helper functions should be generic enought that they can be reused in other appl
 | Capitalize | This will capitalize the first letter in a string of text |
 
 ## Additional Libraries
- Use this section to list all supporting libraries and thier role in the project.
+ A list of all supporting libraries and thier role in the project.
 
 | Library | What it Does |
 | --- | :---: |  
-| Bootstrap | Used to help style my application |
-| Giphy API | Used to get gifs to use |
+| Bootstrap | Used to help with base style and style reset |
+| ReactStrap | bootstrap element integration with React |
+| Node js | . |
+| nodemon | . |
+| Sequelize | . |
+| pg | . |
+| Express | . |
+| React | . |
+| Sequelize | . |
+| body-parser | . |
+| axios | . |
+| express-route | . |
+
 
 
 ## Code Snippet
 
-Use this section to include a brief code snippet of functionality that you are proud of an a brief description  
+Snippets of code we are most proud of within the app front and end backend using React.
 
-#### SAMPLE.....
+#### Bootstrap w/ React Dropdown to Populate Input field
 ```
-function reverse(string) {
-	// here is the code to reverse a string of text
-}
+
+this.toggleDropDown = this.toggleDropDown.bind(this);
+this.toggleSplit = this.toggleSplit.bind(this);
+    this.state = {
+      dropdownOpen: false,
+      splitButtonOpen: false,
+      dropdownClick:null,
+      inputValue:" "
+    };
+
+toggleDropDown(evt) {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen,
+      dropdownClick: evt.target.value, //event dropdown click
+      inputValue: evt.target.value
+    });
+  }
+
+<InputGroup>
+   <Input value={this.state.inputValue}/>
+   <InputGroupButtonDropdown componentClass="select" placeholder="Select Rate" addonType="append" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>
+       <DropdownMenu>
+           <DropdownItem header>Rates</DropdownItem>
+           <DropdownItem value="20.00">$20.00</DropdownItem>
+           <DropdownItem value="40.00">$40.00</DropdownItem>
+       </DropdownMenu>
+  </InputGroupButtonDropdown>
+</InputGroup>
 ```
 
 ## Change Log
