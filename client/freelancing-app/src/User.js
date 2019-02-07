@@ -33,7 +33,7 @@ class User extends Component {
   }
 
   getData = async()=>{
-      const header = this.createAuthHeader()
+    const header = this.createAuthHeader()
 
       const response = await Axios.get(`/records/${localStorage.getItem('id')}`, header)
  
@@ -59,6 +59,7 @@ class User extends Component {
   renderMainInvoice = async (invoice)=>{
     const header = this.createAuthHeader()
     
+
     const response = await Axios.get(`/records/${invoice.id}`, header)
     console.log(response.data.user)
     const userInfo = response.data.userInfo
@@ -68,19 +69,20 @@ class User extends Component {
         //   id={invoice.id}
           />
   }
-
-
   
-
   render() { 
       return ( 
         <div className="farthest-user-background">
         <div className="half-background">
           <div className="user-background">
             <div className="user-page-wrapper">
-                <ListContainer 
-                    listItems={this.state.listItems}
-                />
+                <div>
+                    <h1 className= "your-invoices">Your Invoices</h1>
+                    <ListContainer 
+                        listItems={this.state.listItems}
+                        deleteData={this.deleteData}
+                    />
+                </div>
                 <MainInvoice />
             </div>
           </div>
