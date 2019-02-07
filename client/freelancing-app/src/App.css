@@ -290,7 +290,7 @@ color:rgba(0,0,0,0.45)
   margin-left:5%;
   margin-top:3%;
   padding:3%;
-  color:black;
+  color:rgba(0,0,0,0.8);
   border-radius: 15px 0 0 0;
   box-shadow: 3px 3px 20px 3px rgba(0,0,0,0.3);
 }
@@ -301,9 +301,7 @@ color:rgba(0,0,0,0.45)
   }
 
 }
-.main-details{
-  color:black !important;
-}
+
 .main-heading{
   display:flex;
   justify-content: space-between;
@@ -312,6 +310,7 @@ color:rgba(0,0,0,0.45)
   font-weight: 650;
   font-size: 30pt;
   color:rgba(0,0,0,0.8) !important;
+  padding-bottom: 35px;
 }
 .main-id{
   font-weight: 300;
@@ -321,6 +320,8 @@ color:rgba(0,0,0,0.45)
 .main-date{
   font-weight: 400;
   font-size: 15pt;
+  padding-left: 10px;
+  text-align: right;
 }
 .main-line-1{
   width:95%;
@@ -328,8 +329,42 @@ color:rgba(0,0,0,0.45)
   height:1px;
   background-color: black;
 }
-.main-description{}
 
+.desc-word{
+  font-weight: 600; 
+}
+.main-description{
+  padding-top:20px;
+  padding-left: 10px;
+  /* padding-right: 10px; */
+  font-size: 16pt;
+  font-weight: 300;
+}
+
+.main-details{
+  padding-top:20px;
+  padding-left: 10px;
+  color:black !important;
+  font-size: 16pt;
+  font-weight: 300;
+  padding-bottom:35px;
+}
+.main-time{
+  text-align: right;
+  font-weight: 800;
+  font-size: 16pt;
+  padding-right: 10px;
+}
+
+.main-total{
+  font-weight: 800;
+  text-align: right;
+  padding-top: 30px;
+}
+
+.details-word{
+  font-weight: 600;
+}
 .user-background{
   background-color:white;
   width:87vw;

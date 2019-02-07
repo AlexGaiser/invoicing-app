@@ -33,6 +33,7 @@ app.get('/main', async (req, res)=>{
 })
 
 // setting routes for records directory
+// these routes maybe should be merged with invoices
 app.get('/records',
     passport.authenticate('jwt', {session:false}),
     async (req,res)=>{
@@ -85,19 +86,11 @@ app.post('/records',
     }
 })
 
-app.put('/records', 
-    passport.authenticate('jwt', {session:false}),
-    
-    async (req,res)=>{
-    try{
-        res.send({"message":"record updated"})
-    }
-    catch(e){
-        res.json({"message":e.message})
-    }
-})
+
 
 // setting routes for users
+//| ---------------------------------------------------|
+
 app.get('/users', 
     passport.authenticate('jwt', {session:false}),
     
@@ -149,12 +142,13 @@ app.get('/users/:id',
             userInfo
         })
     }
-   
     catch(e){
         res.json({"message":e.message})
     }
 })
 
+// routes for invoices
+//| ---------------------------------------------------|
 app.get('/invoice/:id',
     passport.authenticate('jwt', {session:false}),
     async (req,res)=>{
@@ -169,6 +163,27 @@ app.get('/invoice/:id',
                 "route":"/invoice"       })
         }
     })
+
+app.put('/invoice/:id', 
+    passport.authenticate('jwt', {session:false}),
+    
+    async (req,res)=>{
+    const invoiceId = req.params.id
+    try{
+        const editInvoice= await Invoice.findByPk(invoiceId)
+        
+        editInvoice.update(req.body)
+        
+        res.json({
+            "message":"record updated", 
+            editInvoice
+        })
+    }
+    catch(e){
+        res.json({"message":e.message})
+    }
+})
+
 app.delete('/invoice/:id', 
     passport.authenticate('jwt', {session:false}),
     async (req,res)=>{
@@ -186,6 +201,24 @@ app.delete('/invoice/:id',
         })  
     }
 })
+
+// app.get('/clients/:name', async (req,res)=>{
+//     const name = req.params.name.split('_').join(' ')
+//     console.log(name)
+//     try{
+//         const client = await Client.findOne({
+//             where: {client_name: name}
+//         })
+//         res.json(client)
+//     }
+//     catch(e){
+//         res.json({
+//             "message": e.message,
+//             "route":"/clients/"
+//         })  
+//     }
+// })
+
 
 app.post('/login',     
     async (req,res)=>{
