@@ -9,7 +9,7 @@ class InvoiceForm extends Component {
         super(props);
         this.state = {earnings: 0.00,
 
-            ocupation:'coolguy'}
+          }
         }
 
     calculateEarnings= ()=>{
@@ -44,7 +44,7 @@ class InvoiceForm extends Component {
             doc.text(20,40, `title: ${data.title}`);
             doc.setFontSize(15);
             doc.text(20,20,`Rate: ${data.rate}`);
-            
+
             doc.save('invoicepdf.pdf')
         }
 
