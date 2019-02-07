@@ -1,0 +1,18 @@
+{
+  "name": "p3-invoice-app",
+  "version": "1.0.0",
+  "description": "Imagine being able to dynamically track your task/job time from a starting timestamp to an end timestamp with notes commited to each timestamp. Now with your task or job completed, the backend will render an invoice containing properties and notes inputted by the user. Simply put, this app allows users to track their freelancing work invoices in a quick, easy and comprehensive way. ##### Developed & Designed by Jason, Alex, and Kwadwo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": " cd ./server && npm install && node server.js",
+    "heroku-postbuild": " cd ./client/freelancing-app && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.generalassemb.ly/addoasa/p3-invoice-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -10,12 +10,18 @@ const bodyParser = require('body-parser');
 
 const { Invoice, User, Client } = require('./models')
 
+
 app.use(bodyParser.json())
 app.use(logger('dev'))
+app.use(express.static("../client/freelancing-app/build/"));
 
+const path = require('path')
 
 // establishing port that server will run on
 const PORT = process.env.PORT || 9000
+
+
+
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}!`))
 
@@ -244,3 +250,9 @@ app.post('/login',
         })
     }
 })
+
+if (process.env.NODE_ENV == "production") {
+    app.get("/*", function(request, response) {
+      response.sendFile(path.join(__dirname, "build", "index.html"));
+    });
+  }
