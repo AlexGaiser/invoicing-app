@@ -21,7 +21,7 @@ class InvoiceForm extends Component {
         console.log();
         event.preventDefault()
         const data = {
-            // Need to add Client Email, User Email, User Phone Number, User Address 
+            // Need to add Client Email, User Email, User Phone Number, User Address
             total_amount:this.state.earnings,
             rate:this.props.rate,
             title: this.props.jobtitle,
@@ -79,10 +79,12 @@ class InvoiceForm extends Component {
     render() {
         return (
             <React.Fragment>
+              <div className="app-txt-wrap">
                 <h3>{this.props.name}</h3>
                 <h1>{this.props.jobtitle}</h1>
                 <h3>{this.props.rate}</h3>
-                 <h4>{this.props.comments}</h4>
+                <h4>{this.props.comments}</h4>
+              </div>
 
                 <form className="form-group" onSubmit={this.submitForm}>
                     <input className="form-control mb-2 input-lg" name='jobtitle' type="text" placeholder="enter job" onChange={this.props.handleChange}/>
