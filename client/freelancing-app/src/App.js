@@ -114,12 +114,17 @@ class App extends Component {
     // }
     const header = this.createAuthHeader()
     // localStorage.setItem('authorization', header)
-    await Axios.post('/records', data, header)
-    }
+    const response =  await Axios.post('/records', data, header)
+    console.log(response.data);
+  
+  }
+    
 
 
-  liftState = (name, state) => {
-    this.setState({ [name]: state });
+  liftState = (invoice, user) => {
+      this.setState({
+        invoiceData: invoice,
+        userInvoice:user})
   };
 
   render() {
@@ -155,10 +160,6 @@ class App extends Component {
                   <InvoiceForm
                     timerValue={this.state.timerValue}
                     liftState={this.liftState}
-                    jobtitle={this.state.jobtitle}
-                    rate={this.state.rate}
-                    name={this.state.name}
-                    comments={this.state.comments}
                     handleChange={this.handleChange}
                     sendData={this.sendData}
                   />
@@ -171,7 +172,11 @@ class App extends Component {
                 >
                 Click Here to see Modal!
                 </Button>
-                <MyModalWithGrid
+
+                <MyModalWithGrid 
+                invoiceData={this.state.invoiceData}
+                
+
                 timerValue={this.state.timerValue}
                 liftState={this.liftState}
                 jobtitle={this.state.jobtitle}
@@ -180,6 +185,7 @@ class App extends Component {
                 comments={this.state.comments}
                 handleChange={this.handleChange}
                 sendData={this.sendData}
+
                 show={this.state.modalShow} onHide={modalClose} />
 
         </header>
