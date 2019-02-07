@@ -23,6 +23,7 @@ import Axios from 'axios';
                       <h2 className = "item-date">Date submitted: {props.invoice.date}</h2>
                     <div className="edit-container"><div className ="item-edit-btn" onClick={props.updateInvoice}></div></div>
                     <div className="delete-container"><div className ="item-delete-btn" onClick={props.deleteInvoice}></div></div>
+
                   </div>	
         </div>)
     }

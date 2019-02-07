@@ -30,7 +30,7 @@ class InvoiceModal extends Component {
         </Modal.Title>
       </Modal.Header>
       <Modal.Header>
-        <Modal.Title id="modal-name">
+        <Modal.Title >
         <h1 id="modal-name">{this.props.name}</h1> 
         </Modal.Title>
       </Modal.Header>

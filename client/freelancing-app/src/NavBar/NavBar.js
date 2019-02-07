@@ -20,11 +20,11 @@ const NavBar = (props) => {
 
       <React.Fragment>
           <Navbar bg="light" expand="lg" sticky='top'>
-            <Navbar.Brand href="/">InvoiceApp</Navbar.Brand>
+            <Navbar.Brand href="Header">InvoiceApp</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ml-auto">
-                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/Header">Home</Nav.Link>
                 <Nav.Link href="/userProfile">Profile</Nav.Link>
                 <Nav.Link href="/InvoiceGenerator">Invoice Generator</Nav.Link>
               </Nav>
