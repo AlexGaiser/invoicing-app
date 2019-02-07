@@ -73,7 +73,7 @@ class InvoiceForm extends Component {
             doc.text(15,34,`This is place holder for phone and email`);
 
             doc.setFontSize(35);
-            doc.text(11,57, ` ${data.title}`);
+            doc.text(11,57, ` {data.title}`);
 
             doc.setFontSize(10);
             doc.text(175,20,`Invoice ID: 1`);
@@ -81,7 +81,7 @@ class InvoiceForm extends Component {
             doc.line(200,63,15,63)
 
             doc.setFontSize(10);
-            doc.text(15,68,`DATE: ${data.date}`);
+            doc.text(15,68,`DATE: {data.date}`);
 
             doc.setFontSize(20);
             doc.text(15,82,`For:`);
@@ -90,29 +90,29 @@ class InvoiceForm extends Component {
             doc.text(15,120,`Description:`);
 
 
-            const splitTitle = doc.splitTextToSize(` Description: ${data.description}`, 280);
+            const splitTitle = doc.splitTextToSize(` ${invoice.description}`, 280);
             doc.setFontSize(13);
             doc.text(15, 130, splitTitle);
             // doc.text(15,120,`Description: ${data.description}`);
 
             doc.setFontSize(13);
-            doc.text(15,90,`Placeholder for clientname`);
+            doc.text(15,90,`${invoice.client_name}`);
 
             doc.setFontSize(13);
-            doc.text(15,97,`Placeholder for client  phone and email`);
+            doc.text(15,97,`${invoice.client_email} ${invoice.client_phone}`);
 
             doc.setFontSize(13);
-            doc.text(15,104,`Placeholder for client address`);
+            doc.text(15,104,`${invoice.client_address} ${invoice.client_city} ${invoice.client_zip}`);
             //line
 
             doc.setFontSize(15);
-            doc.text(15,190,`${data.extra_details}`);
+            doc.text(15,190,`{data.extra_details}`);
 
             doc.setFontSize(15);
-            doc.text(130,190,`Rate: placeholder `);
+            doc.text(130,190,`Rate: $${invoice.rate}.00 `);
 
             doc.setFontSize(15);
-            doc.text(130,200,`Time Logged: placeholder`);
+            doc.text(130,200,`Time Logged: ${invoice.logged_time}`);
 
             //line
             doc.line(200,212,20,212)
@@ -121,7 +121,7 @@ class InvoiceForm extends Component {
             doc.text(115,240,`Total Amount:`);
             
             doc.setFontSize(20);
-            doc.text(170,240,`$3000`);
+            doc.text(170,240,`$${invoice.total_amount}.00`);
             
             doc.save('invoicepdf.pdf')
         }
