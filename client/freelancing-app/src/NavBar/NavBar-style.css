@@ -1,0 +1,13 @@
+.cool-nav{
+  background-color: #5c68c5 !important;
+
+}
+
+.cool-nav > a, .navbar-nav a{
+    color: #ffffff !important;
+}
+
+.main-nav .dropdown-menu.show{
+  right: 0px !important;
+  min-width: 300px;
+}

@@ -23,6 +23,7 @@ class InvoiceForm extends Component {
         console.log();
         event.preventDefault()
         const invoice = {
+
             // Need to add Client Email, User Email, User Phone Number, User Address 
             
            
@@ -58,30 +59,75 @@ class InvoiceForm extends Component {
         //     unit: 'in',
         //     format: [4, 2]
         //   })
-        // const doc = new jspdf()
 
-        // const printPdf = ()=>{
-        //     doc.setFontSize(30);
-        //     doc.text(20,40, `title: ${invoice.title}`);
-        //     doc.setFontSize(15);
-        //     doc.text(20,20,`Rate: ${invoice.rate}`);
+        const doc = new jspdf()
 
-        //     doc.save('invoicepdf.pdf')
-        // }
+        const printPdf = ()=>{
+            doc.setFontSize(13);
+            doc.text(15,20,`This is place holder for username`);
 
-        // printPdf()
+            doc.setFontSize(13);
+            doc.text(15,27,`This is place holder for  useraddress`);
 
-        // const user={
-        //     userBusiness:this.state.userInfo.business_name,// pull from userprofile in database
-        //     UserName:this.state.userInfo.name,
-        //     userCity: this.state.userInfo.user_city,
-        //     userEmail: this.state.userInfo.user_email,
-        //     user_phone:this.state.userInfo.user_phone,
-        //     user_id:localStorage.getItem('id')
-        // }
+            doc.setFontSize(13);
+            doc.text(15,34,`This is place holder for phone and email`);
+
+            doc.setFontSize(35);
+            doc.text(11,57, ` ${data.title}`);
+
+            doc.setFontSize(10);
+            doc.text(175,20,`Invoice ID: 1`);
+            //line
+            doc.line(200,63,15,63)
+
+            doc.setFontSize(10);
+            doc.text(15,68,`DATE: ${data.date}`);
+
+            doc.setFontSize(20);
+            doc.text(15,82,`For:`);
+
+            doc.setFontSize(12);
+            doc.text(15,120,`Description: ${data.description}`);
+
+            doc.setFontSize(13);
+            doc.text(15,90,`Placeholder for clientname`);
+
+            doc.setFontSize(13);
+            doc.text(15,97,`Placeholder for client  phone and email`);
+
+            doc.setFontSize(13);
+            doc.text(15,104,`Placeholder for client address`);
+            //line
+
+            doc.setFontSize(15);
+            doc.text(15,190,`${data.extra_details}`);
+
+            doc.setFontSize(15);
+            doc.text(130,190,`Rate: placeholder `);
+
+            doc.setFontSize(15);
+            doc.text(130,200,`Time Logged: placeholder`);
+
+            //line
+            doc.line(200,212,20,212)
+
+            doc.setFontSize(18);
+            doc.text(115,240,`Total Amount:`);
+            
+            doc.setFontSize(20);
+            doc.text(170,240,`$3000`);
+            
+            doc.save('invoicepdf.pdf')
+        }
+
+        printPdf()
+
+
 
         this.props.sendData(invoice)
         alert('data sent')
+
+
         // clearInterval(this.state.interval)
     }
     createAuthHeader = ()=>{
@@ -156,10 +202,12 @@ class InvoiceForm extends Component {
     render() {
         return (
             <React.Fragment>
+              <div className="app-txt-wrap">
                 <h3>{this.state.name}</h3>
                 <h1>{this.state.jobtitle}</h1>
                 <h3>{this.state.rate}</h3>
                  <h4>{this.state.comments}</h4>
+              </div>
 
                 <form className="form-group" onSubmit={this.submitForm}>
                     {/*client information  */}
