@@ -60,7 +60,7 @@ class InvoiceForm extends Component {
             doc.setFontSize(10);
             doc.text(175,20,`Invoice ID: 1`);
             //line
-            doc.line(100,0,0,0)
+            doc.line(200,63,15,63)
 
             doc.setFontSize(10);
             doc.text(15,68,`DATE: ${data.date}`);
@@ -85,15 +85,19 @@ class InvoiceForm extends Component {
             doc.text(15,190,`${data.extra_details}`);
 
             doc.setFontSize(15);
-            doc.text(120,190,`Rate: placeholder `);
+            doc.text(130,190,`Rate: placeholder `);
 
             doc.setFontSize(15);
-            doc.text(120,200,`Time Worked: placeholder`);
+            doc.text(130,200,`Time Logged: placeholder`);
 
             //line
+            doc.line(200,212,20,212)
 
+            doc.setFontSize(18);
+            doc.text(115,240,`Total Amount:`);
+            
             doc.setFontSize(20);
-            doc.text(150,240,`Total Amount: $3000`);
+            doc.text(170,240,`$3000`);
             
             doc.save('invoicepdf.pdf')
         }
