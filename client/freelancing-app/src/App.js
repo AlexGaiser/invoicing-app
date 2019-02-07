@@ -170,7 +170,7 @@ class App extends Component {
           <Button variant="primary"
                   onClick={() => this.setState({ modalShow:true })}
                 >
-                Click Here to see Modal!
+                Click Here to preview!
                 </Button>
 
                 <MyModalWithGrid 
