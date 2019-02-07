@@ -67,9 +67,15 @@ class InvoiceForm extends Component {
 
             doc.setFontSize(20);
             doc.text(15,82,`For:`);
+            
+            doc.setFontSize(20);
+            doc.text(15,120,`Description:`);
 
-            doc.setFontSize(12);
-            doc.text(15,120,`Description: ${data.description}`);
+
+            const splitTitle = doc.splitTextToSize(` Description: ${data.description}`, 280);
+            doc.setFontSize(13);
+            doc.text(15, 130, splitTitle);
+            // doc.text(15,120,`Description: ${data.description}`);
 
             doc.setFontSize(13);
             doc.text(15,90,`Placeholder for clientname`);
