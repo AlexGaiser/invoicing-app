@@ -11,6 +11,7 @@ import Axios from 'axios'
 import logo from './logo.svg';
 import './App.css';
 import MyModalWithGrid from './InvoiceModal/InvoiceModal'
+import RegistrationModal from './RegistrationModal/RegistrationModal'
 import Modal from 'react-bootstrap/Modal'
 
 import {
@@ -51,7 +52,7 @@ class App extends Component {
         }
       };
     }
-   
+
 
   componentDidMount = async () => {
     // localStorage.setItem('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJKYXNvbkdhaXNlciIsIm5hbWUiOiJKYXNvbiBHYWlzZXIiLCJpYXQiOjE1NDk0MTUxMzh9.4sjp6RsuacvigP8ULSzD2m-Z26WVqsx7yaw2ir2M7iM');
@@ -115,7 +116,7 @@ class App extends Component {
     // localStorage.setItem('authorization', header)
     await Axios.post('/records', data, header)
     }
-    
+
 
   liftState = (name, state) => {
     this.setState({ [name]: state });
@@ -170,7 +171,7 @@ class App extends Component {
                 >
                 Click Here to see Modal!
                 </Button>
-                <MyModalWithGrid 
+                <MyModalWithGrid
                 timerValue={this.state.timerValue}
                 liftState={this.liftState}
                 jobtitle={this.state.jobtitle}
