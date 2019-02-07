@@ -131,7 +131,6 @@ html {
   padding-top: 2%;
   color:black !important;
   box-shadow: 3px 3px 2px 3px rgba(0,0,0,0.04);
-
 }
 
 .list-info{
@@ -181,29 +180,38 @@ color:rgba(0,0,0,0.45)
 .edit-container{
   height:23px;
   width:23px;
-  padding-top: 8%;
+  /* padding-top: 8%; */
+  position:relative;
+
 
 }
 .delete-container{
   height:23px;
   width:23px;
-  padding-top: 8%;
+  position:absolute bottom;
+  /* padding-top: 8%; */
+  position:relative;
+
 }
 .item-edit-btn{
   background-image: url("./media/edit_icon.png");
   background-size: cover;
-  padding:2%;
+  /* padding:2%; */
   height:20px;
   width:20px;
   opacity: 0.2;
+  position:relative;
+
 }
 .item-delete-btn{
   background-image: url("./media/delete_icon.png");
   background-size: cover;
-  padding:2%;
+  /* padding:2%; */
   height:23px;
   width:23px;
   opacity: 0.2;
+  position:relative;
+
   /* border:solid rgba(0,0,0,0.9) 0.3pt; */
   /* border-radius: 2%; */
 }
