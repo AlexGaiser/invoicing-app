@@ -21,6 +21,7 @@ import './App.css';
 class Homepage extends Component{
     constructor(){
         super()
+
         }
 
 
@@ -38,7 +39,7 @@ class Homepage extends Component{
               {/*<Link to="InvoiceGenerator">Invoice Generator</Link>*/}
 
               {/* <a href ='./user.html'>User Invoices</a> */}
-              
+
               <Route path='/Header' component={ Header } />
               <Route path='/userProfile' component={ User } />
               <Route path='/InvoiceGenerator' component={ App } />
