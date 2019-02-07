@@ -113,7 +113,7 @@ class App extends Component {
     //   headers:{'Authorization':  "bearer " +token}
     // }
     const header = this.createAuthHeader()
-    localStorage.setItem('authorization', header)
+    // localStorage.setItem('authorization', header)
     await Axios.post('/records', data, header)
     }
 

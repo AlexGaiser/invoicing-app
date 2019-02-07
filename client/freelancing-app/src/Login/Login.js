@@ -74,7 +74,7 @@ class LoginPanel extends Component {
 
         <Form onSubmit={this.sendLoginInfo}inline className="login-form-wrap">
           <Form.Control name="username" type="text" placeholder="Username" className="mr-sm-2" onChange={this.handleChange}/>
-          <Form.Control name="password" type="text" placeholder="Password" className="mr-sm-2" onChange={this.handleChange}/>
+          <Form.Control name="password" type="password" placeholder="Password" className="mr-sm-2" onChange={this.handleChange}/>
           <button type="submit" className="btn btn-primary btn-block" variant="outline-success">LOGIN</button>
         </Form>
         <div class="dropdown-divider"></div>
