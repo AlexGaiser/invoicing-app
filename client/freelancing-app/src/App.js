@@ -36,7 +36,7 @@ class App extends Component {
       time: "00:00",
       root: "pending",
       button1: "",
-
+      invoiceData: 'invoicedata',
       invoices: "pending",
       button1: "",
       timerSet: false,
@@ -129,7 +129,7 @@ class App extends Component {
 
   render() {
     let modalClose = () => this.setState({modalShow:false});
-
+    console.log(this.state.invoiceData)
     return (
 
       <div className="App">
@@ -175,8 +175,6 @@ class App extends Component {
 
                 <MyModalWithGrid 
                 invoiceData={this.state.invoiceData}
-                
-
                 timerValue={this.state.timerValue}
                 liftState={this.liftState}
                 jobtitle={this.state.jobtitle}
@@ -185,7 +183,6 @@ class App extends Component {
                 comments={this.state.comments}
                 handleChange={this.handleChange}
                 sendData={this.sendData}
-
                 show={this.state.modalShow} onHide={modalClose} />
 
         </header>
