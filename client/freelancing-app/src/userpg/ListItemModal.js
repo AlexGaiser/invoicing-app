@@ -4,7 +4,6 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import React, { Component } from 'react';
-import './InvoiceModal.css'
 import Axios from 'axios'
 
 
