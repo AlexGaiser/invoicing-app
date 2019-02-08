@@ -1,3 +1,4 @@
+import './App.css';
 import React, { Component } from 'react';
 import Stopwatch from './Main/Stopwatch'
 import InvoiceForm from './Main/InvoiceForm'
@@ -9,10 +10,11 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import User from './User';
 import Axios from 'axios'
 import logo from './logo.svg';
-import './App.css';
+
 import MyModalWithGrid from './InvoiceModal/InvoiceModal'
 import RegistrationModal from './RegistrationModal/RegistrationModal'
 import Modal from 'react-bootstrap/Modal'
+
 
 import {
   InputGroup,
@@ -36,7 +38,7 @@ class App extends Component {
       time: "00:00",
       root: "pending",
       button1: "",
-
+      invoiceData: 'invoicedata',
       invoices: "pending",
       button1: "",
       timerSet: false,
@@ -117,26 +119,26 @@ class App extends Component {
     // localStorage.setItem('authorization', header)
     const response =  await Axios.post('/records', data, header)
     console.log(response.data);
-  
+
   }
-    
 
 
-  liftState = (invoice, user) => {
-      this.setState({
-        invoiceData: invoice,
-        userInvoice:user})
+
+  liftState = (key, value) => {
+    console.log(key)
+    console.log(value)
+    this.setState({[key]:value})
   };
 
   render() {
     let modalClose = () => this.setState({modalShow:false});
-
+    console.log(this.state.invoiceData)
     return (
 
       <div className="App">
 
         <header className="App-header">
-          <div className="container">
+          <div className="container-fluid p-0">
             <div className="row">
               <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div className="app-container">
@@ -174,9 +176,8 @@ class App extends Component {
                 Click Here to preview!
                 </Button>
 
-                <MyModalWithGrid 
+                <MyModalWithGrid
                 invoiceData={this.state.invoiceData}
-                userInfo={this.state.userInfo}
 
                 timerValue={this.state.timerValue}
                 liftState={this.liftState}
@@ -186,7 +187,6 @@ class App extends Component {
                 comments={this.state.comments}
                 handleChange={this.handleChange}
                 sendData={this.sendData}
-
                 show={this.state.modalShow} onHide={modalClose} />
 
         </header>

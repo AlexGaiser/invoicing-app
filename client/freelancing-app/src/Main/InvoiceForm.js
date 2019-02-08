@@ -126,13 +126,15 @@ class InvoiceForm extends Component {
 
 
     calculateEarnings= ()=>{
-        const billable_hours = this.props.timerValue ? this.props.timerValue.seconds/3600 : 0
+        const billable_hours = this.props.timerValue ? this.props.timerValue.seconds : 0
+        //  ? this.props.timerValue.seconds/3600 : 0
         console.log(billable_hours)
-        const earnings = billable_hours* parseInt(this.state.rate)
+        const earnings = (billable_hours * parseInt(this.state.rate)/3600).toFixed(2)
         this.setState({
             billable_hours: billable_hours,
             earnings: earnings,
-            total_amount: parseInt( earnings) + parseInt(this.state.extra_fees)})
+            total_amount: (parseInt( earnings) + parseInt(this.state.extra_fees))})
+        console.log(this.state.earnings)
         }
 
     handleChange = event => {
@@ -144,8 +146,6 @@ class InvoiceForm extends Component {
     updateInvoiceData =()=>{
       this.setState({invoiceData: {
             // Need to add Client Email, User Email, User Phone Number, User Address
-
-
             // Job Information
             title: this.state.jobtitle,
             invoice_number: this.state.invoice_number,
@@ -158,7 +158,7 @@ class InvoiceForm extends Component {
             billable_hours: this.state.billable_hours,
             rate:this.state.rate,
             hourly_earnings:this.state.earnings,
-            extra_fees:300,// extra fees need an input field and they can be added to the "total_amount"
+            extra_fees:parseInt(this.state.extra_fees).toFixed(2),// extra fees need an input field and they can be added to the "total_amount"
             total_amount:this.state.total_amount, //+extra_fees
             // client information
             client_name:this.state.name,
@@ -168,7 +168,6 @@ class InvoiceForm extends Component {
             client_city:this.state.client_city,
             client_zip: parseInt(this.state.client_zip),
             user_id: parseInt(localStorage.getItem('id')),
-
         }
       })
         this.props.liftState(this.state.invoice)

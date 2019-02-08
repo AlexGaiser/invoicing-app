@@ -1,6 +1,7 @@
+import './Main-styles.css'
 import React, { Component } from 'react';
 import Moment from 'moment'
-import './Main-styles.css'
+
 
 class Stopwatch extends Component {
     constructor(props) {
@@ -48,7 +49,7 @@ class Stopwatch extends Component {
 
     displayTimer =()=>{
         const now = new Date().getTime()
-        const timerValue = now-this.state.startTime
+        const timerValue = now - this.state.startTime
         const hours = Math.floor((timerValue % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
         const minutes = Math.floor((timerValue % (1000 * 60 * 60)) / (1000 * 60))
         const seconds = Math.floor((timerValue % (1000 * 60)) / 1000)
@@ -71,9 +72,23 @@ class Stopwatch extends Component {
     render() {
 
         return (
-            <div className="stopWatch mb-3">
-                <h1>{Moment().format("hh:mm:ss a")}</h1>
-                <h3>{this.state.displayTime}</h3>
+            <div className="stopWatch mb-3 container-fluid">
+            <div className="row">
+              <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div className="timer-wrap">
+                  <label for="exampleDropdownFormEmail2 text-left">Timer</label>
+                  <h1 className="mb-0 display-2 font-weight-bold timer-txt">{this.state.displayTime}</h1>
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <label for="exampleDropdownFormEmail2">Time of Day</label>
+                <h4 className="lead timeofday-txt">{Moment().format("hh:mm:ss a")}</h4>
+              </div>
+            </div>
+
+
                 {/* <h3>{this.props.timerSet ?this.props.elapsedTime : '00:00:00'}</h3> */}
                 {/* <h3>{this.props.timerSet ? this.props.time.subtract(this.props.timeStart):'00:00:00'}</h3> */}
 
