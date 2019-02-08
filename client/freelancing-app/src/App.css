@@ -60,9 +60,12 @@ body{
     max-width: 700px;
     margin: 0 auto;
     border: 1px solid #c7c7c7;
-    padding: 15px 0px;
+    padding: 0px 0px;
         border-radius: 3px;
 }
+
+
+
 .main-invoice-container{
   border:solid 5pt red;
 }
@@ -101,7 +104,8 @@ body{
 .end-btn{}
 
 .stopWatch{
-  background-color: #a0a0a0;
+
+  background-color: #5c68c5;
   padding: 20px;
 }
 
@@ -335,7 +339,7 @@ color:rgba(0,0,0,0.45)
 }
 
 .desc-word{
-  font-weight: 600; 
+  font-weight: 600;
 }
 .main-description{
   padding-top:20px;

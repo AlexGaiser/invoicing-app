@@ -1,3 +1,4 @@
+import './App.css';
 import React, { Component } from 'react';
 import Stopwatch from './Main/Stopwatch'
 import InvoiceForm from './Main/InvoiceForm'
@@ -9,10 +10,11 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import User from './User';
 import Axios from 'axios'
 import logo from './logo.svg';
-import './App.css';
+
 import MyModalWithGrid from './InvoiceModal/InvoiceModal'
 import RegistrationModal from './RegistrationModal/RegistrationModal'
 import Modal from 'react-bootstrap/Modal'
+
 
 import {
   InputGroup,
@@ -112,13 +114,14 @@ class App extends Component {
     // const header = {
     //   headers:{'Authorization':  "bearer " +token}
     // }
+    console.log(data);
     const header = this.createAuthHeader()
     // localStorage.setItem('authorization', header)
     const response =  await Axios.post('/records', data, header)
     console.log(response.data);
-  
+
   }
-    
+
 
 
   liftState = (invoice, user) => {
@@ -135,7 +138,7 @@ class App extends Component {
       <div className="App">
 
         <header className="App-header">
-          <div className="container">
+          <div className="container-fluid p-0">
             <div className="row">
               <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div className="app-container">
@@ -173,8 +176,9 @@ class App extends Component {
                 Click Here to preview!
                 </Button>
 
-                <MyModalWithGrid 
+                <MyModalWithGrid
                 invoiceData={this.state.invoiceData}
+
                 timerValue={this.state.timerValue}
                 liftState={this.liftState}
                 jobtitle={this.state.jobtitle}
