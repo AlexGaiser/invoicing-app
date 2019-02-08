@@ -112,6 +112,7 @@ class App extends Component {
     // const header = {
     //   headers:{'Authorization':  "bearer " +token}
     // }
+    console.log(data);
     const header = this.createAuthHeader()
     // localStorage.setItem('authorization', header)
     const response =  await Axios.post('/records', data, header)
@@ -175,7 +176,7 @@ class App extends Component {
 
                 <MyModalWithGrid 
                 invoiceData={this.state.invoiceData}
-                
+                userInfo={this.state.userInfo}
 
                 timerValue={this.state.timerValue}
                 liftState={this.liftState}

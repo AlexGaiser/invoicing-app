@@ -17,48 +17,16 @@ class InvoiceForm extends Component {
             this.fetchUserInfo()
             const start= setInterval(this.calculateEarnings,500)
             this.setState({interval:start})
+            this.updateInvoiceData()
         }
 
     submitForm=(event)=>{
         console.log();
         event.preventDefault()
-        const invoice = {
+        const invoice = (this.state.invoiceData)
 
-            // Need to add Client Email, User Email, User Phone Number, User Address
+        //     // Need to add Client Email, User Email, User Phone Number, User Address
 
-
-            // Job Information
-            title: this.state.jobtitle,
-            invoice_number: this.state.invoice_number,
-            // date: ,
-            description:this.state.description,
-            extra_details: this.state.extra_details,
-            logged_time: moment().format('hh:mm:ss a'),
-            //Billing Information
-
-            billable_hours: this.state.billable_hours,
-            rate:this.state.rate,
-            hourly_earnings:this.state.earnings,
-            extra_fees:300,// extra fees need an input field and they can be added to the "total_amount"
-            total_amount:this.state.total_amount, //+extra_fees
-            // client information
-            client_name:this.state.client_name,
-            client_email: this.state.client_email,
-            client_phone: parseInt(this.state.client_phone),
-            client_address:this.state.client_address,
-            client_city:this.state.client_city,
-            client_zip: this.state.client_zip,
-
-            // user information
-            business_name:this.state.business_name,
-
-        }
-
-        // let doc = new jspdf({
-        //     orientation: 'landscape',
-        //     unit: 'in',
-        //     format: [4, 2]
-        //   })
 
         const doc = new jspdf()
 
@@ -123,9 +91,6 @@ class InvoiceForm extends Component {
             doc.setFontSize(20);
             doc.text(170,240,`$${invoice.total_amount}.00`);
             
-
-
-
             doc.save('invoicepdf.pdf')
         }
 
@@ -177,7 +142,7 @@ class InvoiceForm extends Component {
     };
 
     updateInvoiceData =()=>{
-        const invoice = {
+      this.setState({invoiceData: {
             // Need to add Client Email, User Email, User Phone Number, User Address
 
 
@@ -202,9 +167,11 @@ class InvoiceForm extends Component {
             client_address:this.state.client_address,
             client_city:this.state.client_city,
             client_zip: parseInt(this.state.client_zip),
+            user_id: parseInt(localStorage.getItem('id')),
 
         }
-        this.props.liftState(invoice)
+      })
+        this.props.liftState(this.state.invoice)
 
     }
     // this.props.liftState(this.state.object)
