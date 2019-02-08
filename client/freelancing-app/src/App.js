@@ -165,6 +165,16 @@ class App extends Component {
                     liftState={this.liftState}
                     handleChange={this.handleChange}
                     sendData={this.sendData}
+                    invoiceData={this.state.invoiceData}
+                    timerValue={this.state.timerValue}
+                    liftState={this.liftState}
+                    jobtitle={this.state.jobtitle}
+                    rate={this.state.rate}
+                    name={this.state.name}
+                    comments={this.state.comments}
+                    handleChange={this.handleChange}
+                    sendData={this.sendData}
+                    show={this.state.modalShow} onHide={modalClose} />
                   />
                 </div>
               </div>
@@ -176,6 +186,7 @@ class App extends Component {
                 Click Here to preview!
                 </Button>
 
+<<<<<<< HEAD
                 <MyModalWithGrid
                 invoiceData={this.state.invoiceData}
 
@@ -188,6 +199,9 @@ class App extends Component {
                 handleChange={this.handleChange}
                 sendData={this.sendData}
                 show={this.state.modalShow} onHide={modalClose} />
+=======
+ 
+>>>>>>> OHMAHGAD
 
         </header>
       </div>
