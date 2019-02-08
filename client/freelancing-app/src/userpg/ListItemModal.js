@@ -106,6 +106,8 @@ updateInvoiceData =()=>{
           <Row className="show-grid">
             <Col xs={12} md={12}>
               <p className="modal-description"><span className="description-bold">Description:   </span>{this.props.comments}</p>
+              <input className="form-control" name="jobTitle" defaultValue={this.props.modalShow && invoice.title} type="text" id="modal-title" onChange={this.handleChange} />
+            
             </Col>
           </Row>
         </Container>
