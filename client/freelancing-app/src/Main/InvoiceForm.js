@@ -96,10 +96,7 @@ class InvoiceForm extends Component {
 
         printPdf()
 
-
-
         this.props.sendData(invoice)
-        alert('data sent')
 
 
         // clearInterval(this.state.interval)
