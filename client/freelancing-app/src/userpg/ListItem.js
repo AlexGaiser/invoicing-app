@@ -1,34 +1,76 @@
-import React from "react"
-import Axios from 'axios';
+import React, {Component} from "react";
+import Axios from 'axios'
+import ListItemModal from './ListItemModal'
+import Modal from 'react-bootstrap/Modal'
 
 
- const ListItem =(props)=>{
-  
+class ListItem extends Component {
+  constructor (props) {
+    super (props);
+    this.state = {
+      modalShow:false
+    }
 
-    const createAuthHeader = ()=>{
+  };
+
+  createAuthHeader = () => {
       const token = localStorage.getItem('token')
       return {
         headers: {
           'Authorization': "bearer " + token
         }
-      };
-    }
+      }
+  };
 
-  return(
-                <div className = "list-item-wrapper" >
-                  <div onClick={props.renderMainInvoice} className = "list-info">
-                      <h1 className = "item-title">{props.invoice.title}</h1>
-                      <div className= "title-line"></div>
-                      <h3 className = "item-id">Invoice ID:{props.invoice.id}</h3>
-                      <h2 className = "item-date">Date submitted: {props.invoice.date}</h2>
-                    <div className="edit-container"><div className ="item-edit-btn" onClick={props.updateInvoice}></div></div>
-                    <div className="delete-container"><div className ="item-delete-btn" onClick={props.deleteInvoice}></div></div>
+  render () {
 
-                  </div>	
-        </div>)
-    }
+    let modalClose = () => this.setState({modalShow:false});
 
-export default ListItem
+    return(
+      <div className="list-item-wrapper">
+        <div onClick={this.props.renderMainInvoice} className="list-info">
+            <h1 className ="item-title">{this.props.invoice.title}</h1>
+            <div className="title-line"></div>
+            <h3 className ="item-id">Invoice ID:{this.props.invoice.id}</h3>
+            <h2 className ="item-date">Date submitted: {this.props.invoice.date}</h2>
+            {/*<div className="edit-container"><div className ="item-edit-btn" onClick={this.props.updateInvoice}></div></div>*/}
+            <div className="edit-container"><div className ="item-edit-btn" onClick={() => this.setState({ modalShow:true })}></div></div>
+            <div className="delete-container"><div className ="item-delete-btn" onClick={this.props.deleteInvoice}></div></div>
+        </div>
+        <ListItemModal
+        invoiceData={this.state.invoiceData}
+        userInfo={this.state.userInfo}
+
+
+        timerValue={this.state.timerValue}
+        liftState={this.liftState}
+        jobtitle={this.state.jobtitle}
+        rate={this.state.rate}
+        name={this.state.name}
+        comments={this.state.comments}
+        handleChange={this.handleChange}
+        sendData={this.sendData}
+
+        show={this.state.modalShow} onHide={modalClose} />
+
+      </div>
+
+
+
+    );
+
+
+
+
+
+
+  }
+
+
+
+}
+
+export default ListItem;
 // const deleteData = async()=>{
   //   const header = createAuthHeader()
   //   console.log('delete')
@@ -41,4 +83,4 @@ export default ListItem
   //     res.send({kill})
   //   })
 
-  // } 
+  // }
