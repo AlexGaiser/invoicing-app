@@ -1,6 +1,8 @@
 .f-white{color:#ffffff;}
 
-.stopWatch{}
+.stopWatch{
+  background-color: #5c68c5;
+}
 
 .stopWatch h1{
   color:#ffffff;
@@ -11,10 +13,28 @@
 }
 
 .stopWatch button{
+  color: #000000;
+  background-color: #fdcc07;
+  border-color: #fdcc07;
 
+}
+.timer-txt{
+  line-height: .7 !important;
+}
+
+.stopWatch button:hover, .stopWatch button:active{
+background-color: #fdcc07;
+border-color: #fdcc07;
 }
 
 .app-txt-wrap{
   overflow: auto;
   word-break: break-word;
+}
+
+.stopWatch .timer-wrap{
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+  margin:0 auto;
 }
