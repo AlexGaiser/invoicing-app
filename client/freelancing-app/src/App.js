@@ -124,10 +124,10 @@ class App extends Component {
 
 
 
-  liftState = (invoice, user) => {
-      this.setState({
-        invoiceData: invoice,
-        userInvoice:user})
+  liftState = (key, value) => {
+    console.log(key)
+    console.log(value)
+    this.setState({[key]:value})
   };
 
   render() {

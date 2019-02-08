@@ -25,7 +25,7 @@ class InvoiceModal extends Component {
       size="lg"
       centered
       >
-            <h4>{this.props.invoiceData}</h4>
+            {/* <h4>{this.props.invoiceData.title}</h4> */}
 
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">

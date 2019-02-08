@@ -49,7 +49,7 @@ class Stopwatch extends Component {
 
     displayTimer =()=>{
         const now = new Date().getTime()
-        const timerValue = now-this.state.startTime
+        const timerValue = now - this.state.startTime
         const hours = Math.floor((timerValue % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
         const minutes = Math.floor((timerValue % (1000 * 60 * 60)) / (1000 * 60))
         const seconds = Math.floor((timerValue % (1000 * 60)) / 1000)
