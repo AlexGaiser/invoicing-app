@@ -16,7 +16,7 @@ class InvoiceModal extends Component {
   // this.props.sendData()
   console.log(`${this.props.invoiceData} Invoice Data`)
 }
-  
+
   render () {
     return (
       <Modal
@@ -29,12 +29,12 @@ class InvoiceModal extends Component {
 
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          <h1 id="modal-title">{this.props.invoiceData}</h1> 
+          <h1 id="modal-title">{this.props.invoiceData}</h1>
         </Modal.Title>
       </Modal.Header>
       <Modal.Header>
         <Modal.Title >
-        <h1 id="modal-name">{this.props.name}</h1> 
+        <h1 id="modal-name">{this.props.name}</h1>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

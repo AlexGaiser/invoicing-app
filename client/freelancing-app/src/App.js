@@ -38,7 +38,7 @@ class App extends Component {
       time: "00:00",
       root: "pending",
       button1: "",
-      invoiceData: 'invoicedata',
+
       invoices: "pending",
       button1: "",
       timerSet: false,
@@ -54,7 +54,7 @@ class App extends Component {
           'Authorization': "bearer " + token
         }
       };
-    }
+  }
 
 
   componentDidMount = async () => {
@@ -124,6 +124,7 @@ class App extends Component {
   }
 
 
+
   liftState = (key, value) => {
     console.log(key)
     console.log(value)
@@ -133,7 +134,7 @@ class App extends Component {
 
   render() {
     let modalClose = () => this.setState({modalShow:false});
-    console.log(this.state.invoiceData)
+
     return (
 
       <div className="App">
@@ -166,16 +167,6 @@ class App extends Component {
                     liftState={this.liftState}
                     handleChange={this.handleChange}
                     sendData={this.sendData}
-                    invoiceData={this.state.invoiceData}
-                    timerValue={this.state.timerValue}
-                    liftState={this.liftState}
-                    jobtitle={this.state.jobtitle}
-                    rate={this.state.rate}
-                    name={this.state.name}
-                    comments={this.state.comments}
-                    handleChange={this.handleChange}
-                    sendData={this.sendData}
-                    show={this.state.modalShow} onHide={modalClose} />
                   />
                 </div>
               </div>
@@ -186,7 +177,6 @@ class App extends Component {
                 >
                 Click Here to preview!
                 </Button>
-
 
 
         </header>
