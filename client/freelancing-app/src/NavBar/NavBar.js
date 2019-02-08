@@ -23,13 +23,19 @@ const NavBar = (props) => {
 
       <React.Fragment>
           <Navbar className="cool-nav" expand="lg" sticky='top'>
-            <Navbar.Brand href="Header"><span className="font-weight-bold">ENVOICE</span></Navbar.Brand>
+            <Navbar.Brand href="/"><span className="font-weight-bold">ENVOICE</span></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav main-nav">
               <Nav className="ml-auto">
-                <Nav.Link href="/Header">Home</Nav.Link>
-                <Nav.Link href="/userProfile">Profile</Nav.Link>
-                <Nav.Link href="/InvoiceGenerator">Invoice Generator</Nav.Link>
+                <div className="nav-item">
+                  <Link className="nav-link" to="/">Home</Link>
+                </div>
+                <div className="nav-item">
+                  <Link className="nav-link" to="/userProfile">Profile</Link>
+                </div>
+                <div className="nav-item">
+                  <Link className="nav-link" to="/InvoiceGenerator">Invoice Generator</Link>
+                </div>
               </Nav>
 
               <NavLoginDropdown />

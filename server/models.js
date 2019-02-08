@@ -4,16 +4,25 @@ const SALT = 5;
 
 
 //accessing a database called invoice_db so that models can be placed
+// const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:9000/invoice_db', {
+//     dialect: 'postgres',
+//     operatorsAliases: false,
+//     define:{
+//         underscored: true
+//     }
+// });
+
 const db = new Sequelize({
     database: 'invoice_db',
     dialect: 'postgres',
-    // 
     operatorsAliases: false,
     define:{
         underscored: true
-    }
-    // 
-});
+    },
+    logging:false
+})  
+
+const db = new Sequelize({})
 
 //defining models
 const Invoice = db.define('invoice', {
@@ -58,9 +67,9 @@ const Invoice = db.define('invoice', {
         type: Sequelize.STRING
     },
     client_phone:{
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
     },
-    client_street:{
+    client_address:{
         type: Sequelize.TEXT
     },
     client_city:{
@@ -94,7 +103,7 @@ const User = db.define('user',{
     user_phone:{
         type: Sequelize.BIGINT
     },
-    user_street:{
+    user_address:{
         type: Sequelize.TEXT
     },
     user_city:{
@@ -121,7 +130,7 @@ const Client = db.define('client',{
     client_phone:{
         type: Sequelize.INTEGER
     },
-    client_street:{
+    client_address:{
         type: Sequelize.TEXT
     },
     client_city:{
