@@ -471,7 +471,7 @@ h6 {
 	}
 }
 
-/* Large devices (desktops, 62em and up) */
+
 @media (min-width: 62em) {
 	html,
 	body {
@@ -479,7 +479,10 @@ h6 {
 	}
 }
 
-/* Extra large devices (large desktops, 75em and up) */
+
+
+/* // Extra large devices (large desktops, 75em and up) */
+
 @media (min-width: 75em) {
 	html,
 	body {
@@ -488,6 +491,7 @@ h6 {
 }
 
 /* Pen Specific Styles*/
+
 .jumbotron {
 	font-size: 16px;
 	@media (min-width: 62em) {

@@ -13,15 +13,7 @@ class ListItem extends Component {
 
   };
 
-  createAuthHeader = () => {
-      const token = localStorage.getItem('token')
-      return {
-        headers: {
-          'Authorization': "bearer " + token
-        }
-      }
-  };
-
+  
   render () {
 
     let modalClose = () => this.setState({modalShow:false});
@@ -38,10 +30,11 @@ class ListItem extends Component {
             <div className="delete-container"><div className ="item-delete-btn" onClick={this.props.deleteInvoice}></div></div>
         </div>
         <ListItemModal
-        invoiceData={this.state.invoiceData}
+        id={this.props.invoice.id}
+        invoiceData={this.props.invoice}
         userInfo={this.state.userInfo}
-
-
+        modalShow={this.state.modalShow}
+        title={this.props.invoice.title}
         timerValue={this.state.timerValue}
         liftState={this.liftState}
         jobtitle={this.state.jobtitle}
@@ -50,7 +43,7 @@ class ListItem extends Component {
         comments={this.state.comments}
         handleChange={this.handleChange}
         sendData={this.sendData}
-
+        
         show={this.state.modalShow} onHide={modalClose} />
 
       </div>

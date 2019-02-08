@@ -125,11 +125,12 @@ class App extends Component {
 
 
 
-  liftState = (invoice, user) => {
-      this.setState({
-        invoiceData: invoice,
-        userInvoice:user})
+  liftState = (key, value) => {
+    console.log(key)
+    console.log(value)
+    this.setState({[key]:value})
   };
+
 
   render() {
     let modalClose = () => this.setState({modalShow:false});
@@ -177,25 +178,10 @@ class App extends Component {
                 Click Here to preview!
                 </Button>
 
-                <MyModalWithGrid
-                invoiceData={this.state.invoiceData}
-                userInfo={this.state.userInfo}
-
-
-                timerValue={this.state.timerValue}
-                liftState={this.liftState}
-                jobtitle={this.state.jobtitle}
-                rate={this.state.rate}
-                name={this.state.name}
-                comments={this.state.comments}
-                handleChange={this.handleChange}
-                sendData={this.sendData}
-
-                show={this.state.modalShow} onHide={modalClose} />
 
         </header>
       </div>
-    );
+    ); 
   }
 }
 
