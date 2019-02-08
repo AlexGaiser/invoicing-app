@@ -51,8 +51,8 @@ const MainInvoice=(props)=> {
 
                     <div className="credentials-container">
                         <h3 className= "main-time" >Time Logged: {props.isLoaded && props.invoiceDisplayed.logged_time}</h3>
-                        <h3 className= "main-time" >Rate: ${props.isLoaded && props.invoiceDisplayed.rate}.00</h3>
-                        <h3 className= "main-time" >Fees: ${props.isLoaded && props.invoiceDisplayed.extra_fees}.00</h3>
+                        <h3 className= "main-rate" >Rate: ${props.isLoaded && props.invoiceDisplayed.rate}.00</h3>
+                        <h3 className= "main-fees" >Fees: ${props.isLoaded && props.invoiceDisplayed.extra_fees}.00</h3>
                     </div>
                     <div className="main-line-1"></div>
                     <h3 className= "main-total" >Total Amount: ${props.isLoaded && props.invoiceDisplayed.total_amount}.00</h3>
