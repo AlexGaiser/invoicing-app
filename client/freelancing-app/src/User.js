@@ -48,9 +48,9 @@ class User extends Component {
             renderMainInvoice={()=>this.renderMainInvoice(invoice)}
             deleteInvoice={()=>this.deleteInvoice(invoice)}
             updateInvoice={()=>this.updateInvoice(invoice)}
-
             />
       })
+      
       this.setState({
           userInfo:userInfo,
           listItems: listInvoices,

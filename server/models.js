@@ -22,7 +22,6 @@ const db = new Sequelize({
     logging:false
 })  
 
-const db = new Sequelize({})
 
 //defining models
 const Invoice = db.define('invoice', {
@@ -32,7 +31,6 @@ const Invoice = db.define('invoice', {
     invoice_number: {
         type: Sequelize.BIGINT
     },
-
     date: {
         type: Sequelize.DATE
     },
