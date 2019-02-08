@@ -18,7 +18,12 @@ import {Navbar, Nav, NavDropdown, Form, FormControl, Dropdown,SplitButton,Button
 
 const NavBar = (props) => {
 
-
+    const logout=(event)=>{
+        event.preventDefault()
+        localStorage.setItem('id','null')
+        localStorage.setItem('token','null')
+        window.location.reload()
+    }
     return (
 
       <React.Fragment>
@@ -39,7 +44,7 @@ const NavBar = (props) => {
               </Nav>
 
               <NavLoginDropdown />
-              <LogoutButton />
+              <Button onClick={logout}>Logout</Button>
 
             </Navbar.Collapse>
           </Navbar>

@@ -46,6 +46,7 @@ class App extends Component {
       modalShow:false
     };
   }
+
   createAuthHeader = ()=>{
       const token = localStorage.getItem('token')
       return {
@@ -123,12 +124,12 @@ class App extends Component {
   }
 
 
-
   liftState = (key, value) => {
     console.log(key)
     console.log(value)
     this.setState({[key]:value})
   };
+
 
   render() {
     let modalClose = () => this.setState({modalShow:false});
@@ -187,11 +188,10 @@ class App extends Component {
                 </Button>
 
 
- 
 
         </header>
       </div>
-    );
+    ); 
   }
 }
 

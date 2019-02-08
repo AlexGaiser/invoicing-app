@@ -404,6 +404,7 @@ flex-wrap: wrap-reverse;  }
 }
 
 
+
 /* JE Fluid Typography
 ---------------------------------*/
 
@@ -470,6 +471,7 @@ h6 {
 	}
 }
 
+
 /* // Large devices (desktops, 62em and up) */
 @media (min-width: 62em) {
 	html,
@@ -478,13 +480,16 @@ h6 {
 	}
 }
 
+
 /* // Extra large devices (large desktops, 75em and up) */
+
 @media (min-width: 75em) {
 	html,
 	body {
 		font-size: 18px !important;
 	}
 }
+
 
 /* // Pen Specific Styles */
 .jumbotron {
@@ -499,6 +504,7 @@ h6 {
 		border-radius: 4px;
 	}
 }
+
 /* ----------------------------------------- */
 /* RECIEPT MODAL STYLES  */
 /* ----------------------------------------- */

@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button'
 import React, { Component } from 'react';
 
 
+
 class InvoiceModal extends Component {
   constructor(props){
     super(props)
