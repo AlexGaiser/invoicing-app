@@ -403,7 +403,7 @@ flex-wrap: wrap-reverse;  }
   height:100vh;
 }
 
-<<<<<<< HEAD
+
 
 /* JE Fluid Typography
 ---------------------------------*/
@@ -471,7 +471,8 @@ h6 {
 	}
 }
 
-// Large devices (desktops, 62em and up)
+
+/* // Large devices (desktops, 62em and up) */
 @media (min-width: 62em) {
 	html,
 	body {
@@ -479,7 +480,9 @@ h6 {
 	}
 }
 
-// Extra large devices (large desktops, 75em and up)
+
+/* // Extra large devices (large desktops, 75em and up) */
+
 @media (min-width: 75em) {
 	html,
 	body {
@@ -487,7 +490,8 @@ h6 {
 	}
 }
 
-// Pen Specific Styles
+
+/* // Pen Specific Styles */
 .jumbotron {
 	font-size: 16px;
 	@media (min-width: 62em) {
@@ -500,7 +504,7 @@ h6 {
 		border-radius: 4px;
 	}
 }
-=======
+
 /* ----------------------------------------- */
 /* RECIEPT MODAL STYLES  */
 /* ----------------------------------------- */
