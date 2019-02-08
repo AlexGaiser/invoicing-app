@@ -31,6 +31,8 @@ createAuthHeader = () => {
 };
 
 onSubmit = ()=>{
+  alert(this.state.updateData.rate)
+
   this.updateModal()
   this.props.onHide()
   window.location.reload()
@@ -53,7 +55,7 @@ updateInvoiceData =()=>{
         //Billing Information
 
         billable_hours: this.state.billable_hours,
-        rate:this.state.rate,
+        rate: this.state.rate,
         hourly_earnings:this.state.earnings,
         extra_fees:parseInt(this.state.extra_fees).toFixed(2),// extra fees need an input field and they can be added to the "total_amount"
         total_amount:this.state.total_amount, //+extra_fees
@@ -72,14 +74,14 @@ updateInvoiceData =()=>{
   updateModal = async ()=>{
     console.log(this.state.updateData)
     const header = this.createAuthHeader()
-    alert(this.state.updateData.title)
-    
     const response = await Axios.put(`/invoice/${this.props.id}`, this.state.updateData, header)
     console.log(response);
   }
 
   render () {
     const invoice = this.props.invoiceData
+    console.log('props invoice:' )
+    console.log(invoice)
     return ( 
       <Modal
       {...this.props}
@@ -91,7 +93,21 @@ updateInvoiceData =()=>{
 
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
+          <p>Job Title:</p>
           <input className="form-control" name="jobTitle" defaultValue={this.props.modalShow && invoice.title} type="text" id="modal-title" onChange={this.handleChange} />
+          <p>Client Name:</p>
+          <input className="form-control" name="client_name" defaultValue={this.props.modalShow && invoice.client_name} type="text" id="modal-title" onChange={this.handleChange} />
+          <p>Client Email:</p>
+          <input className="form-control" name="client_email" defaultValue={this.props.modalShow && invoice.client_email} type="text" id="modal-title" onChange={this.handleChange} />
+          <p>Client Phone Number</p>
+          <input className="form-control" name="client_phone" defaultValue={this.props.modalShow && invoice.client_phone} type="text" id="modal-title" onChange={this.handleChange} />
+          <p>Address</p>
+          <input className="form-control" name="client_address" defaultValue={this.props.modalShow && invoice.client_address} type="text" id="modal-title" onChange={this.handleChange} />
+          <p>City</p>
+          <input className="form-control" name="client_city" defaultValue={this.props.modalShow && invoice.client_city} type="text" id="modal-title" onChange={this.handleChange} />
+          <p>Zip Code</p>
+          <input className="form-control" name="client_zip" defaultValue={this.props.modalShow && invoice.client_zip} type="text" id="modal-title" onChange={this.handleChange} />
+          
         </Modal.Title>
       </Modal.Header>
       <Modal.Header>
@@ -106,15 +122,19 @@ updateInvoiceData =()=>{
           <Row className="show-grid">
             <Col xs={12} md={12}>
               <p className="modal-description"><span className="description-bold">Description:   </span>{this.props.comments}</p>
-              <input className="form-control" name="jobTitle" defaultValue={this.props.modalShow && invoice.title} type="text" id="modal-title" onChange={this.handleChange} />
-            
+              <textarea className="form-control" name="description" defaultValue={this.props.modalShow && invoice.description} type="text" id="modal-title" onChange={this.handleChange} />
+              <p className="modal-description"><span className="description-bold">Extra Details:   </span>{this.props.comments}</p>              
+              <textarea className="form-control" name="extra_details" defaultValue={this.props.modalShow && invoice.extra_details} type="text" id="modal-title" onChange={this.handleChange} />
+
             </Col>
           </Row>
         </Container>
         <Row className="show-grid">
             <Col xs={12} md={2} className="text-right">
-              <p>Rate: ${this.props.rate}</p>
-              <p><span>x</span>Total Time: {this.props.timerValue}</p>
+            <p>{this.state.rate}</p>
+            {/* <input name="rate" defaultValue={this.props.modalShow && invoice.rate} type="number" id="modal-title" onChange={this.handleChange} /> */}
+             {/* <p><span>x</span>Total Time: {this.props.timerValue}</p> */}
+
             </Col>
           </Row>
       </Modal.Body>
