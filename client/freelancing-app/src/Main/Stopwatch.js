@@ -49,7 +49,7 @@ class Stopwatch extends Component {
 
     displayTimer =()=>{
         const now = new Date().getTime()
-        const timerValue = now-this.state.startTime
+        const timerValue = now - this.state.startTime
         const hours = Math.floor((timerValue % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
         const minutes = Math.floor((timerValue % (1000 * 60 * 60)) / (1000 * 60))
         const seconds = Math.floor((timerValue % (1000 * 60)) / 1000)
@@ -76,15 +76,17 @@ class Stopwatch extends Component {
             <div className="row">
               <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div className="timer-wrap">
-                  <label for="exampleDropdownFormEmail2 text-left">Timer</label>
-                  <h1 className="mb-0 display-2 font-weight-bold timer-txt">{this.state.displayTime}</h1>
+                  <label className="" for="exampleDropdownFormEmail2">Timer</label>
+                  <h1 className="mb-0 display-2 timer-txt">{this.state.displayTime}</h1>
                 </div>
               </div>
             </div>
-            <div className="row">
-              <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <label for="exampleDropdownFormEmail2">Time of Day</label>
-                <h4 className="lead timeofday-txt">{Moment().format("hh:mm:ss a")}</h4>
+            <div className="row p-2 d-flex flex-row justify-content-end">
+              <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label className="mb-0 text-left thin-light" for="exampleDropdownFormEmail2">Time of Day</label>
+              </div>
+              <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <h4 className="lead timeofday-txt mb-0 thin-light">{Moment().format("hh:mm:ss a")}</h4>
               </div>
             </div>
 

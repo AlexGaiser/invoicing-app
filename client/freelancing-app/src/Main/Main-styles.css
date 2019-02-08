@@ -2,10 +2,23 @@
 
 .stopWatch{
   background-color: #5c68c5;
+  background: #5c68c5; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #5c68c5 0%, #7252c9 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #5c68c5 0%,#7252c9 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #5c68c5 0%,#7252c9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5c68c5', endColorstr='#7252c9',GradientType=1 );
 }
 
 .stopWatch h1{
   color:#ffffff;
+  text-align:center;
+  font-weight: 200;
+  text-shadow: 2px 1px 2px #00000059;
+}
+
+.thin-light{
+  color: #a7aff7 !important;
+  font-weight: 200 !important;
 }
 
 .stopWatch h3{

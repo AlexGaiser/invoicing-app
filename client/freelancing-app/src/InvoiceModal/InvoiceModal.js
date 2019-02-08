@@ -12,8 +12,11 @@ class InvoiceModal extends Component {
     super(props)
   }
 
-
-
+  componentDidMount=()=>{
+  // this.props.sendData()
+  console.log(`${this.props.invoiceData} Invoice Data`)
+}
+  
   render () {
     return (
       <Modal
@@ -22,11 +25,11 @@ class InvoiceModal extends Component {
       size="lg"
       centered
       >
-            <h4>{this.props.id}</h4>
+            {/* <h4>{this.props.invoiceData.title}</h4> */}
 
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          <h1 id="modal-title">{this.props.jobtitle}</h1> 
+          <h1 id="modal-title">{this.props.invoiceData}</h1> 
         </Modal.Title>
       </Modal.Header>
       <Modal.Header>
