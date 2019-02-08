@@ -4,6 +4,28 @@ import jspdf from 'jspdf'
 
 import moment from 'moment';
 import Axios from 'axios';
+import '../App.css';
+import User from '../User';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import MyModalWithGrid from '../InvoiceModal/InvoiceModal'
+import RegistrationModal from '../RegistrationModal/RegistrationModal'
+import Modal from 'react-bootstrap/Modal'
+
+
+import {
+    InputGroup,
+    InputGroupAddon,
+    InputGroupButtonDropdown,
+    InputGroupDropdown,
+    Input,
+    Button,
+    Dropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem
+  } from "reactstrap";
 
 class InvoiceForm extends Component {
     constructor(props) {
@@ -209,6 +231,8 @@ class InvoiceForm extends Component {
     }
     // this.props.liftState(this.state.object)
     render() {
+        let modalClose = () => this.setState({modalShow:false});
+    console.log(this.state.invoiceData)
         return (
             <React.Fragment>
               <div className="app-txt-wrap">
@@ -277,6 +301,55 @@ class InvoiceForm extends Component {
                     <button className="btn btn-success btn-lg btn-block">Submit</button>
 
                 </form>
+                <Modal
+      {...this.props}
+      aria-labelledby="contained-modal-title-vcenter"
+      size="lg"
+      centered
+      >
+            <h4>{this.state.invoice_number}</h4>
+
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          <h1 id="modal-title">{this.state.jobtitle}</h1> 
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Header>
+        <Modal.Title className="client-data" >
+        <h5>{this.state.client_name}</h5>
+            <h5> {this.state.client_email}</h5>
+            <h5>{parseInt(this.state.client_phone)}</h5>
+            <h5>{this.state.client_address}</h5>
+            <h5>{this.state.client_city}</h5>
+            <h5> {this.state.client_zip}</h5>
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Container>
+          <Row className="show-grid">
+            <Col xs={12} md={12}>
+            
+              <h3></h3>
+              <p className="modal-description"><span className="description-bold">Description:   </span>{this.state.description}</p>
+            </Col>
+          </Row>
+        </Container>
+        <Row className="show-grid">
+            <Col xs={12} md={2} className="text-right">
+              <p className="modal-rate">Rate: $ {this.state.rate}</p>
+              <p className="modal-time">Total Time: {moment().format('hh:mm:ss a')}</p>
+            </Col>
+          </Row>
+      </Modal.Body>
+
+      <Modal.Footer>
+        <h1>Total: {this.state.total_amount}</h1>
+      </Modal.Footer>
+      <Modal.Footer>
+        <Button onClick={this.props.onHide}>Close</Button>
+      </Modal.Footer>
+      </Modal>
+
             </React.Fragment>
          );
 
