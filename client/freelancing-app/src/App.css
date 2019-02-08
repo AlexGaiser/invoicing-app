@@ -403,6 +403,7 @@ flex-wrap: wrap-reverse;  }
   height:100vh;
 }
 
+<<<<<<< HEAD
 
 /* JE Fluid Typography
 ---------------------------------*/
@@ -499,3 +500,50 @@ h6 {
 		border-radius: 4px;
 	}
 }
+=======
+/* ----------------------------------------- */
+/* RECIEPT MODAL STYLES  */
+/* ----------------------------------------- */
+
+
+#modal-title{
+  padding-left: 20px;
+  font-size: 10pt;
+  font-weight: 700;
+  /* text-align:center;
+  margin:0 auto; */
+}
+/* #multiply{
+  text-align: right;
+} */
+
+
+#modal-name{
+  font-size: 60pt !important;
+  font-weight: 700 !important;
+  padding-left: 20px !important;
+}
+.modal-description{
+  font-size: 14pt !important;
+  font-weight: 300 !important; 
+  padding-left: 20px !important;
+}
+.modal-time{
+  text-align: right !important;
+  padding-left: 20px !important;
+
+}
+.modal-rate{
+  text-align: right !important;
+}
+.description-bold{
+  font-weight: 500 !important;
+  font-size: 15pt !important;
+
+}
+
+h5{
+  font-size: 14pt !important;
+}
+
+>>>>>>> OHMAHGAD
