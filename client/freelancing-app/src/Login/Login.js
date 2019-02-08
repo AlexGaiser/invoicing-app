@@ -42,11 +42,12 @@ class LoginPanel extends Component {
       const credentials = {username:this.state.username, password: this.state.password}
       const response = await Axios.post('/login', credentials)
       if(response.data.token){
-        alert('logged in ')
+        alert('Logged in ')
         localStorage.setItem('token', response.data.token)
         localStorage.setItem('id', response.data.id)
 
         this.setState({redirectInvoice:true})
+        window.location.reload()
         // window.location('/invoiceGenerator')
       }
       else{
