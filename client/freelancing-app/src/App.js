@@ -15,7 +15,6 @@ import MyModalWithGrid from './InvoiceModal/InvoiceModal'
 import RegistrationModal from './RegistrationModal/RegistrationModal'
 import Modal from 'react-bootstrap/Modal'
 
-
 import {
   InputGroup,
   InputGroupAddon,
@@ -29,8 +28,6 @@ import {
   DropdownItem
 } from "reactstrap";
 
-
-
 class App extends Component {
   constructor() {
     super();
@@ -43,7 +40,7 @@ class App extends Component {
       button1: "",
       timerSet: false,
       timerStarted: false,
-      modalShow:false
+      modalShow:true
     };
   }
 
@@ -58,8 +55,6 @@ class App extends Component {
 
 
   componentDidMount = async () => {
-    // localStorage.setItem('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJKYXNvbkdhaXNlciIsIm5hbWUiOiJKYXNvbiBHYWlzZXIiLCJpYXQiOjE1NDk0MTUxMzh9.4sjp6RsuacvigP8ULSzD2m-Z26WVqsx7yaw2ir2M7iM');
-    console.log("running");
     const response = await Axios.get("/main");
     setInterval(this.setTime, 500);
     this.setState({
@@ -77,7 +72,6 @@ class App extends Component {
   };
 
   setTimeStart = () => {
-    console.log(this.state.seconds);
     this.setState({
       timeStart: this.state.seconds,
       timerSet: true
@@ -110,11 +104,11 @@ class App extends Component {
     this.setState({ [name]: value });
   };
 
+  
   sendData = async (data)=>{
-    // const token = localStorage.getItem('token')
-    // const header = {
-    //   headers:{'Authorization':  "bearer " +token}
-    // }
+    
+
+
     console.log(data);
     const header = this.createAuthHeader()
     // localStorage.setItem('authorization', header)
@@ -167,16 +161,14 @@ class App extends Component {
                     liftState={this.liftState}
                     handleChange={this.handleChange}
                     sendData={this.sendData}
+                    modalShow={this.state.modalShow}
+
                   />
                 </div>
               </div>
             </div>
           </div>
-          <Button variant="primary"
-                  onClick={() => this.setState({ modalShow:true })}
-                >
-                Click Here to preview!
-                </Button>
+         
 
 
         </header>
