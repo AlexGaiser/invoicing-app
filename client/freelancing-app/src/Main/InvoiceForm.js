@@ -31,7 +31,8 @@ class InvoiceForm extends Component {
     constructor(props) {
         super(props);
         this.state = {earnings: 0.00,
-                extra_fees:0.00
+                extra_fees:0.00,
+                modalShow:true
           }
         }
 
@@ -48,7 +49,6 @@ class InvoiceForm extends Component {
         const invoice = (this.state.invoiceData)
 
         //     // Need to add Client Email, User Email, User Phone Number, User Address
-
 
         const doc = new jspdf()
 
@@ -123,6 +123,7 @@ class InvoiceForm extends Component {
 
         // clearInterval(this.state.interval)
     }
+
     createAuthHeader = ()=>{
         const token = localStorage.getItem('token')
         const header = {
@@ -132,8 +133,6 @@ class InvoiceForm extends Component {
         return header
     }
 
-
-
     fetchUserInfo = async ()=>{
         const header = this.createAuthHeader()
         const user = localStorage.getItem('id')
@@ -142,17 +141,19 @@ class InvoiceForm extends Component {
 
         this.setState({userInfo:response.data})
     }
-
-
+      
     calculateEarnings= ()=>{
-        const billable_hours = this.props.timerValue ? this.props.timerValue.seconds : 0
+        const billable_hours = this.props.timerValue ? (this.props.timerValue.seconds /3600).toFixed(2): 0
         //  ? this.props.timerValue.seconds/3600 : 0
         console.log(billable_hours)
-        const earnings = (billable_hours * parseInt(this.state.rate)/3600).toFixed(2)
+
+
+        const earnings = billable_hours * parseFloat(this.state.rate)
+        // earnings = earnings.toFixed(2)
         this.setState({
             billable_hours: billable_hours,
             earnings: earnings,
-            total_amount: (parseInt( earnings) + parseInt(this.state.extra_fees))})
+            total_amount: (earnings + parseFloat(this.state.extra_fees)).toFixed(2)})
         console.log(this.state.earnings)
         }
 
@@ -259,18 +260,23 @@ class InvoiceForm extends Component {
                   </div>
 
 
-                    <h1 className="f-white" >{`$${this.state.earnings}`}</h1>
+                    <h1 className="f-white" >{typeof(this.state.earnings) !=='number'  ? '$0.00': `$${this.state.earnings}`}</h1>
                     <h1 className="f-white" >{`$${this.state.total_amount}`}</h1>
                     <button className="btn btn-success btn-lg btn-block">Submit</button>
 
                 </form>
-                <Modal
+                
+                
+       <Modal
       {...this.props}
+      modalShow={this.state.modalShow}
       aria-labelledby="contained-modal-title-vcenter"
       size="lg"
       centered
+      
       >
             <h4>{this.state.invoice_number}</h4>
+
 
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
