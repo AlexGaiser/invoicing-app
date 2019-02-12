@@ -112,7 +112,7 @@ class InvoiceForm extends Component {
 
             doc.setFontSize(20);
             doc.text(170,240,`$${invoice.total_amount}.00`);
-            
+
             doc.save('invoicepdf.pdf')
         }
 
@@ -263,6 +263,11 @@ class InvoiceForm extends Component {
                     <h1 className="f-white" >{typeof(this.state.earnings) !=='number'  ? '$0.00': `$${this.state.earnings}`}</h1>
                     <h1 className="f-white" >{`$${this.state.total_amount}`}</h1>
                     <button className="btn btn-success btn-lg btn-block">Submit</button>
+                    <Button variant="primary"
+                            onClick={() => this.setState({ modalShow:true })}
+                          >
+                          Preview
+                          </Button>
 
                 </form>
                 
@@ -280,7 +285,7 @@ class InvoiceForm extends Component {
 
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          <h1 id="modal-title">{this.state.jobtitle}</h1> 
+          <h1 id="modal-title">{this.state.jobtitle}</h1>
         </Modal.Title>
       </Modal.Header>
       <Modal.Header>
@@ -297,7 +302,7 @@ class InvoiceForm extends Component {
         <Container>
           <Row className="show-grid">
             <Col xs={12} md={12}>
-            
+
               <h3></h3>
               <p className="modal-description"><span className="description-bold">Description:   </span>{this.state.description}</p>
             </Col>

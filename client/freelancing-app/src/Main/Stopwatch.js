@@ -93,10 +93,20 @@ class Stopwatch extends Component {
 
                 {/* <h3>{this.props.timerSet ?this.props.elapsedTime : '00:00:00'}</h3> */}
                 {/* <h3>{this.props.timerSet ? this.props.time.subtract(this.props.timeStart):'00:00:00'}</h3> */}
+              <div className="row">
+                <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+                    <button className="start-btn mr-3 btn-lg btn btn-primary" name='button1' onClick={this.startTime} value='start time'>Start</button>
+                </div>
+                <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+                  <button className="stop-btn mr-3 btn-lg btn btn-primary" onClick={this.stopTimer}>Stop</button>
+                </div>
+                <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <button className="reset-btn btn btn-lg btn-danger" onClick={this.resetTimer}>Reset</button>
+                </div>
+              </div>
 
-                <button className="start-btn mr-3 btn-lg btn btn-primary" name='button1' onClick={this.startTime} value='start time'>Start</button>
-                <button className="stop-btn mr-3 btn-lg btn btn-primary" onClick={this.stopTimer}>Stop</button>
-                <button className="reset-btn btn btn-lg btn-danger" onClick={this.resetTimer}>Reset</button>
+
+
             </div>
         )
     }

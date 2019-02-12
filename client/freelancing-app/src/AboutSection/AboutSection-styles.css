@@ -1,6 +1,6 @@
 .AboutSection{
-  padding-top:80px;
-  padding-bottom:80px;
+  padding-top:0px;
+  padding-bottom:0px;
   background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
 
 
@@ -8,14 +8,23 @@
 
 .AboutSection h2{
   color: #fff;
+  text-align: left;
+  max-width: 400px;
+  margin-top: 40px;
 }
 
 .AboutSection p{
   color: #ededed;
+  text-align: left;
 }
 
 .AboutSection .about-text-one{
   width: 100%;
   max-width: 700px;
   margin: 0 auto;
+  padding-top: 20px;
+}
+
+.about-bg{
+  background-color: #5c68c5;
 }
