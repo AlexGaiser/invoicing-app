@@ -48,7 +48,7 @@ class LoginPanel extends Component {
 
         this.setState({redirectInvoice:true})
         window.location.reload()
-        // window.location('/invoiceGenerator')
+
       }
       else{
         alert('invalid username or password')

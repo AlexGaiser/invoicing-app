@@ -203,17 +203,22 @@ html {
 
 }
 .title-line{
-  width:2px;
+  width:4px;
   height:100%;
-  background-color: white;
+  background-color: black;
+  padding-left: 3px;
+  padding-right: 3px;
+  z-index: 100;
 }
 .item-id{
 font-size: 12pt;
+/* padding-left: 1%; */
 }
 .item-date{
 font-size: 10pt;
 font-weight: 200;
-color:rgba(0,0,0,0.45)
+color:rgba(0,0,0,0.45);
+padding-left:1%;
 }
 @media(max-width:400px){
   .item-date{
@@ -290,7 +295,7 @@ color:rgba(0,0,0,0.45)
   background-color: white;
   border:black;
   width:70%;
-  height:85vh;
+  height:85vh auto;
   margin-left:5%;
   margin-top:3%;
   padding:3%;
@@ -304,11 +309,10 @@ color:rgba(0,0,0,0.45)
   .invoice-container{
     width:90vw;
     margin-left: 0;
+
   }
 
 }
-
-
 
 .main-heading{
   display:flex;
@@ -373,11 +377,37 @@ color:rgba(0,0,0,0.45)
 .details-word{
   font-weight: 600;
 }
+.main-client-container{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.main-client-container h3{
+  font-size: 16pt;
+  font-weight: 400;
+  margin: 5px;;
+  padding-left: 10px;
+}
+#for{
+  font-weight: 800;
+  padding-top: 20px;
+  font-size: 16pt;
+}
+
+.main-client-name{
+  font-size: 24pt !important;
+  font-weight: 300 !important;
+  padding-left: 0 !important;
+  padding-bottom:10px; 
+margin: 0;}
 .user-background{
   background-color:white;
   width:87vw;
   height:100vh;
   margin:0 auto;
+}
+.credentials-container{
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .half-background{
   height:50vh;

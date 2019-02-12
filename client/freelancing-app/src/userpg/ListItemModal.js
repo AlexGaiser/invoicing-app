@@ -21,6 +21,8 @@ class ListItemModal extends Component {
     
     this.updateInvoiceData()
 };
+
+
 createAuthHeader = () => {
   const token = localStorage.getItem('token')
   return {
@@ -31,8 +33,8 @@ createAuthHeader = () => {
 };
 
 onSubmit = ()=>{
-  alert(this.state.updateData.rate)
-
+  this.updateInvoiceData()
+  alert('Update Submitted')
   this.updateModal()
   this.props.onHide()
   window.location.reload()
@@ -40,35 +42,36 @@ onSubmit = ()=>{
 
 componentDidMount=()=>{
   this.updateInvoiceData()
+
+  setInterval(this.updateInvoiceData, 100)
 }
 
 updateInvoiceData =()=>{
-  this.setState({updateData: {
-        // Need to add Client Email, User Email, User Phone Number, User Address
-        // Job Information
-        title: this.state.jobTitle,
-        invoice_number: this.state.invoice_number,
-        // date: moment(),
-        description:this.state.description,
-        extra_details: this.state.extra_details,
-        // logged_time: moment().format('hh:mm:ss a'),
-        //Billing Information
+  const updateData= {
+    title: this.state.jobTitle,
+    invoice_number: this.state.invoice_number,
+    // date: moment(),
+    description:this.state.description,
+    extra_details: this.state.extra_details,
+    // logged_time: moment().format('hh:mm:ss a'),
+    //Billing Information
 
-        billable_hours: this.state.billable_hours,
-        rate: this.state.rate,
-        hourly_earnings:this.state.earnings,
-        extra_fees:parseInt(this.state.extra_fees).toFixed(2),// extra fees need an input field and they can be added to the "total_amount"
-        total_amount:this.state.total_amount, //+extra_fees
-        // client information
-        client_name:this.state.name,
-        client_email: this.state.client_email,
-        client_phone: this.state.client_phone,
-        client_address:this.state.client_address,
-        client_city:this.state.client_city,
-        client_zip: parseInt(this.state.client_zip),
-        user_id: parseInt(localStorage.getItem('id')),
-    }
-  })
+    billable_hours: this.state.billable_hours,
+    rate: this.state.rate,
+    hourly_earnings:this.state.earnings,
+    extra_fees:parseInt(this.state.extra_fees).toFixed(2),// extra fees need an input field and they can be added to the "total_amount"
+    total_amount:this.state.total_amount, //+extra_fees
+    // client information
+    client_name:this.state.name,
+    client_email: this.state.client_email,
+    client_phone: this.state.client_phone,
+    client_address:this.state.client_address,
+    client_city:this.state.client_city,
+    client_zip: parseInt(this.state.client_zip),
+    user_id: parseInt(localStorage.getItem('id')),
+}
+  
+  this.setState({updateData: updateData})
 }
 
   updateModal = async ()=>{
@@ -80,8 +83,6 @@ updateInvoiceData =()=>{
 
   render () {
     const invoice = this.props.invoiceData
-    console.log('props invoice:' )
-    console.log(invoice)
     return ( 
       <Modal
       {...this.props}
@@ -107,7 +108,7 @@ updateInvoiceData =()=>{
           <input className="form-control" name="client_city" defaultValue={this.props.modalShow && invoice.client_city} type="text" id="modal-title" onChange={this.handleChange} />
           <p>Zip Code</p>
           <input className="form-control" name="client_zip" defaultValue={this.props.modalShow && invoice.client_zip} type="text" id="modal-title" onChange={this.handleChange} />
-          
+
         </Modal.Title>
       </Modal.Header>
       <Modal.Header>

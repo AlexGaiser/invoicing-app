@@ -13,9 +13,6 @@ import {Navbar, Nav, NavDropdown, Form, FormControl, Dropdown,SplitButton,Button
 
 
 
-
-
-
 const NavBar = (props) => {
 
     const logout=(event)=>{
