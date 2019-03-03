@@ -9,10 +9,6 @@ import NavRegisterDropdown from '../NavRegisterDropdown/NavRegisterDropdown'
 
 import {Navbar, Nav, NavDropdown, Form, FormControl, Dropdown,SplitButton,ButtonToolbar,DropdownButton } from 'react-bootstrap'
 
-
-
-
-
 const NavBar = (props) => {
 
     const logout=(event)=>{

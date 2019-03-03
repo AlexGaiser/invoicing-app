@@ -20,6 +20,7 @@
     "run": "^1.4.0",
     "sequelize": "^4.42.0"
   },
+  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

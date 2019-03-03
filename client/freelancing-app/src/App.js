@@ -106,15 +106,11 @@ class App extends Component {
 
   
   sendData = async (data)=>{
-    
-
-
     console.log(data);
     const header = this.createAuthHeader()
     // localStorage.setItem('authorization', header)
     const response =  await Axios.post('/records', data, header)
     console.log(response.data);
-
   }
 
 
@@ -168,9 +164,6 @@ class App extends Component {
               </div>
             </div>
           </div>
-         
-
-
         </header>
       </div>
     ); 
